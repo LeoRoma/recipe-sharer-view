@@ -6,8 +6,8 @@ const Recipes = ({recipes}) => {
     return(
         <div className="recipes">
             {recipes.map((recipe) =>
-                <Recipe 
-                    recipeId={recipe.recipeId}
+                <Recipe key={recipe.recipeId}
+                    // recipeId={recipe.recipeId}
                     recipeName={recipe.recipeName}
                     description={recipe.description}
                     difficulty={recipe.difficulty}
