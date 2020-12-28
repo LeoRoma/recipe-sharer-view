@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import NavigationBar from '../src/Components/NavigationBar';
 import './App.css';
 
 class App extends Component{
@@ -23,6 +24,7 @@ class App extends Component{
     console.log(this.state.users)
     return(
       <div className="App">
+        <NavigationBar />
         <h1>Hello</h1>
       </div>
     )
