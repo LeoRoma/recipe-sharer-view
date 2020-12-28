@@ -39,11 +39,9 @@ class Login extends Component{
         })
         .then(response => response.json())
         .then(response => {
-        // .then(response => {
-            
-        //     // sessionStorage.setItem("userId", response.userId)
             sessionStorage.setItem("token", response.token)
         })
+        .then(response => console.log("ok"))
         .catch(error => {
             console.error("There was an error!", error)
         })
@@ -55,7 +53,7 @@ class Login extends Component{
 
     render(){
         // console.log(sessionStorage.getItem('userId'))
-        console.log(sessionStorage.getItem('token'))
+        // console.log(sessionStorage.getItem('token'))
         return(
             <div>
                 <form className="form" onSubmit={this.handleSubmit}>
