@@ -23,6 +23,9 @@ class App extends Component{
 
   render(){
     console.log(this.state.recipes)
+    for(let i = 0; i < this.state.recipes.length; i++){
+      console.log(this.state.recipes[i].image.id)
+    }
     return(
       <div className="App">
         <NavigationBar />

@@ -10,12 +10,14 @@ const Recipes = ({recipes}) => {
                     recipeId={recipe.recipeId}
                     recipeName={recipe.recipeName}
                     description={recipe.description}
-                    difficulty={recipe.description}
+                    difficulty={recipe.difficulty}
                     preparationTime={recipe.preparationTime}
                     cookingTime={recipe.cookingTime}
                     additionalTime={recipe.additionalTime}
                     servings={recipe.servings}
                     postDate={recipe.postDate}
+                    image={recipe.image.id}
+                    username={recipe.user.username}
                     userId={recipe.userId}
                 />
             )}
