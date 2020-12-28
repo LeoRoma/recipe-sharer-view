@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import MainPage from '../src/Components/MainPage';
 import NavigationBar from '../src/Components/NavigationBar';
 import './App.css';
 
@@ -6,7 +7,7 @@ class App extends Component{
   constructor(){
     super()
     this.state={
-      users: []
+      recipes: []
     }
   };
 
@@ -15,17 +16,19 @@ class App extends Component{
   };
 
   getUsers(){
-    fetch("https://localhost:44330/Users")
+    fetch("https://localhost:44330/Recipes")
     .then(response => response.json())
-    .then(usersJson => this.setState({users: usersJson}))
+    .then(recipesJson => this.setState({recipes: recipesJson}))
   }
 
   render(){
-    console.log(this.state.users)
+    console.log(this.state.recipes)
     return(
       <div className="App">
         <NavigationBar />
-        <h1>Hello</h1>
+        <MainPage 
+          recipes={this.state.recipes}
+        />
       </div>
     )
   }
