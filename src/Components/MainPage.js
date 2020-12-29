@@ -6,6 +6,7 @@ import Login from './Registration/Login';
 import Register from './Registration/Register';
 import Recipes from './Recipes/Recipes';
 import RecipePage from './Recipes/RecipePage';
+import UserRecipes from './UserRecipes/UserRecipes';
 
 class MainPage extends Component{
     constructor(){
@@ -44,9 +45,7 @@ class MainPage extends Component{
                 <BrowserRouter>
                     <Switch>
                         <Route exact path="/login">
-                            <Login 
-                                getLoginState={this.props.getLoginState}
-                            />
+                            <Login />
                         </Route>
                         <Route exact path="/register" component={Register}/>
                         <Route exact path="/recipes">
@@ -58,6 +57,11 @@ class MainPage extends Component{
                         <Route exact path={recipePagePath}>
                             <RecipePage 
                                 recipeInfo={this.state}
+                            />
+                        </Route>
+                        <Route exact path="/user">
+                            <UserRecipes 
+                               
                             />
                         </Route>
                     </Switch>

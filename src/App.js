@@ -8,12 +8,14 @@ class App extends Component{
     super()
     this.state={
       recipes: [],
-      loggedIn: false
+      loggedIn: false,
+      userId: localStorage.getItem("userId")
     }
   };
 
   componentDidMount(){
     this.getRecipes();
+    this.getLoginState();
   };
 
   getRecipes(){
@@ -24,29 +26,26 @@ class App extends Component{
   }
 
   getLoginState = () => {
-    this.setState({loggedIn: !this.state.loggedIn})
+    console.log(this.state.userId)
+    if(this.state.userId !== null){
+      this.setState({loggedIn: true})
+    }
+  
   }
 
   getLogoutState = () => {
-    this.setState({loggedIn: !this.state.loggedIn})
-    sessionStorage.clear();
+    localStorage.clear();
   }
 
   render(){
-    // console.log(this.state.recipes)
-    // for(let i = 0; i < this.state.recipes.length; i++){
-    //   console.log(this.state.recipes[i].image.id)
-    // }
-
     return(
       <div className="App">
         <NavigationBar 
            loginState={this.state.loggedIn}
-           getLoginState={this.getLogoutState}
+           getLogoutState={this.getLogoutState}
         />
         <MainPage 
           recipes={this.state.recipes}
-          getLoginState={this.getLoginState}
         />
       </div>
     )
