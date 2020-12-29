@@ -3,6 +3,7 @@ import React, {Component} from 'react';
 import {Switch, Route, BrowserRouter} from 'react-router-dom';
 
 import Login from './Registration/Login';
+import NewRecipe from './AddNewUserRecipe/NewRecipe';
 import Register from './Registration/Register';
 import Recipes from './Recipes/Recipes';
 import RecipePage from './Recipes/RecipePage';
@@ -16,7 +17,7 @@ class MainPage extends Component{
             username: "",
             imageId: 0,
             imageSuffix: "",
-            recipe: {}
+            recipe: {},
         }
     };
 
@@ -38,14 +39,16 @@ class MainPage extends Component{
     }
 
     render(){
-        var recipeName = this.state.recipe.recipeName
-        var recipePagePath = `/${recipeName}`
+        var recipeName = this.state.recipe.recipeName;
+        
+        var recipePagePath = `/${recipeName}`;
+
         return(
             <div className="main-page">
                 <BrowserRouter>
                     <Switch>
                         <Route exact path="/login">
-                            <Login />
+                            <Login userRecipePath={this.props.userRecipePath} />
                         </Route>
                         <Route exact path="/register" component={Register}/>
                         <Route exact path="/recipes">
@@ -63,6 +66,9 @@ class MainPage extends Component{
                             <UserRecipes 
                                userRecipes={this.props.userRecipes}
                             />
+                        </Route>
+                        <Route exact path="/new-recipe">
+                            <NewRecipe />
                         </Route>
                     </Switch>
                 </BrowserRouter>              

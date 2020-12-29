@@ -10,14 +10,15 @@ class App extends Component{
       recipes: [],
       userRecipes: [],
       loggedIn: false,
-      userId: localStorage.getItem("userId")
+      userId: sessionStorage.getItem("userId"), 
     }
   };
 
   componentDidMount(){
-    this.getUserRecipes();
+    // this.getUserRecipes();
     this.getRecipes();
     this.getLoginState();
+
   };
 
   getRecipes(){
@@ -38,13 +39,17 @@ class App extends Component{
   getLoginState = () => {
     if(this.state.userId !== null){
       this.setState({loggedIn: true})
+      this.getUserRecipes();
     }
   }
 
   getLogoutState = () => {
-    localStorage.clear();
+    sessionStorage.clear();
   }
 
+    // window.onbeforeunload = function() {
+    //   localStorage.clear();
+    // }
   render(){
 
     return(

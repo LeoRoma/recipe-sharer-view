@@ -1,4 +1,5 @@
-import React, {Component} from 'react';
+import React from 'react';
+import {Link} from 'react-router-dom';
 import UserRecipe from './UserRecipe';
 
 const UserRecipes = ({userRecipes}) => {
@@ -8,6 +9,7 @@ const UserRecipes = ({userRecipes}) => {
     return(
         <div>
             <h1>You have posted {nRecipes} recipes </h1>
+            <Link to="/new-recipe"><button>Add New Recipe</button></Link>
             {userRecipes.map((userRecipe) => 
                 <UserRecipe 
                     key={userRecipe.recipeId}
