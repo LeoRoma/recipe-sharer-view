@@ -40,6 +40,21 @@ class RecipePage extends Component{
                 {servings}
                 {postDate}
                 {username}
+                <h2>Ingredients</h2>
+                {ingredients.map((ingredient) => 
+                    <p>{ingredient.ingredientName} {ingredient.amount}</p>
+                    // <p>ingredient.amount</p>
+                )}
+
+                <h2>Method</h2>
+                {steps.map((step) =>
+                    <p>{step.stepNumber} {step.stepName} {step.instruction}</p> 
+                )}
+
+                <h2>Equipments</h2>
+                {equipments.map((equipment) => 
+                    <p>{equipment.equipmentName}</p>
+                )}
             </div>
         );
     };
