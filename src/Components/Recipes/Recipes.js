@@ -1,13 +1,14 @@
 import React from 'react';
 import Recipe from './Recipe';
 
-const Recipes = ({recipes}) => {
+const Recipes = ({recipes, getRecipeInfo}) => {
 
     return(
         <div className="recipes">
             {recipes.map((recipe) =>
-                <Recipe key={recipe.recipeId}
-                    // recipeId={recipe.recipeId}
+                <Recipe 
+                    key={recipe.recipeId}
+                    recipeId={recipe.recipeId}
                     recipeName={recipe.recipeName}
                     description={recipe.description}
                     difficulty={recipe.difficulty}
@@ -16,9 +17,11 @@ const Recipes = ({recipes}) => {
                     additionalTime={recipe.additionalTime}
                     servings={recipe.servings}
                     postDate={recipe.postDate}
-                    image={recipe.image.id}
+                    imageId={recipe.image.id}
+                    imageSuffix={recipe.image.suffix}
                     username={recipe.user.username}
                     userId={recipe.userId}
+                    getRecipeInfo={getRecipeInfo}
                 />
             )}
             

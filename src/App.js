@@ -12,13 +12,14 @@ class App extends Component{
   };
 
   componentDidMount(){
-    this.getUsers();
+    this.getRecipes();
   };
 
-  getUsers(){
+  getRecipes(){
     fetch("https://localhost:44330/Recipes")
     .then(response => response.json())
     .then(recipesJson => this.setState({recipes: recipesJson}))
+    .catch(error => error);
   }
 
   render(){

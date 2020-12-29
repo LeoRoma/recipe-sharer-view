@@ -7,7 +7,13 @@ class Register extends Component{
         this.state={
             username: '',
             email: '',
-            password: ''
+            password: '',
+
+            errors: {
+                username: '',
+                email: '',
+                password: ''
+            }
         };
 
         this.handleChangeUsername = this.handleChangeUsername.bind(this);
@@ -55,6 +61,7 @@ class Register extends Component{
         //   }, 500)
     }
 
+    
     render(){
         return(
             <div id="register">

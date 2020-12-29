@@ -1,13 +1,14 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 
-const Recipe = ({recipeName, description, difficulty, preparationTime, cookingTime, additionalTime, servings, postDate, image, username, userId}) => {
+const Recipe = ({recipeId, recipeName, description, difficulty, preparationTime, cookingTime, additionalTime, servings, postDate, imageId, imageSuffix, username, userId, getRecipeInfo}) => {
 
-var imageDomain = `https://localhost:44330/dynamic/images/${image}.jpg`;
-
+var imageDomain = `https://localhost:44330/dynamic/images/${imageId}${imageSuffix}`;
+var recipePagePath = `/${recipeName}`
     return(
         <div>
-            <img src={imageDomain} alt="food"/>
-            <h1>{recipeName}</h1>
+            <img src={imageDomain} style={{width:"200px", height:"200px"}} alt="food"/>
+            <Link to={recipePagePath}><h1 onClick={getRecipeInfo.bind(this, recipeId, username, imageId, imageSuffix)}>{recipeName}</h1></Link>
             <h2>{description}</h2>
             <p>Difficulty: {difficulty}</p>
             <p>Preparation Time: {preparationTime}</p>
