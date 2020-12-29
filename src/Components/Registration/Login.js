@@ -40,9 +40,9 @@ class Login extends Component{
         })
         .then(response => response.json())
         .then(response => {
-            localStorage.setItem("userId", response.userDetails.userId)
-            localStorage.setItem("token", response.token)
-            this.setRedirect()
+            localStorage.setItem("userId", response.userDetails.userId);
+            localStorage.setItem("token", response.token);           
+            this.setRedirect();
             console.log('Login Successfull!')
         })
         .catch(error => {
@@ -70,7 +70,7 @@ class Login extends Component{
         // console.log(sessionStorage.getItem('token'))
         return(
             <div>
-                 {this.renderRedirect()}
+                {this.renderRedirect()}
                 <form className="form" onSubmit={this.handleSubmit}>
                     <label>
                         Email:

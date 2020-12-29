@@ -61,7 +61,7 @@ class MainPage extends Component{
                         </Route>
                         <Route exact path="/user">
                             <UserRecipes 
-                               
+                               userRecipes={this.props.userRecipes}
                             />
                         </Route>
                     </Switch>

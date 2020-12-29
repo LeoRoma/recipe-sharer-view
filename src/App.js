@@ -8,12 +8,14 @@ class App extends Component{
     super()
     this.state={
       recipes: [],
+      userRecipes: [],
       loggedIn: false,
       userId: localStorage.getItem("userId")
     }
   };
 
   componentDidMount(){
+    this.getUserRecipes();
     this.getRecipes();
     this.getLoginState();
   };
@@ -25,12 +27,18 @@ class App extends Component{
     .catch(error => error);
   }
 
+  getUserRecipes = () => {
+    let userId = this.state.userId;
+    fetch(`https://localhost:44330/Users/${userId}/recipes`)
+    .then(response => response.json())
+    .then(recipesJson => this.setState({userRecipes: recipesJson}))
+    .catch(error => error);
+  }
+
   getLoginState = () => {
-    console.log(this.state.userId)
     if(this.state.userId !== null){
       this.setState({loggedIn: true})
     }
-  
   }
 
   getLogoutState = () => {
@@ -38,6 +46,7 @@ class App extends Component{
   }
 
   render(){
+
     return(
       <div className="App">
         <NavigationBar 
@@ -46,6 +55,7 @@ class App extends Component{
         />
         <MainPage 
           recipes={this.state.recipes}
+          userRecipes={this.state.userRecipes}
         />
       </div>
     )
