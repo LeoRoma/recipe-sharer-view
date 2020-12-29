@@ -43,7 +43,11 @@ class MainPage extends Component{
             <div className="main-page">
                 <BrowserRouter>
                     <Switch>
-                        <Route exact path="/login" component={Login}/>
+                        <Route exact path="/login">
+                            <Login 
+                                getLoginState={this.props.getLoginState}
+                            />
+                        </Route>
                         <Route exact path="/register" component={Register}/>
                         <Route exact path="/recipes">
                             <Recipes 

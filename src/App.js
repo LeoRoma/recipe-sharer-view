@@ -7,7 +7,8 @@ class App extends Component{
   constructor(){
     super()
     this.state={
-      recipes: []
+      recipes: [],
+      loggedIn: false
     }
   };
 
@@ -22,16 +23,30 @@ class App extends Component{
     .catch(error => error);
   }
 
+  getLoginState = () => {
+    this.setState({loggedIn: !this.state.loggedIn})
+  }
+
+  getLogoutState = () => {
+    this.setState({loggedIn: !this.state.loggedIn})
+    sessionStorage.clear();
+  }
+
   render(){
     // console.log(this.state.recipes)
     // for(let i = 0; i < this.state.recipes.length; i++){
     //   console.log(this.state.recipes[i].image.id)
     // }
+
     return(
       <div className="App">
-        <NavigationBar />
+        <NavigationBar 
+           loginState={this.state.loggedIn}
+           getLoginState={this.getLogoutState}
+        />
         <MainPage 
           recipes={this.state.recipes}
+          getLoginState={this.getLoginState}
         />
       </div>
     )

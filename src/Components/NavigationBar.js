@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {Navbar, Nav} from 'react-bootstrap';
 
 class NavigationBar extends Component{
+
     render(){
         return(
             <div>
@@ -12,10 +13,9 @@ class NavigationBar extends Component{
                         <Nav className="mr-auto">
                         </Nav>
                         <Nav>
-                        <Nav.Link href="/login">Login</Nav.Link>
-                        <Nav.Link href="/register">
-                            Register
-                        </Nav.Link>
+                        {this.props.loginState? <Nav.Link href="/login">Your Recipes</Nav.Link> : null}
+                        {this.props.loginState? <Nav.Link href="/login" onClick={this.props.getLogoutState}>Logout</Nav.Link> : <Nav.Link href="/login">Login</Nav.Link>}
+                        {this.props.loginState? null : <Nav.Link href="/register">Register</Nav.Link>}
                         </Nav>
                     </Navbar.Collapse>
                 </Navbar>

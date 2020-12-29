@@ -5,7 +5,8 @@ class Login extends Component{
         super(props)
         this.state={
             email: '',
-            password: ''
+            password: '',
+            loggedIn: false
         };
 
         this.handleChangeEmail = this.handleChangeEmail.bind(this);
@@ -22,8 +23,9 @@ class Login extends Component{
     }
 
     handleSubmit(event) {
+        var loginState = true;
         event.preventDefault();
-        const form = document.querySelector("form");
+        const form = document.querySelector(".form");
 
         let {email, password} = this.state
         fetch("https://localhost:44330/api/Login", {
@@ -39,9 +41,11 @@ class Login extends Component{
         })
         .then(response => response.json())
         .then(response => {
+            sessionStorage.setItem("userId", response.userDetails.userId)
             sessionStorage.setItem("token", response.token)
         })
-        .then(response => console.log("ok"))
+        .then(response => this.props.getLoginState(loginState))
+        .then(response => console.log('Login Successfull!'))
         .catch(error => {
             console.error("There was an error!", error)
         })
@@ -49,6 +53,7 @@ class Login extends Component{
         // setTimeout(function () {
         //     window.location.reload(false);
         //   }, 500)
+ 
     }
 
     render(){
