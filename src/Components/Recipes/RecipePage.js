@@ -10,6 +10,7 @@ class RecipePage extends Component{
 
     render(){
         var recipe = this.props.recipeInfo.recipe;
+        var recipeId = recipe.recipeId;
         var equipments = this.props.recipeInfo.recipe.equipments;
         var ingredients = this.props.recipeInfo.recipe.ingredients;
         var steps = this.props.recipeInfo.recipe.steps;
@@ -28,8 +29,13 @@ class RecipePage extends Component{
         var additionalTime = recipe.additionalTime;
         var servings = recipe.servings;
         var postDate = recipe.postDate;
+        var YYYY = postDate.slice(0,4);
+        var MM = postDate.slice(5, 7);
+        var DD = postDate.slice(8, 10);
+        var formattedDate = `${DD}/${MM}/${YYYY}`;
+
         return(
-            <div>
+            <div key={recipeId}>
                 <img src={imageDomain} style={{width:"200px", height:"200px"}} alt="food"/>
                 {recipeName}
                 {description}
@@ -38,22 +44,22 @@ class RecipePage extends Component{
                 {cookingTime}
                 {additionalTime}
                 {servings}
-                {postDate}
+                {formattedDate}
                 {username}
                 <h2>Ingredients</h2>
                 {ingredients.map((ingredient) => 
-                    <p>{ingredient.ingredientName} {ingredient.amount}</p>
+                    <p key={ingredient.ingredientId}>{ingredient.ingredientName} {ingredient.amount}</p>
                     // <p>ingredient.amount</p>
                 )}
 
                 <h2>Method</h2>
                 {steps.map((step) =>
-                    <p>{step.stepNumber} {step.stepName} {step.instruction}</p> 
+                    <p key={step.stepId}>{step.stepNumber} {step.stepName} {step.instruction}</p> 
                 )}
 
                 <h2>Equipments</h2>
                 {equipments.map((equipment) => 
-                    <p>{equipment.equipmentName}</p>
+                    <p key={equipment.equipmentId}>{equipment.equipmentName}</p>
                 )}
             </div>
         );
