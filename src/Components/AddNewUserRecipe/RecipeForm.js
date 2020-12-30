@@ -45,16 +45,17 @@ class RecipeForm extends Component {
 
     handleSubmit = (event) => {
         var token = sessionStorage.getItem('token');
+        var userId = sessionStorage.getItem('userId');
         event.preventDefault();
         let { recipeName, description, difficulty, preparationTime, cookingTime, additionalTime, servings } = this.state
-        console.log(recipeName, description, difficulty, preparationTime, cookingTime, additionalTime, servings)
+        console.log(recipeName, description, difficulty, preparationTime, cookingTime, additionalTime, servings, token, userId)
 
         fetch("https://localhost:44330/Recipes/post", {
             method: "Post",
             headers: {
+                Accept: 'application/json',
                 'Content-Type': 'application/json',
-                'Accept': 'application/json',
-                "Authorization": "Bearer " + token
+                'Authorization': "Bearer " + token
             },
             body: JSON.stringify({
                 recipeName: recipeName,
@@ -63,7 +64,8 @@ class RecipeForm extends Component {
                 preparationTime: preparationTime,
                 cookingTime: cookingTime,
                 additionalTime: additionalTime,
-                servings: servings
+                servings: servings,
+                userId: userId
             })
         })
             .then(response => response.json())
@@ -113,7 +115,7 @@ class RecipeForm extends Component {
                     <br />
                     <label>
                         Additional Time:
-                        <input type="text" name="additionaltime" onChange={this.handleChange} />
+                        <input type="text" name="additionalTime" onChange={this.handleChange} />
                     </label>
                     <br />
                     <label>

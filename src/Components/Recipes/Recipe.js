@@ -1,7 +1,21 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const Recipe = ({ recipeId, recipeName, description, difficulty, preparationTime, cookingTime, additionalTime, servings, postDate, imageId, imageSuffix, username, userId, getRecipeInfo }) => {
+const Recipe = ({ 
+    recipeId, 
+    recipeName, 
+    description, 
+    difficulty, 
+    preparationTime, 
+    cookingTime, 
+    additionalTime, 
+    servings, 
+    postDate, 
+    imageId, 
+    imageSuffix, 
+    username, 
+    userId, 
+    getRecipeInfo }) => {
 
     var imageDomain = `https://localhost:44330/dynamic/images/${imageId}${imageSuffix}`;
     var recipePagePath = `/${recipeName}`;
