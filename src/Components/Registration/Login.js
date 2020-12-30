@@ -1,10 +1,10 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 
-class Login extends Component{
-    constructor(props){
+class Login extends Component {
+    constructor(props) {
         super(props)
-        this.state={
+        this.state = {
             email: '',
             password: '',
             redirect: false
@@ -15,19 +15,19 @@ class Login extends Component{
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    handleChangeEmail(event){
-        this.setState({email: event.target.value});
+    handleChangeEmail(event) {
+        this.setState({ email: event.target.value });
     }
 
-    handleChangePassword(event){
-        this.setState({password: event.target.value})
+    handleChangePassword(event) {
+        this.setState({ password: event.target.value })
     }
 
     handleSubmit(event) {
         event.preventDefault();
 
-        let {email, password} = this.state
-        fetch("https://localhost:44330/api/Login", {
+        let { email, password } = this.state
+        fetch("https://localhost:44330/Login", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -38,38 +38,38 @@ class Login extends Component{
                 password: password
             })
         })
-        .then(response => response.json())
-        .then(response => {
-            sessionStorage.setItem("userId", response.userDetails.userId);
-            sessionStorage.setItem("username", response.userDetails.username);
-            sessionStorage.setItem("token", response.token);           
-            this.setRedirect();
-            console.log('Login Successfull!')
-        })
-        .catch(error => {
-            console.error("There was an error!", error)
-        })
+            .then(response => response.json())
+            .then(response => {
+                sessionStorage.setItem("userId", response.userDetails.userId);
+                sessionStorage.setItem("username", response.userDetails.username);
+                sessionStorage.setItem("token", response.token);
+                this.setRedirect();
+                console.log('Login Successfull!')
+            })
+            .catch(error => {
+                console.error("There was an error!", error)
+            })
         setTimeout(function () {
             window.location.reload(false);
-          }, 500)
+        }, 500)
     }
 
     setRedirect = () => {
         this.setState({
-          redirect: true
+            redirect: true
         });
     }
 
     renderRedirect = () => {
         if (this.state.redirect) {
-          return <Redirect to="/user" />
+            return <Redirect to="/user" />
         }
-      };
+    };
 
-    render(){
+    render() {
         // console.log(sessionStorage.getItem('userId'))
         // console.log(sessionStorage.getItem('token'))
-        return(
+        return (
             <div>
                 {this.renderRedirect()}
                 <form className="form" onSubmit={this.handleSubmit}>
