@@ -14,7 +14,8 @@ class RecipePage extends Component{
         var equipments = this.props.recipeInfo.recipe.equipments;
         var ingredients = this.props.recipeInfo.recipe.ingredients;
         var steps = this.props.recipeInfo.recipe.steps;
-
+        var stepsSorted = steps.sort(function(a,b){return a['stepNumber']-b['stepNumber']}); 
+        console.log(stepsSorted, steps.stepNumber);
         var username = this.props.recipeInfo.username;
         var imageId = this.props.recipeInfo.imageId;
         var imageSuffix = this.props.recipeInfo.imageSuffix;
@@ -53,7 +54,7 @@ class RecipePage extends Component{
                 )}
 
                 <h2>Method</h2>
-                {steps.map((step) =>
+                {stepsSorted.map((step) =>
                     <p key={step.stepId}>{step.stepNumber} {step.stepName} {step.instruction}</p> 
                 )}
 
