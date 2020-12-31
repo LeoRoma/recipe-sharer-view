@@ -71,7 +71,7 @@ class RecipeForm extends Component {
             .then(response => response.json())
             .then(response => {
                 console.log(response);
-                sessionStorage.setItem("userId", response.recipeId);
+                sessionStorage.setItem("recipeId", response.recipeId);
             })
             .catch(error => {
                 console.log("There was an error ", error);
