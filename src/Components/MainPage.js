@@ -21,25 +21,25 @@ class MainPage extends Component{
         }
     };
 
-    getRecipeInfo = (recipeId, username, imageId, imageSuffix) =>{
-        this.setState({
-            recipeId: recipeId,
-            username: username,
-            imageId: imageId,
-            imageSuffix: imageSuffix
-        })
-        this.getRecipe(recipeId);
-    }
+    // getRecipeInfo = (recipeId, username, imageId, imageSuffix) =>{
+    //     this.setState({
+    //         recipeId: recipeId,
+    //         username: username,
+    //         imageId: imageId,
+    //         imageSuffix: imageSuffix
+    //     })
+    //     this.getRecipe(recipeId);
+    // }
 
-    getRecipe(recipeId){
-        fetch(`https://localhost:44330/Recipes/${recipeId}`)
-        .then(response => response.json())
-        .then(recipeJson => this.setState({recipe: recipeJson}))
-        .catch(error => error);
-    }
+    // getRecipe(recipeId){
+    //     fetch(`https://localhost:44330/Recipes/${recipeId}`)
+    //     .then(response => response.json())
+    //     .then(recipeJson => this.setState({recipe: recipeJson}))
+    //     .catch(error => error);
+    // }
 
     render(){
-        var recipeName = this.state.recipe.recipeName;
+        var recipeName = this.props.recipeInfo.recipe.recipeName;
         
         var recipePagePath = `/${recipeName}`;
 
@@ -54,12 +54,12 @@ class MainPage extends Component{
                         <Route exact path="/recipes">
                             <Recipes 
                                 recipes={this.props.recipes}
-                                getRecipeInfo={this.getRecipeInfo}
+                                getRecipeInfo={this.props.getRecipeInfo}
                             />
                         </Route> 
                         <Route exact path={recipePagePath}>
                             <RecipePage 
-                                recipeInfo={this.state}
+                                recipeInfo={this.props.recipeInfo}
                             />
                         </Route>
                         <Route exact path="/user">
