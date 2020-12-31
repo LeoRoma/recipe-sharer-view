@@ -1,7 +1,7 @@
 import React from 'react';
 import Recipe from './Recipe';
 
-const Recipes = ({recipes, getRecipeInfo}) => {
+const Recipes = ({recipes, getRecipeId}) => {
 
     return(
         <div className="recipes">
@@ -21,7 +21,7 @@ const Recipes = ({recipes, getRecipeInfo}) => {
                     imageSuffix={recipe.image.suffix}
                     username={recipe.user.username}
                     userId={recipe.userId}
-                    getRecipeInfo={getRecipeInfo}
+                    getRecipeId={getRecipeId}
                 />
             )}
             

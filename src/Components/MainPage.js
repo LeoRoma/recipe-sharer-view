@@ -54,7 +54,7 @@ class MainPage extends Component{
                         <Route exact path="/recipes">
                             <Recipes 
                                 recipes={this.props.recipes}
-                                getRecipeInfo={this.props.getRecipeInfo}
+                                getRecipeId={this.props.getRecipeId}
                             />
                         </Route> 
                         <Route exact path={recipePagePath}>

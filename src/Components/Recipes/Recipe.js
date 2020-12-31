@@ -15,7 +15,7 @@ const Recipe = ({
     imageSuffix, 
     username, 
     userId, 
-    getRecipeInfo }) => {
+    getRecipeId}) => {
 
     var imageDomain = `https://localhost:44330/dynamic/images/${imageId}${imageSuffix}`;
     var recipePagePath = `/${recipeName}`;
@@ -28,7 +28,7 @@ const Recipe = ({
     return (
         <div>
             <img src={imageDomain} style={{ width: "200px", height: "200px" }} alt="food" />
-            <Link to={recipePagePath}><h1 onClick={getRecipeInfo.bind(this, recipeId, username, imageId, imageSuffix)}>{recipeName}</h1></Link>
+            <Link to={recipePagePath}><h1 onClick={getRecipeId.bind(this, recipeId)}>{recipeName}</h1></Link>
             <h2>{description}</h2>
             <p>Difficulty: {difficulty}</p>
             <p>Preparation Time: {preparationTime}</p>

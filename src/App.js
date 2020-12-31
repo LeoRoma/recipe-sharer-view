@@ -14,9 +14,6 @@ class App extends Component {
 
       recipePageIsOpened: false,
       recipeId: sessionStorage.getItem('recipeId'),
-      username: "",
-      imageId: 0,
-      imageSuffix: "",
       recipe: {}
     }
   };
@@ -43,14 +40,8 @@ class App extends Component {
       .catch(error => error);
   }
 
-  getRecipeInfo = (recipeId, username, imageId, imageSuffix) => {
+  getRecipeId = (recipeId) => {
     sessionStorage.setItem('recipeId', recipeId);
-    this.setState({
-      username: username,
-      imageId: imageId,
-      imageSuffix: imageSuffix
-    })
-    
   }
 
   getRecipe() {
@@ -93,7 +84,7 @@ class App extends Component {
         <MainPage
           recipes={this.state.recipes}
           userRecipes={this.state.userRecipes}
-          getRecipeInfo={this.getRecipeInfo}
+          getRecipeId={this.getRecipeId}
           recipeInfo={recipeInfo}
         />
       </div>

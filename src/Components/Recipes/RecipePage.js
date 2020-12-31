@@ -11,14 +11,13 @@ class RecipePage extends Component{
     render(){
         var recipe = this.props.recipeInfo.recipe;
         var recipeId = recipe.recipeId;
-        var equipments = this.props.recipeInfo.recipe.equipments;
-        var ingredients = this.props.recipeInfo.recipe.ingredients;
-        var steps = this.props.recipeInfo.recipe.steps;
-        var stepsSorted = steps.sort(function(a,b){return a['stepNumber']-b['stepNumber']}); 
-        console.log(stepsSorted, steps.stepNumber);
-        var username = this.props.recipeInfo.username;
-        var imageId = this.props.recipeInfo.imageId;
-        var imageSuffix = this.props.recipeInfo.imageSuffix;
+        var equipments = recipe.equipments;
+        var ingredients = recipe.ingredients;
+        var steps = recipe.steps;
+        var stepsSorted = steps.sort(function(a, b){return a['stepNumber']-b['stepNumber']}); 
+        var username = recipe.user.username;
+        var imageId = recipe.image.id;
+        var imageSuffix = recipe.image.suffix;
         
         var imageDomain = `https://localhost:44330/dynamic/images/${imageId}${imageSuffix}`;
 
@@ -68,12 +67,3 @@ class RecipePage extends Component{
 }
 
 export default RecipePage;
-
-// difficulty={recipe.difficulty}
-// preparationTime={recipe.preparationTime}
-// cookingTime={recipe.cookingTime}
-// additionalTime={recipe.additionalTime}
-// servings={recipe.servings}
-// postDate={recipe.postDate}
-// image={recipe.image.id}
-// username={recipe.user.username}
