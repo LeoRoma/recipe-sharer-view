@@ -19,6 +19,7 @@ class RecipeImageForm extends Component {
     
       handleSubmit = (e) => {
         var recipeId = sessionStorage.getItem('recipeId');
+        var token = sessionStorage.getItem('token');
         e.preventDefault();
         console.log(this.state);
         let form_data = new FormData();
@@ -26,6 +27,11 @@ class RecipeImageForm extends Component {
        
         fetch("https://localhost:44330/Image/post/" + recipeId, {
             method: "Post",
+            headers: {
+                // Accept: 'application/json',
+                // 'Content-Type': 'application/json',
+                'Authorization': "Bearer " + token
+            },
             body: form_data           
         })
             .then(response => response.json())

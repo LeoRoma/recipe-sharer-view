@@ -26,6 +26,7 @@ class EquipmentsForm extends Component{
     }
 
     handleSubmit = (event) => {
+        var token = sessionStorage.getItem('token');
         var equipmentsLength = this.state.equipments.length;
         var equipments = this.state.equipments;
         var recipeId = sessionStorage.getItem("recipeId");
@@ -39,7 +40,7 @@ class EquipmentsForm extends Component{
                 headers: {
                     Accept: 'application/json',
                     'Content-Type': 'application/json',
-                    // 'Authorization': "Bearer " + token
+                    'Authorization': "Bearer " + token
                 },
                 body: JSON.stringify({
                     equipmentName: equipments[i].equipmentName,
@@ -56,7 +57,6 @@ class EquipmentsForm extends Component{
                     console.log("There was an error ", error);
                 })
         }
-
     }
 
     render() {
