@@ -41,7 +41,11 @@ class App extends Component {
   }
 
   getRecipeId = (recipeId) => {
-    sessionStorage.setItem('recipeId', recipeId);
+    setTimeout(function () {
+      window.location.reload(false);
+      sessionStorage.setItem('recipeId', recipeId);
+  }, 500)
+    
   }
 
   getRecipe() {

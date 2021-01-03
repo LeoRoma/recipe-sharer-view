@@ -1,5 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import DeleteRecipe from '../UserRecipes/DeleteRecipe';
 
 const UserRecipe = ({recipeId, recipeName, description, difficulty, preparationTime, cookingTime, additionalTime, servings, postDate, imageId, imageSuffix, username, userId}) => {
 
@@ -18,6 +19,9 @@ const UserRecipe = ({recipeId, recipeName, description, difficulty, preparationT
             <p>Servings: {servings}</p>
             <p>Posted Date: {postDate}</p>
             <p>Posted by: {username}</p>
+            <DeleteRecipe 
+                recipeId={recipeId}
+            />
         </div>
     );
 }
