@@ -72,6 +72,13 @@ class MainPage extends Component {
                         <Route exact path="/user/recipe/details">
                             <UserRecipeDetails 
                                 userRecipeDetails={this.props.userRecipeDetails}
+                                userRecipeEquipments={this.props.userRecipeEquipments}
+                                userRecipeSteps={this.props.userRecipeSteps}
+                                userRecipeIngredients={this.props.userRecipeIngredients}
+                                userRecipeUser={this.props.userRecipeUser}
+                                userRecipeImage={this.props.userRecipeImage}
+                                userRecipePostDate={this.props.userRecipePostDate}
+                                // userRecipeImageDomain={this.props.userRecipeImageDomain}
                             />
                         </Route>
                         <Route exact path="/new-recipe">

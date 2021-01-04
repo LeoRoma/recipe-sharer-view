@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import MainPage from '../src/Components/MainPage';
 import NavigationBar from '../src/Components/NavigationBar';
 import './App.css';
-import _ from 'lodash';
+// import UserRecipeDetails from './Components/UserRecipes/UserRecipeDetails';
+
 
 class App extends Component {
   constructor() {
@@ -18,7 +19,14 @@ class App extends Component {
       recipeId: sessionStorage.getItem('recipeId'),
       userRecipeId: sessionStorage.getItem('userRecipeId'),
       recipe: {},
-      userRecipe: {}
+
+      userRecipe: {},
+      userRecipePostDate: '',
+      userRecipeEquipments: [],
+      userRecipeSteps: [],
+      userRecipeIngredients: [],
+      userRecipeUser: {},
+      userRecipeImage: {}
     }
   };
 
@@ -60,7 +68,7 @@ class App extends Component {
     setTimeout(function () {
       window.location.reload(false);
       sessionStorage.setItem('recipeId', recipeId);
-    }, 100)
+    }, 1000)
   }
 
   getRecipeDetailsState = () => {
@@ -76,15 +84,28 @@ class App extends Component {
     var userId = this.state.userId;
     fetch(`https://localhost:44330/Users/${userId}/recipe/${userRecipeId}`)
       .then(response => response.json())
-      .then(recipeJson => this.setState({ userRecipe: recipeJson }))
-      .catch(error => error);
+      .then(recipeJson => {
+        this.setState({
+          userRecipe: recipeJson,
+          userRecipeEquipments: recipeJson.equipments,
+          userRecipeSteps: recipeJson.steps,
+          userRecipeIngredients: recipeJson.ingredients,
+          userRecipeUser: recipeJson.user,
+          userRecipeImage: recipeJson.image,
+          userRecipePostDate: recipeJson.postDate
+        })
+      })
+    // .catch(error => error);
+    //   setTimeout(function () {
+    //     window.location.reload(false);
+    // }, 500)
   }
 
   getUserRecipeId = (recipeId) => {
     setTimeout(function () {
       window.location.reload(false);
       sessionStorage.setItem('userRecipeId', recipeId);
-    }, 500)
+    }, 10)
   }
 
   getUserRecipeDetailsState = () => {
@@ -111,6 +132,18 @@ class App extends Component {
   render() {
     var recipeDetails = this.state.recipe;
     var userRecipeDetails = this.state.userRecipe;
+    var userRecipeEquipments = this.state.userRecipeEquipments;
+    var userRecipeSteps = this.state.userRecipeSteps;
+    var userRecipeIngredients = this.state.userRecipeIngredients;
+    var userRecipeUser = this.state.userRecipeUser;
+    var userRecipeImage = this.state.userRecipeImage;
+    var userRecipePostDate = this.state.userRecipePostDate;
+
+    // console.log(userRecipeImage.id);
+    // var imageId = userRecipeImage.id;
+
+    // var imageSuffix = userRecipeImage.suffix;
+    // var userRecipeImageDomain = `https://localhost:44330/dynamic/images/${imageId}${imageSuffix}`;
 
     return (
       <div className="App">
@@ -125,6 +158,13 @@ class App extends Component {
           userRecipes={this.state.userRecipes}
           recipeDetails={recipeDetails}
           userRecipeDetails={userRecipeDetails}
+          userRecipeEquipments={userRecipeEquipments}
+          userRecipeSteps={userRecipeSteps}
+          userRecipeIngredients={userRecipeIngredients}
+          userRecipeUser={userRecipeUser}
+          // userRecipeImageDomain={userRecipeImageDomain}
+          userRecipeImage={userRecipeImage}
+          userRecipePostDate={userRecipePostDate}
         />
       </div>
     )
