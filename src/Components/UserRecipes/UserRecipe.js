@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import DeleteRecipe from '../UserRecipes/DeleteRecipe';
+import DeleteRecipe from './RecipeDelete/DeleteRecipe';
 
 const UserRecipe = ({recipeId, recipeName, description, difficulty, preparationTime, cookingTime, additionalTime, servings, postDate, imageId, imageSuffix, username, getUserRecipeId}) => {
 
