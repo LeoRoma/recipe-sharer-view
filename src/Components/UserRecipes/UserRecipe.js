@@ -5,12 +5,12 @@ import DeleteRecipe from '../UserRecipes/DeleteRecipe';
 const UserRecipe = ({recipeId, recipeName, description, difficulty, preparationTime, cookingTime, additionalTime, servings, postDate, imageId, imageSuffix, username, userId}) => {
 
     var imageDomain = `https://localhost:44330/dynamic/images/${imageId}${imageSuffix}`;
-    var recipePagePath = `/${recipeName}`
+    // var recipePagePath = `/${recipeName}`
 
     return(
         <div>
             <img src={imageDomain} style={{width:"200px", height:"200px"}} alt="food"/>
-            <Link to={recipePagePath}><h1>{recipeName}</h1></Link>
+            <Link to="/user/recipe/details"><h1>{recipeName}</h1></Link>
             <h2>{description}</h2>
             <p>Difficulty: {difficulty}</p>
             <p>Preparation Time: {preparationTime}</p>

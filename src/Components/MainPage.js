@@ -8,6 +8,7 @@ import Register from './Registration/Register';
 import Recipes from './Recipes/Recipes';
 import RecipeDetails from './Recipes/RecipeDetails';
 import UserRecipes from './UserRecipes/UserRecipes';
+import UserRecipeDetails from './UserRecipes/UserRecipeDetails';
 
 class MainPage extends Component{
     constructor(){
@@ -41,7 +42,7 @@ class MainPage extends Component{
     render(){
         var recipeName = this.props.recipeInfo.recipe.recipeName;
         
-        var recipePagePath = `/${recipeName}`;
+        var recipeDetailsPath = `/${recipeName}`;
 
         return(
             <div className="main-page">
@@ -57,7 +58,7 @@ class MainPage extends Component{
                                 getRecipeId={this.props.getRecipeId}
                             />
                         </Route> 
-                        <Route exact path={recipePagePath}>
+                        <Route exact path={recipeDetailsPath}>
                             <RecipeDetails 
                                 recipeInfo={this.props.recipeInfo}
                             />
@@ -66,6 +67,9 @@ class MainPage extends Component{
                             <UserRecipes 
                                userRecipes={this.props.userRecipes}
                             />
+                        </Route>
+                        <Route exact path="/user/recipe/details">
+                            <UserRecipeDetails />
                         </Route>
                         <Route exact path="/new-recipe">
                             <NewRecipe />

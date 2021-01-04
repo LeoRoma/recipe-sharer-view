@@ -22,7 +22,7 @@ class App extends Component {
     // this.getUserRecipes();
     this.getRecipes();
     this.getLoginState();
-    this.getRecipePageState();
+    this.getRecipeDetailsState();
   };
 
   getRecipes() {
@@ -56,7 +56,7 @@ class App extends Component {
       .catch(error => error);
   }
 
-  getRecipePageState = () => {
+  getRecipeDetailsState = () => {
     if(this.state.recipeId !== null){
       this.setState({ recipePageIsOpened: true});
       this.getRecipe();
