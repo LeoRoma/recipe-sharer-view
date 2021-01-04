@@ -1,6 +1,6 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 
-import {Switch, Route, BrowserRouter} from 'react-router-dom';
+import { Switch, Route, BrowserRouter } from 'react-router-dom';
 
 import Login from './Registration/Login';
 import NewRecipe from './AddNewRecipe/NewRecipe';
@@ -10,10 +10,10 @@ import RecipeDetails from './Recipes/RecipeDetails';
 import UserRecipes from './UserRecipes/UserRecipes';
 import UserRecipeDetails from './UserRecipes/UserRecipeDetails';
 
-class MainPage extends Component{
-    constructor(){
+class MainPage extends Component {
+    constructor() {
         super()
-        this.state={
+        this.state = {
             recipeId: 0,
             username: "",
             imageId: 0,
@@ -39,43 +39,46 @@ class MainPage extends Component{
     //     .catch(error => error);
     // }
 
-    render(){
-        var recipeName = this.props.recipeInfo.recipe.recipeName;
-        
+    render() {
+        var recipeName = this.props.recipeDetails.recipeName;
+
         var recipeDetailsPath = `/${recipeName}`;
 
-        return(
+        return (
             <div className="main-page">
                 <BrowserRouter>
                     <Switch>
                         <Route exact path="/login">
                             <Login userRecipePath={this.props.userRecipePath} />
                         </Route>
-                        <Route exact path="/register" component={Register}/>
+                        <Route exact path="/register" component={Register} />
                         <Route exact path="/recipes">
-                            <Recipes 
+                            <Recipes
                                 recipes={this.props.recipes}
                                 getRecipeId={this.props.getRecipeId}
                             />
-                        </Route> 
+                        </Route>
                         <Route exact path={recipeDetailsPath}>
-                            <RecipeDetails 
-                                recipeInfo={this.props.recipeInfo}
+                            <RecipeDetails
+                                recipeDetails={this.props.recipeDetails}
                             />
                         </Route>
                         <Route exact path="/user">
-                            <UserRecipes 
-                               userRecipes={this.props.userRecipes}
+                            <UserRecipes
+                                getUserRecipeId={this.props.getUserRecipeId}
+                                userRecipes={this.props.userRecipes}
                             />
                         </Route>
                         <Route exact path="/user/recipe/details">
-                            <UserRecipeDetails />
+                            <UserRecipeDetails 
+                                userRecipeDetails={this.props.userRecipeDetails}
+                            />
                         </Route>
                         <Route exact path="/new-recipe">
                             <NewRecipe />
                         </Route>
                     </Switch>
-                </BrowserRouter>              
+                </BrowserRouter>
             </div>
         )
     }

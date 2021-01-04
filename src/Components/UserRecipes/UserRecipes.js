@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 import UserRecipe from './UserRecipe';
 
 
-const UserRecipes = ({userRecipes}) => {
+const UserRecipes = ({userRecipes, getUserRecipeId}) => {
 
     var nRecipes = userRecipes.length;
     var username = sessionStorage.getItem("username");
@@ -27,7 +27,8 @@ const UserRecipes = ({userRecipes}) => {
                     imageId={userRecipe.image.id}
                     imageSuffix={userRecipe.image.suffix}
                     username={userRecipe.user.username}
-                    userId={userRecipe.userId}
+                    // userId={userRecipe.userId}
+                    getUserRecipeId={getUserRecipeId}
                 />
             )}
         </div>

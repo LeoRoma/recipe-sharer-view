@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import MainPage from '../src/Components/MainPage';
 import NavigationBar from '../src/Components/NavigationBar';
 import './App.css';
+import _ from 'lodash';
 
 class App extends Component {
   constructor() {
@@ -12,9 +13,12 @@ class App extends Component {
       loggedIn: false,
       userId: sessionStorage.getItem("userId"),
 
-      recipePageIsOpened: false,
+      recipeDetailsPageIsOpened: false,
+      userRecipeDetailsPageIsOpened: false,
       recipeId: sessionStorage.getItem('recipeId'),
-      recipe: {}
+      userRecipeId: sessionStorage.getItem('userRecipeId'),
+      recipe: {},
+      userRecipe: {}
     }
   };
 
@@ -23,8 +27,10 @@ class App extends Component {
     this.getRecipes();
     this.getLoginState();
     this.getRecipeDetailsState();
+    this.getUserRecipeDetailsState();
   };
 
+  // Recipes
   getRecipes() {
     fetch("https://localhost:44330/Recipes")
       .then(response => response.json())
@@ -32,6 +38,7 @@ class App extends Component {
       .catch(error => error);
   }
 
+  // Users/id/recipes
   getUserRecipes = () => {
     let userId = this.state.userId;
     fetch(`https://localhost:44330/Users/${userId}/recipes`)
@@ -40,15 +47,8 @@ class App extends Component {
       .catch(error => error);
   }
 
-  getRecipeId = (recipeId) => {
-    setTimeout(function () {
-      window.location.reload(false);
-      sessionStorage.setItem('recipeId', recipeId);
-  }, 100)
-    
-  }
-
-  getRecipe() {
+  // Recipes/id
+  getRecipeDetails() {
     var recipeId = this.state.recipeId;
     fetch(`https://localhost:44330/Recipes/${recipeId}`)
       .then(response => response.json())
@@ -56,10 +56,41 @@ class App extends Component {
       .catch(error => error);
   }
 
+  getRecipeId = (recipeId) => {
+    setTimeout(function () {
+      window.location.reload(false);
+      sessionStorage.setItem('recipeId', recipeId);
+    }, 100)
+  }
+
   getRecipeDetailsState = () => {
-    if(this.state.recipeId !== null){
-      this.setState({ recipePageIsOpened: true});
-      this.getRecipe();
+    if (this.state.recipeId !== null) {
+      this.setState({ recipeDetailsPageIsOpened: true });
+      this.getRecipeDetails();
+    }
+  }
+
+  // /Users/1/recipes/1
+  getUserRecipeDetails() {
+    var userRecipeId = this.state.userRecipeId;
+    var userId = this.state.userId;
+    fetch(`https://localhost:44330/Users/${userId}/recipe/${userRecipeId}`)
+      .then(response => response.json())
+      .then(recipeJson => this.setState({ userRecipe: recipeJson }))
+      .catch(error => error);
+  }
+
+  getUserRecipeId = (recipeId) => {
+    setTimeout(function () {
+      window.location.reload(false);
+      sessionStorage.setItem('userRecipeId', recipeId);
+    }, 500)
+  }
+
+  getUserRecipeDetailsState = () => {
+    if (this.state.userRecipeId !== null) {
+      this.setState({ userRecipePageIsOpened: true });
+      this.getUserRecipeDetails();
     }
   }
 
@@ -78,7 +109,9 @@ class App extends Component {
   //   localStorage.clear();
   // }
   render() {
-    var recipeInfo = this.state
+    var recipeDetails = this.state.recipe;
+    var userRecipeDetails = this.state.userRecipe;
+
     return (
       <div className="App">
         <NavigationBar
@@ -86,10 +119,12 @@ class App extends Component {
           getLogoutState={this.getLogoutState}
         />
         <MainPage
+          getRecipeId={this.getRecipeId}
+          getUserRecipeId={this.getUserRecipeId}
           recipes={this.state.recipes}
           userRecipes={this.state.userRecipes}
-          getRecipeId={this.getRecipeId}
-          recipeInfo={recipeInfo}
+          recipeDetails={recipeDetails}
+          userRecipeDetails={userRecipeDetails}
         />
       </div>
     )

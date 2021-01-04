@@ -4,14 +4,15 @@ class RecipeDetails extends Component{
     constructor(){
         super()
         this.state={
-            recipe: {},
+            
         }
     };
 
     render(){
-        var recipe = this.props.recipeInfo.recipe;
+        var recipe = this.props.recipeDetails;
         var recipeId = recipe.recipeId;
         var equipments = recipe.equipments;
+        console.log(equipments.length)
         var ingredients = recipe.ingredients;
         var steps = recipe.steps;
         var stepsSorted = steps.sort(function(a, b){return a['stepNumber']-b['stepNumber']}); 
