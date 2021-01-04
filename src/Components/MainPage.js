@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import { Switch, Route, BrowserRouter } from 'react-router-dom';
 
+// import EditRecipe from './UserRecipes/RecipeEdit/EditRecipe';
 import Login from './Registration/Login';
 import NewRecipe from './AddNewRecipe/NewRecipe';
 import Register from './Registration/Register';
@@ -84,6 +85,9 @@ class MainPage extends Component {
                         <Route exact path="/new-recipe">
                             <NewRecipe />
                         </Route>
+                        {/* <Route exact path="/edit-recipe">
+                            <EditRecipe />
+                        </Route> */}
                     </Switch>
                 </BrowserRouter>
             </div>

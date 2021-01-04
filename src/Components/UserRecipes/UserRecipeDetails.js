@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+// import {Link} from 'react-router-dom';
 
+import EditRecipe from './RecipeEdit/EditRecipe';
 
 class UserRecipeDetails extends Component {
     constructor(props) {
@@ -12,6 +14,7 @@ class UserRecipeDetails extends Component {
 
     render() {
         var userRecipe = this.props.userRecipeDetails;
+        console.log(userRecipe)
         var equipments = this.props.userRecipeEquipments;
         var steps = this.props.userRecipeSteps;
         var ingredients = this.props.userRecipeIngredients
@@ -46,14 +49,9 @@ class UserRecipeDetails extends Component {
 
             <div key={recipeId}>
                 {imageSuffix? <img src={imageDomain} style={{ width: "200px", height: "200px" }} alt="food" /> : null}
-                {recipeName}
-                {description}
-                {difficulty}
-                {preparationTime}
-                {cookingTime}
-                {additionalTime}
-                {servings}
-                {formattedDate}
+                <EditRecipe
+                    userRecipeDetails={this.props.userRecipeDetails} 
+                />
                 {username}
                 <h2>Ingredients</h2>
                 {ingredients.map((ingredient) =>
