@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-class RecipePage extends Component{
+class RecipeDetails extends Component{
     constructor(){
         super()
         this.state={
@@ -66,4 +66,4 @@ class RecipePage extends Component{
     };
 }
 
-export default RecipePage;
+export default RecipeDetails;

@@ -3,10 +3,10 @@ import React, {Component} from 'react';
 import {Switch, Route, BrowserRouter} from 'react-router-dom';
 
 import Login from './Registration/Login';
-import NewRecipe from './AddNewUserRecipe/NewRecipe';
+import NewRecipe from './AddNewRecipe/NewRecipe';
 import Register from './Registration/Register';
 import Recipes from './Recipes/Recipes';
-import RecipePage from './Recipes/RecipePage';
+import RecipeDetails from './Recipes/RecipeDetails';
 import UserRecipes from './UserRecipes/UserRecipes';
 
 class MainPage extends Component{
@@ -58,7 +58,7 @@ class MainPage extends Component{
                             />
                         </Route> 
                         <Route exact path={recipePagePath}>
-                            <RecipePage 
+                            <RecipeDetails 
                                 recipeInfo={this.props.recipeInfo}
                             />
                         </Route>
