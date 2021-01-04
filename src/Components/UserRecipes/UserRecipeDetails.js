@@ -32,14 +32,6 @@ class UserRecipeDetails extends Component {
         var stepsSorted = steps.sort(function (a, b) { return a['stepNumber'] - b['stepNumber'] });
         var username = user.username;
 
-        var recipeName = userRecipe.recipeName;
-        var description = userRecipe.description;
-        var difficulty = userRecipe.difficulty;
-        var preparationTime = userRecipe.preparationTime;
-        var cookingTime = userRecipe.cookingTime;
-        var additionalTime = userRecipe.additionalTime;
-        var servings = userRecipe.servings;
-
         var YYYY = postDate.slice(0, 4);
         var MM = postDate.slice(5, 7);
         var DD = postDate.slice(8, 10);

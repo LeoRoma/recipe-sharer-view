@@ -130,21 +130,22 @@ class App extends Component {
   //   localStorage.clear();
   // }
   render() {
-    var recipeDetails = this.state.recipe;
-    var userRecipeDetails = this.state.userRecipe;
-    var userRecipeEquipments = this.state.userRecipeEquipments;
-    var userRecipeSteps = this.state.userRecipeSteps;
-    var userRecipeIngredients = this.state.userRecipeIngredients;
-    var userRecipeUser = this.state.userRecipeUser;
-    var userRecipeImage = this.state.userRecipeImage;
-    var userRecipePostDate = this.state.userRecipePostDate;
+    // var recipeDetails = this.state.recipe;
+    // var userRecipeDetails = this.state.userRecipe;
+    // var userRecipeEquipments = this.state.userRecipeEquipments;
+    // var userRecipeSteps = this.state.userRecipeSteps;
+    // var userRecipeIngredients = this.state.userRecipeIngredients;
+    // var userRecipeUser = this.state.userRecipeUser;
+    // var userRecipeImage = this.state.userRecipeImage;
+    // var userRecipePostDate = this.state.userRecipePostDate;
 
+    const {recipes, recipe, userRecipes, userRecipe, userRecipeEquipments, userRecipeSteps, userRecipeIngredients, userRecipeUser, userRecipeImage, userRecipePostDate} = this.state
     // console.log(userRecipeImage.id);
     // var imageId = userRecipeImage.id;
 
     // var imageSuffix = userRecipeImage.suffix;
     // var userRecipeImageDomain = `https://localhost:44330/dynamic/images/${imageId}${imageSuffix}`;
-
+  
     return (
       <div className="App">
         <NavigationBar
@@ -154,10 +155,10 @@ class App extends Component {
         <MainPage
           getRecipeId={this.getRecipeId}
           getUserRecipeId={this.getUserRecipeId}
-          recipes={this.state.recipes}
-          userRecipes={this.state.userRecipes}
-          recipeDetails={recipeDetails}
-          userRecipeDetails={userRecipeDetails}
+          recipes={recipes}
+          userRecipes={userRecipes}
+          recipeDetails={recipe}
+          userRecipeDetails={userRecipe}
           userRecipeEquipments={userRecipeEquipments}
           userRecipeSteps={userRecipeSteps}
           userRecipeIngredients={userRecipeIngredients}
