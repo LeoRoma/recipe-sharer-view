@@ -27,8 +27,36 @@ class EditSteps extends Component {
         }))
     }
 
-    handleSubmit() {
-
+    handleSubmit = (event) => {
+        event.preventDefault();
+        var token = sessionStorage.getItem('token');
+        var steps = this.state.steps;
+        var stepsLength = steps.length;
+        for(let i = 0; i < stepsLength; i++){
+            fetch(`https://localhost:44330/Steps/${steps[i].stepId}/recipe/${steps[i].recipeId}`, {
+                method: "Put",
+                headers: {
+                    Accept: 'application/json',
+                    'Content-Type': 'application/json',
+                    'Authorization': "Bearer " + token
+                },
+                body: JSON.stringify({
+                    stepId: steps[i].stepId,
+                    stepName: steps[i].stepName,
+                    instruction: steps[i].instruction,
+                    recipeId: steps[i].recipeId,
+                })
+            })
+                .then(response => response)
+                .then(response => {
+                    console.log("I am response: ", response);
+                    console.log("ingredient " + i, " added!")
+                    // sessionStorage.setItem("recipeId", response.recipeId);
+                })
+                .catch(error => {
+                    console.log("There was an error ", error);
+                })
+        }    
     }
 
     render() {
@@ -43,7 +71,8 @@ class EditSteps extends Component {
                             let stepId = `Step-${idx}`, instructionId = `Instruction-${idx}`
                             return (
                                 <div key={idx}>
-                                    <label htmlFor={stepId}>{`Step #${idx + 1}`}</label>
+                      
+                                    <label htmlFor={stepId}>{`Step # ${idx + 1}`}</label>
                                     <input
                                         type="text"
                                         name="stepName"

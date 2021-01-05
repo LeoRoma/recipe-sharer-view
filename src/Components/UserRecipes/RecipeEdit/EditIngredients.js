@@ -89,6 +89,7 @@ class EditIngredients extends Component {
                                         onChange={this.handleChange}
                                     />
                                 </div>
+                                
                             )
                         })
                     }

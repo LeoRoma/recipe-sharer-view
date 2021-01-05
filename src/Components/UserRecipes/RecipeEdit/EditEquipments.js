@@ -26,13 +26,45 @@ class EditEquipments extends Component {
         }))
     }
 
-    handleSubmit(){
-        
+    handleSubmit = (event) => {
+        event.preventDefault();
+
+        var token = sessionStorage.getItem('token');
+        var equipments = this.state.equipments;
+        var equipmentsLength = equipments.length;
+
+       
+        for(let i = 0; i < equipmentsLength; i++){
+
+            fetch(`https://localhost:44330/Equipments/${equipments[i].equipmentId}/recipe/${equipments[i].recipeId}`, {
+                method: "Put",
+                headers: {
+                    Accept: 'application/json',
+                    'Content-Type': 'application/json',
+                    'Authorization': "Bearer " + token
+                },
+                body: JSON.stringify({
+                    equipmentId: equipments[i].equipmentId,
+                    equipmentName: equipments[i].equipmentName,
+                    recipeId: equipments[i].recipeId
+                })
+            })
+                .then(response => response)
+                .then(response => {
+                    console.log(response);
+                    console.log("ingredient " + i, " added!")
+                    // sessionStorage.setItem("recipeId", response.recipeId);
+                })
+                .catch(error => {
+                    console.log("There was an error ", error);
+                })
+        }
     }
 
     render() {
         // console.log(this.props.userRecipeEquipments)
         const equipments = this.state.equipments;
+        console.log(equipments)
         return (
             <div>
                 <form>
