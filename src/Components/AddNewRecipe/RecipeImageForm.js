@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 
 class RecipeImageForm extends Component {
     state = {
-        image: null
+        image: null,
+        file: null
       };
     
       handleChange = (e) => {
@@ -13,7 +14,9 @@ class RecipeImageForm extends Component {
     
       handleImageChange = (e) => {
         this.setState({
-          image: e.target.files[0]
+          image: e.target.files[0],
+          file: URL.createObjectURL(e.target.files[0])
+
         })
       };
     
@@ -49,6 +52,7 @@ class RecipeImageForm extends Component {
                 <form onSubmit={this.handleSubmit}>
 
                     <p>
+                      <img style={{width:"100px", height:"100px"}}src={this.state.file}/>
                         <input type="file"
                             id="image"
                             accept="image/png, image/jpeg" onChange={this.handleImageChange} required />
