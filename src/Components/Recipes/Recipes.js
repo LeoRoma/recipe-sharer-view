@@ -8,6 +8,7 @@ const Recipes = ({recipes, getRecipeId}) => {
 
     return(
         <div className="recipes">
+            
             {recipesSorted.map((recipe) =>
                 <Recipe 
                     key={recipe.recipeId}

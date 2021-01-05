@@ -38,12 +38,15 @@ class UserRecipeDetails extends Component {
         return (
 
             <div key={recipeId}>
-                {imageSuffix? <img src={imageDomain} style={{ width: "200px", height: "200px" }} alt="food" /> : null}
+                {/* {imageSuffix? <img src={imageDomain} style={{ width: "200px", height: "200px" }} alt="food" /> : null} */}
                 <EditRecipe
                     userRecipeDetails={this.props.userRecipeDetails} 
                 />
 
-                <EditImage />
+                <EditImage 
+                    imageDomain={imageDomain}
+                    imageId={imageId}
+                />
 
                 <h2>Ingredients</h2>
                 <EditIngredients 

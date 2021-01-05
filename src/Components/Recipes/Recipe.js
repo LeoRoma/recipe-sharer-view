@@ -27,7 +27,7 @@ const Recipe = ({
 
     return (
         <div>
-            <img src={imageDomain} style={{ width: "200px", height: "200px" }} alt="food" />
+            {imageSuffix? <img src={imageDomain} style={{ width: "200px", height: "200px" }} alt="food" /> : null}
             <Link to={recipePagePath}><h1 onClick={getRecipeId.bind(this, recipeId)}>{recipeName}</h1></Link>
             <h2>{description}</h2>
             <p>Difficulty: {difficulty}</p>

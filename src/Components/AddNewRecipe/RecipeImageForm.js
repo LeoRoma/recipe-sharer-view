@@ -39,7 +39,7 @@ class RecipeImageForm extends Component {
         })
             .then(response => response.json())
             .then(response => {
-                console.log("Image posted successfully");
+                console.log(response);
             })
             .catch(error => {
                 console.log("There was an error ", error);

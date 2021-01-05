@@ -29,7 +29,7 @@ const UserRecipes = ({userRecipes, getUserRecipeId}) => {
                     username={userRecipe.user.username}
                     // userId={userRecipe.userId}
                     getUserRecipeId={getUserRecipeId}
-                />
+                /> 
             )}
         </div>
     );
