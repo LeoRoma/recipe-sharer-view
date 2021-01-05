@@ -14,7 +14,7 @@ class UserRecipeDetails extends Component {
 
     render() {
         var userRecipe = this.props.userRecipeDetails;
-        console.log(userRecipe)
+        // console.log(userRecipe)
         var equipments = this.props.userRecipeEquipments;
         var steps = this.props.userRecipeSteps;
         var ingredients = this.props.userRecipeIngredients
@@ -32,11 +32,11 @@ class UserRecipeDetails extends Component {
         var stepsSorted = steps.sort(function (a, b) { return a['stepNumber'] - b['stepNumber'] });
         var username = user.username;
 
-        var YYYY = postDate.slice(0, 4);
-        var MM = postDate.slice(5, 7);
-        var DD = postDate.slice(8, 10);
-        var formattedDate = `${DD}/${MM}/${YYYY}`;
-        // var imageDomain = this.props.userRecipeImageDomain
+        // var YYYY = postDate.slice(0, 4);
+        // var MM = postDate.slice(5, 7);
+        // var DD = postDate.slice(8, 10);
+        // var formattedDate = `${DD}/${MM}/${YYYY}`;
+
         return (
 
             <div key={recipeId}>
