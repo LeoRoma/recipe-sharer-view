@@ -25,13 +25,40 @@ class EditIngredients extends Component {
         }))
     }
 
-    handleSubmit() {
-
+    handleSubmit = (event) => {
+        event.preventDefault();
+        var token = sessionStorage.getItem('token');
+        var ingredients = this.state.ingredients;
+        var ingredientsLength = ingredients.length;
+        for(let i = 0; i < ingredientsLength; i++){
+            fetch(`https://localhost:44330/Ingredients/${ingredients[i].ingredientId}/recipe/${ingredients[i].recipeId}`, {
+                method: "Put",
+                headers: {
+                    Accept: 'application/json',
+                    'Content-Type': 'application/json',
+                    'Authorization': "Bearer " + token
+                },
+                body: JSON.stringify({
+                    ingredientId: ingredients[i].ingredientId,
+                    ingredientName: ingredients[i].ingredientName,
+                    amount: ingredients[i].amount,
+                    recipeId: ingredients[i].recipeId,
+                })
+            })
+                .then(response => response)
+                .then(response => {
+                    console.log("I am response: ", response);
+                    console.log("ingredient " + i, " added!")
+                    // sessionStorage.setItem("recipeId", response.recipeId);
+                })
+                .catch(error => {
+                    console.log("There was an error ", error);
+                })
+        }     
     }
 
     render() {
         const ingredients = this.state.ingredients;
-        console.log(ingredients)
         return (
             <div>
                 <form>

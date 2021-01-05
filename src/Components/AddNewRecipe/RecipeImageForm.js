@@ -47,13 +47,7 @@ class RecipeImageForm extends Component {
         return (
             <div>
                 <form onSubmit={this.handleSubmit}>
-                    <p>
-                        {/* <input type="text" placeholder='Title' id='title' value={this.state.title} onChange={this.handleChange} required /> */}
-                    </p>
-                    <p>
-                        {/* <input type="text" placeholder='Content' id='content' value={this.state.content} onChange={this.handleChange} required /> */}
 
-                    </p>
                     <p>
                         <input type="file"
                             id="image"

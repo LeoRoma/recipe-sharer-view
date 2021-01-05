@@ -2,6 +2,7 @@ import { render } from '@testing-library/react';
 import React, { Component } from 'react';
 
 import EditEquipments from './RecipeEdit/EditEquipments';
+import EditImage from './RecipeEdit/EditImage';
 import EditIngredients from './RecipeEdit/EditIngredients';
 import EditRecipe from './RecipeEdit/EditRecipe';
 import EditSteps from './RecipeEdit/EditSteps';
@@ -41,6 +42,8 @@ class UserRecipeDetails extends Component {
                 <EditRecipe
                     userRecipeDetails={this.props.userRecipeDetails} 
                 />
+
+                <EditImage />
 
                 <h2>Ingredients</h2>
                 <EditIngredients 

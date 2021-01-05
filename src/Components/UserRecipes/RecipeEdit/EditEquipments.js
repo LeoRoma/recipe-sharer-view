@@ -27,11 +27,11 @@ class EditEquipments extends Component {
     }
 
     handleSubmit(){
-
+        
     }
 
     render() {
-        console.log(this.props.userRecipeEquipments)
+        // console.log(this.props.userRecipeEquipments)
         const equipments = this.state.equipments;
         return (
             <div>

@@ -31,9 +31,8 @@ class IngredientsForm extends Component {
         var ingredients = this.state.ingredients;
         var recipeId = sessionStorage.getItem("recipeId");
         event.preventDefault();
-        console.log("hello")
+
         for(let i = 0; i < ingredientsLength; i++){
-            console.log(ingredients[i].ingredientName, ingredients[i].amount)
 
             fetch("https://localhost:44330/Ingredients/post", {
                 method: "Post",
