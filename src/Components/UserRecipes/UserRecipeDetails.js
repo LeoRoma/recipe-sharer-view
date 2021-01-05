@@ -1,7 +1,9 @@
+import { render } from '@testing-library/react';
 import React, { Component } from 'react';
-// import {Link} from 'react-router-dom';
 
+import EditIngredients from './RecipeEdit/EditIngredients';
 import EditRecipe from './RecipeEdit/EditRecipe';
+import EditSteps from './RecipeEdit/EditSteps';
 
 class UserRecipeDetails extends Component {
     constructor(props) {
@@ -30,7 +32,7 @@ class UserRecipeDetails extends Component {
         var recipeId = userRecipe.recipeId;
 
         var stepsSorted = steps.sort(function (a, b) { return a['stepNumber'] - b['stepNumber'] });
-        var username = user.username;
+
 
         // var YYYY = postDate.slice(0, 4);
         // var MM = postDate.slice(5, 7);
@@ -44,17 +46,16 @@ class UserRecipeDetails extends Component {
                 <EditRecipe
                     userRecipeDetails={this.props.userRecipeDetails} 
                 />
-                {username}
+
                 <h2>Ingredients</h2>
-                {ingredients.map((ingredient) =>
-                    <p key={ingredient.ingredientId}>{ingredient.ingredientName} {ingredient.amount}</p>
-                    // <p>ingredient.amount</p>
-                )}
+                <EditIngredients 
+                    userRecipeIngredients={this.props.userRecipeIngredients}
+                />
 
                 <h2>Method</h2>
-                {stepsSorted.map((step) =>
-                    <p key={step.stepId}>{step.stepNumber} {step.stepName} {step.instruction}</p>
-                )}
+                <EditSteps 
+                    userRecipeSteps={this.props.userRecipeSteps}
+                />
 
                 <h2>Equipments</h2>
                 {equipments.map((equipment) =>
