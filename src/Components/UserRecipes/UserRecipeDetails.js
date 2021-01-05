@@ -1,18 +1,13 @@
 import { render } from '@testing-library/react';
 import React, { Component } from 'react';
 
+import EditEquipments from './RecipeEdit/EditEquipments';
 import EditIngredients from './RecipeEdit/EditIngredients';
 import EditRecipe from './RecipeEdit/EditRecipe';
 import EditSteps from './RecipeEdit/EditSteps';
 
 class UserRecipeDetails extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            imageDomainState: false,
-            imageDomain: ''
-        };
-    }
+
 
     render() {
         var userRecipe = this.props.userRecipeDetails;
@@ -58,9 +53,9 @@ class UserRecipeDetails extends Component {
                 />
 
                 <h2>Equipments</h2>
-                {equipments.map((equipment) =>
-                    <p key={equipment.equipmentId}>{equipment.equipmentName}</p>
-                )}
+                <EditEquipments 
+                    userRecipeEquipments={this.props.userRecipeEquipments}
+                />
             </div>
         );
     };
