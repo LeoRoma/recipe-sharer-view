@@ -1,4 +1,3 @@
-import { render } from '@testing-library/react';
 import React, { Component } from 'react';
 
 import EditEquipments from './RecipeEdit/EditEquipments';
@@ -13,12 +12,12 @@ class UserRecipeDetails extends Component {
     render() {
         var userRecipe = this.props.userRecipeDetails;
         // console.log(userRecipe)
-        var equipments = this.props.userRecipeEquipments;
+        // var equipments = this.props.userRecipeEquipments;
         var steps = this.props.userRecipeSteps;
-        var ingredients = this.props.userRecipeIngredients
-        var user = this.props.userRecipeUser;
+        // var ingredients = this.props.userRecipeIngredients
+        // var user = this.props.userRecipeUser;
         var image = this.props.userRecipeImage;
-        var postDate = this.props.userRecipePostDate;
+        // var postDate = this.props.userRecipePostDate;
 
         var imageId = image.id;
 
@@ -27,7 +26,7 @@ class UserRecipeDetails extends Component {
 
         var recipeId = userRecipe.recipeId;
 
-        var stepsSorted = steps.sort(function (a, b) { return a['stepNumber'] - b['stepNumber'] });
+        // var stepsSorted = steps.sort(function (a, b) { return a['stepNumber'] - b['stepNumber'] });
 
 
         // var YYYY = postDate.slice(0, 4);
@@ -45,7 +44,8 @@ class UserRecipeDetails extends Component {
 
                 <EditImage 
                     imageDomain={imageDomain}
-                    imageId={imageId}
+                    recipeId={recipeId}
+                    imageSuffix={imageSuffix}
                 />
 
                 <h2>Ingredients</h2>

@@ -19,6 +19,10 @@ const UserRecipe = ({
 
 
     var imageDomain = `https://localhost:44330/dynamic/images/${imageId}${imageSuffix}`;
+    var YYYY = postDate.slice(0,4);
+    var MM = postDate.slice(5, 7);
+    var DD = postDate.slice(8, 10);
+    var formattedDate = `${DD}/${MM}/${YYYY}`;
     // var recipePagePath = `/${recipeName}`
 
     return(
@@ -31,7 +35,7 @@ const UserRecipe = ({
             <p>Cooking Time: {cookingTime}</p>
             <p>AdditionalTime: {additionalTime}</p>
             <p>Servings: {servings}</p>
-            <p>Posted Date: {postDate}</p>
+            <p>Posted Date: {formattedDate}</p>
             <p>Posted by: {username}</p>
             <DeleteRecipe 
                 recipeId={recipeId}

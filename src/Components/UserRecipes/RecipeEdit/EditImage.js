@@ -22,13 +22,14 @@ class EditImage extends Component {
         })
     };
 
-    handleDelete = (event) => {
-        event.preventDefault();
+    deleteImage = () => {
+        // event.preventDefault();
         var token = sessionStorage.getItem('token');
-        var imageId = this.props.imageId
-        console.log(imageId)
+        var recipeId = this.props.recipeId
+        console.log(recipeId)
+        console.log("I am delete")
 
-        fetch("https://localhost:44330/Image/delete/" + imageId, {
+        fetch("https://localhost:44330/Image/delete/" + recipeId, {
             method: 'DELETE',
             headers: {
                 // Accept: 'application/json',
@@ -46,10 +47,10 @@ class EditImage extends Component {
 
     }
 
-    handleSubmit = (event) => {
-        event.preventDefault();
+    postImage = () => {
         var token = sessionStorage.getItem('token');
         var recipeId = this.props.recipeId
+        console.log("I am post")
         let form_data = new FormData();
         form_data.append('image', this.state.image, this.state.image.name);
 
@@ -71,20 +72,26 @@ class EditImage extends Component {
             })
     }
 
+    handleSubmit = (event) => {
+        event.preventDefault();
+        this.deleteImage();
+        setTimeout(function(){
+            this.postImage()
+        }.bind(this), 1000)
+    }
+
     render() {
         // console.log(this.state)
         return (
             <div>
                 <form onSubmit={this.handleSubmit}>
-                    <img style={{ width: "100px", height: "100px" }} src={this.state.file} />
+                    {this.props.imageSuffix? <img style={{ width: "100px", height: "100px" }} src={this.state.file} /> : null}
                     <p>
                         <input type="file"
                             id="image"
                             accept="image/png, image/jpeg" onChange={this.handleImageChange} required />
                     </p>
                     <input type="submit" />
-
-                    <button onClick={this.handleDelete}>Delete</button>
                 </form>
             </div>
         );
