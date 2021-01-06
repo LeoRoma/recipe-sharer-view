@@ -2,3 +2,4 @@
 - React bootstrp
 - react-router-dom
 - lodash
+- react-icons

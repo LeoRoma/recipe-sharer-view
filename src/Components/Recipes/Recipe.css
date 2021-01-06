@@ -9,6 +9,7 @@
     margin-left: 0;
     /* overflow: hidden; */
     border-style: dashed;
+
 }
 
 
@@ -31,6 +32,12 @@
     margin: auto;
 }
 
+.recipe-image-container {
+    border-color: orange;
+    border-style: dashed;
+}
+
 .recipe-image-container img{
     width:100%;
+    /* height:100%; */
 }

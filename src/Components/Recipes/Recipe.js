@@ -1,6 +1,10 @@
 import React from 'react';
 import './Recipe.css'
 
+import {GiChefToque} from 'react-icons/gi';
+import {MdTimer} from 'react-icons/md'
+import {IoMdPerson} from 'react-icons/io'
+
 import { Col, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
@@ -32,16 +36,16 @@ const Recipe = ({
         <div className="recipe-container">
             <div className="recipe-card">
                 <Row className="recipe-row">
-                    <Col sm={4} className="recipe-image">
-                        <div className="recipe-image-container">
+                    <Col sm={4} className="recipe-image-container">
+        
                             {imageSuffix ? <img src={imageDomain} alt="food" /> : null}
-                        </div>
+
                     </Col>
                     <Col sm={8} className="recipe-header">
                         <Link to={recipePagePath}><h1 onClick={getRecipeId.bind(this, recipeId)}>{recipeName}</h1></Link>
                         <p>{description}</p>
                     </Col>
-                    Preparation Time: {preparationTime} Difficulty: {difficulty} Servings: {servings} Posted Date: {formattedDate} Posted by: {username}
+                    <MdTimer /> {preparationTime} <GiChefToque /> {difficulty} <IoMdPerson /> {servings} {formattedDate} Posted by: {username}
                 </Row>
             </div>
 

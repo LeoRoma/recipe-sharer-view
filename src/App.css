@@ -1,7 +1,12 @@
 .app{
-  /* margin:80%; */
-  /* border-color: black; */
-  /* border-style: dashed; */
+  background-image: url("./images/background.jpg");
+    /* Full height */
+    width: '100vw';
+        height: '100vh';
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .main-page{
@@ -9,5 +14,6 @@
   margin:auto;
   border-color: blue;
   border-style: dashed;
+  background-color: palegoldenrod;
 }
 
