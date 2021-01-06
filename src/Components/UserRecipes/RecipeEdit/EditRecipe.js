@@ -22,6 +22,7 @@ class EditRecipe extends Component{
     handleSubmit(){
 
     }
+    
     render(){
         const {recipeName, description, difficulty, preparationTime, cookingTime, additionalTime, servings} = this.state
         return(

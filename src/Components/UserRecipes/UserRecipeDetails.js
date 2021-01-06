@@ -13,7 +13,7 @@ class UserRecipeDetails extends Component {
         var userRecipe = this.props.userRecipeDetails;
         // console.log(userRecipe)
         // var equipments = this.props.userRecipeEquipments;
-        var steps = this.props.userRecipeSteps;
+        // var steps = this.props.userRecipeSteps;
         // var ingredients = this.props.userRecipeIngredients
         // var user = this.props.userRecipeUser;
         var image = this.props.userRecipeImage;

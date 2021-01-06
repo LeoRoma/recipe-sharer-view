@@ -52,7 +52,7 @@ class RecipeImageForm extends Component {
                 <form onSubmit={this.handleSubmit}>
 
                     <p>
-                      <img style={{width:"100px", height:"100px"}}src={this.state.file}/>
+                      <img style={{width:"100px", height:"100px"}}src={this.state.file} alt="recipe" />
                         <input type="file"
                             id="image"
                             accept="image/png, image/jpeg" onChange={this.handleImageChange} required />

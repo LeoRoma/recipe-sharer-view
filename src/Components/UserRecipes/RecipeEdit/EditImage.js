@@ -85,7 +85,7 @@ class EditImage extends Component {
         return (
             <div>
                 <form onSubmit={this.handleSubmit}>
-                    {this.props.imageSuffix? <img style={{ width: "100px", height: "100px" }} src={this.state.file} /> : null}
+                    {this.props.imageSuffix? <img style={{ width: "100px", height: "100px" }} src={this.state.file} alt="recipe" /> : null}
                     <p>
                         <input type="file"
                             id="image"

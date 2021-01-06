@@ -1,0 +1,36 @@
+.recipe-container{
+
+    width:100%;
+    margin:auto
+}
+
+.recipe-card{
+    width: 65%;
+    margin-left: 0;
+    /* overflow: hidden; */
+    border-style: dashed;
+}
+
+
+.recipe-header{
+    padding: 3%;
+}
+
+.recipe-header h1{
+    color: black;
+    font-weight: bold;
+}
+
+.recipe-header p{
+    margin-top: 5%;
+    font-size: 16px;
+    font-weight: lighter;
+}
+
+.recipe-row{
+    margin: auto;
+}
+
+.recipe-image-container img{
+    width:100%;
+}

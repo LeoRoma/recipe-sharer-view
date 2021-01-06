@@ -124,6 +124,10 @@ class App extends Component {
 
   getLogoutState = () => {
     sessionStorage.clear();
+    this.setState({
+      userRecipePageIsOpened: false,
+      recipeDetailsPageIsOpened: false
+    });
   }
 
   // window.onbeforeunload = function() {
@@ -147,7 +151,7 @@ class App extends Component {
     // var userRecipeImageDomain = `https://localhost:44330/dynamic/images/${imageId}${imageSuffix}`;
   
     return (
-      <div className="App">
+      <div className="app">
         <NavigationBar
           loginState={this.state.loggedIn}
           getLogoutState={this.getLogoutState}
