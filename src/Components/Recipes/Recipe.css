@@ -2,13 +2,14 @@
     width: 100%;
     /* height: 50%; */
     margin: auto;
-    border-style: dotted;
-    display: table-cell;
+    border-style: groove;
+    /* display: flex; */
+    padding-bottom: 5%;
 }
 
 .recipe-card {
     width: 65%;
-    max-height: 50%;
+    min-height: 225px;
     margin: auto;
     margin-top: 3%;
     /* overflow: hidden; */
@@ -33,6 +34,8 @@
 
 .recipe-row {
     margin: auto;
+    min-height: 225px;
+    /* display:table-cell */
 }
 
 
@@ -46,8 +49,14 @@
 
 .recipe-image-container img{
     max-width: 100%;
-    max-height: 40%;
+    /* max-height: 40%; */
     object-fit: contain;
-    
+    height: auto;
     /* height:100%; */
+}
+
+.additional-info{
+    /* border-style: groove; */
+    position:absolute;
+    margin-bottom: 0%;
 }

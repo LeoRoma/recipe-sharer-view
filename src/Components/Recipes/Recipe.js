@@ -36,16 +36,18 @@ const Recipe = ({
 
         <div className="recipe-card">
             <Row className="recipe-row">
-                <Col sm={4} className="recipe-image-container">
+                <Col lg={4} className="recipe-image-container">
 
                     {imageSuffix ? <img src={imageDomain} alt="food" /> : null}
 
                 </Col>
-                <Col sm={8} className="recipe-header">
+                <Col lg={8} className="recipe-header">
                     <Link to={recipePagePath}><h1 onClick={getRecipeId.bind(this, recipeId)}>{recipeName}</h1></Link>
                     <p>{description}</p>
-
-                    <MdTimer /> {preparationTime} <GiChefToque /> {difficulty} <IoMdPerson /> {servings} {formattedDate} Posted by: {username}
+                    
+                    <div className="additional-info">
+                        <MdTimer /> {preparationTime} <GiChefToque /> {difficulty} <IoMdPerson /> {servings} {formattedDate} Posted by: {username}
+                    </div>
                 </Col>
 
             </Row>
