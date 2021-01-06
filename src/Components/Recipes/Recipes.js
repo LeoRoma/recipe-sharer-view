@@ -1,35 +1,36 @@
 import React from 'react';
 import Recipe from './Recipe';
 
-const Recipes = ({recipes, getRecipeId}) => {
+const Recipes = ({ recipes, getRecipeId }) => {
 
-    var recipesSorted = recipes.sort(function(a, b){return a['postDate']-b['postDate']}); 
+    var recipesSorted = recipes.sort(function(a, b) { return b['postDate'] - a['postDate'] });
+    var reversedRecipes = recipesSorted.reverse();
     console.log(recipesSorted)
 
-    return(
-        <div className="recipes">
-            
-            {recipesSorted.map((recipe) =>
-                <Recipe 
-                    key={recipe.recipeId}
-                    recipeId={recipe.recipeId}
-                    recipeName={recipe.recipeName}
-                    description={recipe.description}
-                    difficulty={recipe.difficulty}
-                    preparationTime={recipe.preparationTime}
-                    cookingTime={recipe.cookingTime}
-                    additionalTime={recipe.additionalTime}
-                    servings={recipe.servings}
-                    postDate={recipe.postDate}
-                    imageId={recipe.image.id}
-                    imageSuffix={recipe.image.suffix}
-                    username={recipe.user.username}
-                    userId={recipe.userId}
-                    getRecipeId={getRecipeId}
+    return ( 
+        <div className="recipe-container" >
+        {
+            reversedRecipes.map((recipe) =>
+                <
+                Recipe key = { recipe.recipeId }
+                recipeId = { recipe.recipeId }
+                recipeName = { recipe.recipeName }
+                description = { recipe.description }
+                difficulty = { recipe.difficulty }
+                preparationTime = { recipe.preparationTime }
+                cookingTime = { recipe.cookingTime }
+                additionalTime = { recipe.additionalTime }
+                servings = { recipe.servings }
+                postDate = { recipe.postDate }
+                imageId = { recipe.image.id }
+                imageSuffix = { recipe.image.suffix }
+                username = { recipe.user.username }
+                userId = { recipe.userId }
+                getRecipeId = { getRecipeId }
                 />
-            )}
-            
-        </div>
+            )
+        }
+     </div>
     )
 }
 
