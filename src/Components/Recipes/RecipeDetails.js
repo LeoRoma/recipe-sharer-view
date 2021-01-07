@@ -1,25 +1,26 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
+import { Row, Col } from 'react-bootstrap';
 
-class RecipeDetails extends Component{
-    constructor(){
+class RecipeDetails extends Component {
+    constructor() {
         super()
-        this.state={
-            
+        this.state = {
+
         }
     };
 
-    render(){
+    render() {
         var recipe = this.props.recipeDetails;
         var recipeId = recipe.recipeId;
         var equipments = recipe.equipments;
         // console.log(equipments.length)
         var ingredients = recipe.ingredients;
         var steps = recipe.steps;
-        var stepsSorted = steps.sort(function(a, b){return a['stepNumber']-b['stepNumber']}); 
+        var stepsSorted = steps.sort(function (a, b) { return a['stepNumber'] - b['stepNumber'] });
         var username = recipe.user.username;
         var imageId = recipe.image.id;
         var imageSuffix = recipe.image.suffix;
-        
+
         var imageDomain = `https://localhost:44330/dynamic/images/${imageId}${imageSuffix}`;
 
         var recipeName = recipe.recipeName;
@@ -30,38 +31,48 @@ class RecipeDetails extends Component{
         var additionalTime = recipe.additionalTime;
         var servings = recipe.servings;
         var postDate = recipe.postDate;
-        var YYYY = postDate.slice(0,4);
+        var YYYY = postDate.slice(0, 4);
         var MM = postDate.slice(5, 7);
         var DD = postDate.slice(8, 10);
         var formattedDate = `${DD}/${MM}/${YYYY}`;
 
-        return(
-            <div key={recipeId}>
-                <img src={imageDomain} style={{width:"200px", height:"200px"}} alt="food"/>
-                {recipeName}
-                {description}
-                {difficulty}
-                {preparationTime}
-                {cookingTime}
-                {additionalTime}
-                {servings}
-                {formattedDate}
-                {username}
-                <h2>Ingredients</h2>
-                {ingredients.map((ingredient) => 
-                    <p key={ingredient.ingredientId}>{ingredient.ingredientName} {ingredient.amount}</p>
-                    // <p>ingredient.amount</p>
-                )}
+        return (
+            <div key={recipeId} className="recipe-details-container">
+                <Row>
+                    <Col>
+                        <img src={imageDomain} style={{ width: "200px", height: "200px" }} alt="food" />
+                 
+                    </Col>
+                    <Col>
+                        <h1>{recipeName}</h1>
+                        <p>{description}</p>
 
-                <h2>Method</h2>
-                {stepsSorted.map((step) =>
-                    <p key={step.stepId}>{step.stepNumber} {step.stepName} {step.instruction}</p> 
-                )}
-
-                <h2>Equipments</h2>
-                {equipments.map((equipment) => 
-                    <p key={equipment.equipmentId}>{equipment.equipmentName}</p>
-                )}
+                        {difficulty}
+                        {preparationTime}
+                        {cookingTime}
+                        {additionalTime}
+                        {servings}
+                        <h2>Equipments</h2>
+                        {equipments.map((equipment) =>
+                            <p key={equipment.equipmentId}>{equipment.equipmentName}</p>
+                        )}
+                    </Col>
+                </Row>
+                <Row>
+                    <Col>
+                        <h1>Ingredients</h1>
+                        {ingredients.map((ingredient) =>
+                            <p key={ingredient.ingredientId}>{ingredient.ingredientName} {ingredient.amount}</p>
+                            // <p>ingredient.amount</p>
+                        )}
+                    </Col>
+                    <Col>
+                        <h1>Methods</h1>
+                        {stepsSorted.map((step) =>
+                            <p key={step.stepId}>{step.stepNumber} {step.stepName} {step.instruction}</p>
+                        )}
+                    </Col>
+                </Row>
             </div>
         );
     };

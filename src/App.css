@@ -3,6 +3,6 @@
 .main-page {
     width: 60%;
     height: 100vh;
-    /* margin: auto; */
+    margin: auto;
     background-color: palegoldenrod;
 }
