@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import { Row, Col } from 'react-bootstrap';
+import { GiChefToque } from 'react-icons/gi';
+import { MdTimer } from 'react-icons/md'
+import { IoMdPerson } from 'react-icons/io'
 
 class RecipeDetails extends Component {
     constructor() {
@@ -38,20 +41,26 @@ class RecipeDetails extends Component {
 
         return (
             <div key={recipeId} className="recipe-details-container">
-                <Row>
-                    <Col>
-                        <img src={imageDomain} style={{ width: "200px", height: "200px" }} alt="food" />
-                 
+                <Row className="recipe-details-header">
+                    <Col lg={5} className="recipe-details-col">
+                        <div className="recipe-details-img">
+                            <img src={imageDomain} alt="food" />
+                        </div>
+
+
                     </Col>
-                    <Col>
+                    <Col lg={7} className="recipe-details-col">
                         <h1>{recipeName}</h1>
                         <p>{description}</p>
 
-                        {difficulty}
-                        {preparationTime}
-                        {cookingTime}
-                        {additionalTime}
-                        {servings}
+
+
+                        <p> <MdTimer /> Prep Time: {preparationTime} <GiChefToque /> {difficulty}
+                            <IoMdPerson /> Serves {servings}</p>
+                        <p>Cook Time: {cookingTime}</p>
+                        <p>Add Time: {additionalTime}</p>
+
+
                         <h2>Equipments</h2>
                         {equipments.map((equipment) =>
                             <p key={equipment.equipmentId}>{equipment.equipmentName}</p>
@@ -59,17 +68,18 @@ class RecipeDetails extends Component {
                     </Col>
                 </Row>
                 <Row>
-                    <Col>
+                    <Col lg={5}>
                         <h1>Ingredients</h1>
                         {ingredients.map((ingredient) =>
-                            <p key={ingredient.ingredientId}>{ingredient.ingredientName} {ingredient.amount}</p>
+                            <p key={ingredient.ingredientId}>{ingredient.amount} {ingredient.ingredientName} </p>
                             // <p>ingredient.amount</p>
                         )}
                     </Col>
-                    <Col>
-                        <h1>Methods</h1>
+                    <Col lg={7}>
+                        <h1>Method</h1>
                         {stepsSorted.map((step) =>
-                            <p key={step.stepId}>{step.stepNumber} {step.stepName} {step.instruction}</p>
+                            <p key={step.stepId}>
+                                <h5>STEP {step.stepNumber} {step.stepName}</h5>  {step.instruction}</p>
                         )}
                     </Col>
                 </Row>
