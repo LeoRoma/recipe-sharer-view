@@ -41,16 +41,16 @@ class RecipeDetails extends Component {
 
         return (
             <div key={recipeId} className="recipe-details-container">
-                <Row className="recipe-details-header">
-                    <Col lg={5} className="recipe-details-col">
-                        <div className="recipe-details-img">
-                            <img src={imageDomain} alt="food" />
-                        </div>
-
-
-                    </Col>
-                    <Col lg={7} className="recipe-details-col">
-                        <h1>{recipeName}</h1>
+                <div className="row recipe-details-header">
+                    <div className="col recipe-details-col img-container">
+                        <img src={imageDomain} alt="food" className="img-fill"/>
+                        {/* <div className="recipe-details-img">
+                            
+                            <h1>Hi</h1>
+                        </div> */}
+                    </div>
+                    <div className="col recipe-details-col">
+                    <h1>{recipeName}</h1>
                         <p>{description}</p>
 
 
@@ -65,8 +65,9 @@ class RecipeDetails extends Component {
                         {equipments.map((equipment) =>
                             <p key={equipment.equipmentId}>{equipment.equipmentName}</p>
                         )}
-                    </Col>
-                </Row>
+                    </div>
+                </div>
+
                 <Row>
                     <Col lg={5}>
                         <h1>Ingredients</h1>
@@ -83,6 +84,7 @@ class RecipeDetails extends Component {
                         )}
                     </Col>
                 </Row>
+
             </div>
         );
     };
