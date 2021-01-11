@@ -73,7 +73,7 @@ class Login extends Component {
         return (
             <div className="login-container">
                 {this.renderRedirect()}
-                <form className="form" onSubmit={this.handleSubmit}>
+                <form className="login-form" onSubmit={this.handleSubmit}>
                     <div className="login-header">
                         <h1>Sign In to Recipe Sharer</h1>
                     </div>
