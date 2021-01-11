@@ -42,14 +42,14 @@ class RecipeDetails extends Component {
         return (
             <div key={recipeId} className="recipe-details-container">
                 <div className="row recipe-details-header">
-                    <div className="col recipe-details-col img-container">
+                    <div className="col-lg-4 p-0 recipe-details-col img-container">
                         <img src={imageDomain} alt="food" className="img-fill"/>
                         {/* <div className="recipe-details-img">
                             
                             <h1>Hi</h1>
                         </div> */}
                     </div>
-                    <div className="col recipe-details-col">
+                    <div className="col-lg-8 recipe-details-col">
                     <h1>{recipeName}</h1>
                         <p>{description}</p>
 
@@ -83,8 +83,7 @@ class RecipeDetails extends Component {
                                 <h5>STEP {step.stepNumber} {step.stepName}</h5>  {step.instruction}</p>
                         )}
                     </Col>
-                </Row>
-
+                </Row>     
             </div>
         );
     };

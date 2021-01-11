@@ -5,7 +5,6 @@ import { GiChefToque } from 'react-icons/gi';
 import { MdTimer } from 'react-icons/md'
 import { IoMdPerson } from 'react-icons/io'
 
-import { Col, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 const Recipe = ({
@@ -35,23 +34,18 @@ const Recipe = ({
     return (
 
         <div className="recipe-card">
-            <Row className="recipe-row">
-                <Col lg={4} className="recipe-image-container">
-
+            <div className="row recipe-row">
+                <div className="col-lg-4 p-0 recipe-image-container">
                     {imageSuffix ? <img src={imageDomain} alt="food" /> : null}
-
-                </Col>
-                <Col lg={8} className="recipe-header">
+                </div>
+                <div className="col-lg-8 p-0 recipe-header">
                     <Link to={recipePagePath}><h1 onClick={getRecipeId.bind(this, recipeId)}>{recipeName}</h1></Link>
                     <p>{description}</p>
-                    
                     <div className="additional-info">
                         <MdTimer /> {preparationTime} <GiChefToque /> {difficulty} <IoMdPerson /> {servings} {formattedDate} Posted by: {username}
                     </div>
-                </Col>
-
-            </Row>
-
+                </div>
+            </div>
 
 
             {/* <p>Difficulty: {difficulty}</p>
