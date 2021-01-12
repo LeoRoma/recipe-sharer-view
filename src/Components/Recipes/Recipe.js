@@ -30,23 +30,28 @@ const Recipe = ({
     var MM = postDate.slice(5, 7);
     var DD = postDate.slice(8, 10);
     var formattedDate = `${DD}/${MM}/${YYYY}`;
+    var capitalizeRecipeName = recipeName.charAt(0).toUpperCase() + recipeName.slice(1)
 
     return (
 
         <div className="recipe-card">
-            <div className="row recipe-row">
+            <div className="row no-gutters recipe-row">
                 <div className="col-lg-4 p-0 recipe-image-container">
-                    {imageSuffix ? <img src={imageDomain} alt="food" /> : null}
+                    {imageSuffix ? <Link to={recipePagePath}><img src={imageDomain} className="card-img-top" alt="food" onClick={getRecipeId.bind(this, recipeId)} /></Link>: null}
                 </div>
                 <div className="col-lg-8 p-0 recipe-header">
-                    <Link to={recipePagePath}><h1 onClick={getRecipeId.bind(this, recipeId)}>{recipeName}</h1></Link>
-                    <p>{description}</p>
-                    <div className="additional-info">
-                        <MdTimer /> {preparationTime} <GiChefToque /> {difficulty} <IoMdPerson /> {servings} {formattedDate} Posted by: {username}
+                    <div className="card-body">
+                        <Link to={recipePagePath}><h1 className="card-title" onClick={getRecipeId.bind(this, recipeId)}>{capitalizeRecipeName}</h1></Link>
+                        <p className="card-text">{description}</p>
                     </div>
+                
                 </div>
-            </div>
+                <div className="card-additional-info">
+                       <GiChefToque /> {difficulty} - <IoMdPerson /> {servings} serves - Date: {formattedDate} - By: {username}
+                    </div>
 
+            </div>
+          
 
             {/* <p>Difficulty: {difficulty}</p>
             <p>Preparation Time: {preparationTime}</p>
