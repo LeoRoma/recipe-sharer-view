@@ -14,7 +14,7 @@
     margin-left: 0%;
     /* overflow: hidden; */
     background-color: white;
-    box-shadow: 1px 5px 5px 1px;
+    box-shadow: 1px 1px 1px 1px;
 }
 
 .recipe-header {
@@ -39,15 +39,6 @@
     /* display:table-cell */
 }
 
-
-.recipe-image-container{
-    /* border-style: groove;
-    display: flex;
-    justify-content: center;
-    align-items: center; */
-    /* overflow: hidden */
-}
-
 .recipe-image-container img{
     max-width: 100%;
     height: 225px;
@@ -56,43 +47,53 @@
 .card-additional-info{
     position: relative;
     margin:auto;
-    /* text-align: right; */
     bottom:30px;
-    /* margin-left: 50px; */
-    /* margin-top: 50px; */
     margin-right: 10px;    
 }
 
+
+/* Recipe Details */
+
 .recipe-details-container{
-    /* border-style: dashed; */
     margin:auto;
 }
 
 .recipe-details-header{
     margin: auto;
+    margin-left: 0;
     background-color: lightgray;
+    background-color: white;
+    box-shadow: 1px 2px 2px 1px;
+    width: 70%;
 }
 
 .recipe-details-col{
     margin:auto;
     margin-top: 0;
-    border-style: double;
+    margin-left: 0;
     width: 100%;
-    /* height: 300px; */
 }
 
-
 .img-fill{
-
     width:100%;
     height: 300px;
     object-fit: fill;
-    /* object-fit: contain; */
-    /* object-fit: cover; */
-    /* object-fit: none; */
-    /* object-fit: scale-down; */
-    /* object-fit: inherit; */
-    /* object-fit: initial; */
-    /* object-fit: unset; */
 }
 
+.details{
+    padding: 10%;
+}
+
+.description{
+    margin-top: 5%;
+    width:70%;
+}
+
+.equipments{
+    margin-top: 5%;
+}
+
+.recipe-instructions{
+    margin-top: 5%;
+    width: 70%;
+}

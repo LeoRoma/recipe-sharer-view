@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Row, Col } from 'react-bootstrap';
+
 import { GiChefToque } from 'react-icons/gi';
 import { MdTimer } from 'react-icons/md'
 import { IoMdPerson } from 'react-icons/io'
@@ -33,57 +33,66 @@ class RecipeDetails extends Component {
         var cookingTime = recipe.cookingTime;
         var additionalTime = recipe.additionalTime;
         var servings = recipe.servings;
-        var postDate = recipe.postDate;
-        var YYYY = postDate.slice(0, 4);
-        var MM = postDate.slice(5, 7);
-        var DD = postDate.slice(8, 10);
-        var formattedDate = `${DD}/${MM}/${YYYY}`;
+
+        var capitalizeRecipeName = recipeName.charAt(0).toUpperCase() + recipeName.slice(1)
+        // var postDate = recipe.postDate;
+        // var YYYY = postDate.slice(0, 4);
+        // var MM = postDate.slice(5, 7);
+        // var DD = postDate.slice(8, 10);
+        // var formattedDate = `${DD}/${MM}/${YYYY}`;
 
         return (
             <div key={recipeId} className="recipe-details-container">
-                <div className="row recipe-details-header">
-                    <div className="col-lg-4 p-0 recipe-details-col img-container">
-                        <img src={imageDomain} alt="food" className="img-fill"/>
+                <h1>{capitalizeRecipeName}</h1>
+                <p>Posted by: {username}</p>
+                <div className="row no-gutters recipe-details-header">
+                    <div className="col-lg-6 p-0 recipe-details-col img-container">
+                        <img src={imageDomain} alt="food" className="img-fill" />
                         {/* <div className="recipe-details-img">
                             
                             <h1>Hi</h1>
                         </div> */}
                     </div>
-                    <div className="col-lg-8 recipe-details-col">
-                    <h1>{recipeName}</h1>
-                        <p>{description}</p>
+                    <div className="col-lg-6 recipe-details-col">
+                        <div className="details">
+                            <p><GiChefToque /> Difficulty: {difficulty}</p>
+                            <p>  <IoMdPerson /> Serves: {servings}</p>
+                            <p> <MdTimer /> Prep Time: {preparationTime} </p>
+                            <p><MdTimer /> Cooking Time: {cookingTime}</p>
+                            <p><MdTimer />  Additional Time: {additionalTime}</p>
+                        </div>
 
-
-
-                        <p> <MdTimer /> Prep Time: {preparationTime} <GiChefToque /> {difficulty}
-                            <IoMdPerson /> Serves {servings}</p>
-                        <p>Cook Time: {cookingTime}</p>
-                        <p>Add Time: {additionalTime}</p>
-
-
-                        <h2>Equipments</h2>
-                        {equipments.map((equipment) =>
-                            <p key={equipment.equipmentId}>{equipment.equipmentName}</p>
-                        )}
                     </div>
                 </div>
+                <div className="description">
+                    <h2>Description</h2>
+                    <p>{description}</p>
+                </div>
+                <div className="equipments">
+                    <h2>Equipments</h2>
+                    {equipments.map((equipment) =>
+                        <li key={equipment.equipmentId}>{equipment.equipmentName}</li>
+                    )}
+                </div>
 
-                <Row>
-                    <Col lg={5}>
-                        <h1>Ingredients</h1>
+                <div className="row recipe-instructions">
+                    <div className="col-lg-5">
+                        <h2>Ingredients</h2>
                         {ingredients.map((ingredient) =>
                             <p key={ingredient.ingredientId}>{ingredient.amount} {ingredient.ingredientName} </p>
                             // <p>ingredient.amount</p>
                         )}
-                    </Col>
-                    <Col lg={7}>
-                        <h1>Method</h1>
+                    </div>
+                    <div className="col-lg-7">
+                        <h2>Method</h2>
                         {stepsSorted.map((step) =>
                             <p key={step.stepId}>
-                                <h5>STEP {step.stepNumber} {step.stepName}</h5>  {step.instruction}</p>
+                                <h5>STEP {step.stepNumber}</h5>  
+                                <h6>{step.stepName}</h6>
+                                {step.instruction}</p>
                         )}
-                    </Col>
-                </Row>     
+                    </div>
+                </div>
             </div>
         );
     };

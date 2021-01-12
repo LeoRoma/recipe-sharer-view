@@ -36,7 +36,6 @@ class Register extends Component {
 
     handleSubmit(event) {
         event.preventDefault();
-        const form = document.querySelector("form");
 
         let { username, email, password } = this.state
         fetch("https://localhost:44330/Users", {

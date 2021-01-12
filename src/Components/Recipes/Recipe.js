@@ -2,7 +2,6 @@ import React from 'react';
 import './Recipe.css'
 
 import { GiChefToque } from 'react-icons/gi';
-import { MdTimer } from 'react-icons/md'
 import { IoMdPerson } from 'react-icons/io'
 
 import { Link } from 'react-router-dom';
