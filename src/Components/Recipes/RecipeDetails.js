@@ -86,10 +86,10 @@ class RecipeDetails extends Component {
                     <div className="col-lg-7">
                         <h2>Method</h2>
                         {stepsSorted.map((step) =>
-                            <p key={step.stepId}>
+                            <div key={step.stepId}>
                                 <h5>STEP {step.stepNumber}</h5>  
-                                <h6>{step.stepName}</h6>
-                                {step.instruction}</p>
+                                <p>{step.instruction}</p>
+                            </div>
                         )}
                     </div>
                 </div>

@@ -50,21 +50,26 @@ class RecipeImageForm extends Component {
 
   render() {
     return (
-      <div className="new-recipe-container">
+      <div className="new-recipe-container-image">
         <h3>Image</h3>
-        <form onSubmit={this.handleSubmit}>
-          <div className="image-container">
-            <img style={{ width: "200px", height: "200px" }} src={this.state.file} alt="recipe" />
-          </div>
+        <div className="form">
+          <form onSubmit={this.handleSubmit}>
+            <div className="image-container">
+              <img style={{ width: "200px", height: "200px" }} src={this.state.file} alt="recipe" />
+            </div>
 
-          <br />
-          <input
-            type="file"
-            id="image"
-            accept="image/png, image/jpeg, image/jpg" onChange={this.handleImageChange} required />
-          <br />
-          <input type="submit" />
-        </form>
+            <br />
+            <input
+              className="btn-primary form-button-add"
+              type="file"
+              id="image"
+              accept="image/png, image/jpeg, image/jpg" onChange={this.handleImageChange} required />
+            <br />
+            <input className="btn-primary form-button" type="submit" />
+          </form>
+        
+        </div>
+
       </div>
     );
   }

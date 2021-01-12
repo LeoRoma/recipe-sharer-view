@@ -51,69 +51,86 @@ class IngredientsForm extends Component {
                 .then(response => {
                     console.log(response);
                     console.log("ingredient " + i, " added!")
-                    this.props.getIngredientsFormState();
                     // sessionStorage.setItem("recipeId", response.recipeId);
                 })
                 .catch(error => {
                     console.log("There was an error ", error);
                 })
         }
-
+        this.props.getIngredientsFormState();
     }
 
     render() {
         let { ingredients } = this.state;
         return (
-            <div className="new-recipe-container">
+            <div className="new-recipe-container-image">
                 <h3>Ingredients</h3>
-                <form>
+                <div className="form">
+                        <div className="row form-row">
+                            <div className="col-lg-1 p-0 form-col">
+                                <h6>#</h6>
+                            </div>
+                            <div className="col-lg-3 p-0 form-col">
+                                <h5>Name</h5>
+                            </div>
+
+                            <div className="col-lg-8 p-0 form-col">
+                                <h5>Amount</h5>
+                            </div>
+
+                        </div>
+                        <form onSubmit={this.handleSubmit}>
+                        {
+                            ingredients.map((val, idx) => {
+                                let ingredientId = `Ingredient-${idx}`, amountId = `amount-${idx}`
+                                return (
+                                    <div key={idx}>
+                                        <div className="row form-row">
+                                            <div className="col-lg-1 p-0 form-col">
+                                                <h6>{idx + 1}</h6>
+                                            </div>
+                                            <div className="col-lg-3 p-0 form-col">
+                                                {/* <label htmlFor={ingredientId}>Name</label> */}
 
 
-                    {
-                        ingredients.map((val, idx) => {
-                            let ingredientId = `Ingredient-${idx}`, amountId = `amount-${idx}`
-                            return (
-                                <div key={idx}>
-                                    <div className="row">
-                                        <div className="col-lg-4">
-                                            <label htmlFor={ingredientId}>{`Ingredient #${idx + 1}`}</label>
-                                            <br />
-                                            <input
-                                                type="text"
-                                                name="ingredientName"
-                                                data-id={idx}
-                                                id={ingredientId}
-                                                value={ingredients[idx].ingredientName}
-                                                className="ingredientName"
-                                                onChange={this.handleChange}
-                                                required
-                                            />
+                                                <input
+                                                    type="text"
+                                                    name="ingredientName"
+                                                    data-id={idx}
+                                                    id={ingredientId}
+                                                    value={ingredients[idx].ingredientName}
+                                                    className="ingredientName"
+                                                    onChange={this.handleChange}
+                                                    required
+                                                />
+                                            </div>
+                                            <div className="col-lg-8 p-0 form-col">
+                                                {/* <label htmlFor={amountId}>Amount</label> */}
+
+                                                <input
+                                                    type="text"
+                                                    name="amount"
+                                                    data-id={idx}
+                                                    id={amountId}
+                                                    value={ingredients[idx].amount}
+                                                    className="amount"
+                                                    onChange={this.handleChange}
+                                                    required
+                                                />
+                                                <button className="btn-primary form-button-add" onClick={this.addIngredient}>+</button>
+                                            </div>
+
                                         </div>
-                                        <div className="col-lg-4">
-                                            <label htmlFor={amountId}>Amount</label>
-                                            <br />
-                                            <input
-                                                type="text"
-                                                name="amount"
-                                                data-id={idx}
-                                                id={amountId}
-                                                value={ingredients[idx].amount}
-                                                className="amount"
-                                                onChange={this.handleChange}
-                                                required
-                                            /> 
-                                            <button onClick={this.addIngredient}>+</button>
-                                        </div>
-                                        
+
                                     </div>
-                                   
-                                </div>
-                            )
-                        })
-                    }
-                
-                    <input type="submit" value="Submit" onClick={this.handleSubmit} />
-                </form>
+                                )
+                            })
+                        }
+
+                        <input className="btn-primary form-button" type="submit" value="Submit" />
+                    </form>
+                </div>
+
             </div>
         );
     }

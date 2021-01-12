@@ -4,7 +4,7 @@ class StepsForm extends Component {
     constructor() {
         super();
         this.state = {
-            steps: [{ stepName: "", instruction: "" }]
+            steps: [{ instruction: "" }]
         }
     };
 
@@ -22,7 +22,7 @@ class StepsForm extends Component {
     addStep = (event) => {
         event.preventDefault();
         this.setState((prevState) => ({
-            steps: [...prevState.steps, { stepName: "", instruction: "" }]
+            steps: [...prevState.steps, { instruction: "" }]
         }))
     }
 
@@ -34,7 +34,7 @@ class StepsForm extends Component {
         event.preventDefault();
         console.log("hello")
         for (let i = 0; i < stepsLength; i++) {
-            console.log(steps[i].stepNumber, steps[i].stepName, steps[i].instruction)
+            console.log(steps[i].stepNumber, steps[i].instruction)
 
             fetch("https://localhost:44330/Steps/post", {
                 method: "Post",
@@ -45,7 +45,6 @@ class StepsForm extends Component {
                 },
                 body: JSON.stringify({
                     stepNumber: i + 1,
-                    stepName: steps[i].stepName,
                     instruction: steps[i].instruction,
                     recipeId: recipeId
                 })
@@ -54,69 +53,54 @@ class StepsForm extends Component {
                 .then(response => {
                     console.log(response);
                     console.log("ingredient " + i, " added!")
-                    this.props.getStepsFormState();
+                    
                     // sessionStorage.setItem("recipeId", response.recipeId);
                 })
                 .catch(error => {
                     console.log("There was an error ", error);
                 })
         }
-
+        this.props.getStepsFormState();
     }
 
     render() {
         let { steps } = this.state;
         return (
-            <div className="new-recipe-container">
+            <div className="new-recipe-container-form">
                 <h3>Steps</h3>
-                <form>
+                <div className="form">
+                    <form onSubmit={this.handleSubmit}>
+                        {
+                            steps.map((val, idx) => {
+                                let stepId = `Step-${idx}`, instructionId = `Instruction-${idx}`
+                                return (
+                                    <div key={idx}>
 
+                                        <label htmlFor={stepId}># {idx + 1}</label>
+                                        <br />
+                                        <label htmlFor={instructionId}>Instruction</label>
+                                        <br />
+                                        <textarea
+                                            name="instruction"
+                                            data-id={idx}
+                                            id={instructionId}
+                                            value={steps[idx].instruction}
+                                            className="instruction"
+                                            style={{ width: "400px", height: "120px" }}
+                                            onChange={this.handleChange}
+                                            required
+                                        />
+                                        <button className="btn-primary form-button-add" onClick={this.addStep}>+</button>
 
-                    {
-                        steps.map((val, idx) => {
-                            let stepId = `Step-${idx}`, instructionId = `Instruction-${idx}`
-                            return (
-                                <div key={idx}>
-                                    <div className="row">
-                                        <div className="col-lg-4">
-                                            <label htmlFor={stepId}>{`Step #${idx + 1}`}</label>
-                                            <br />
-                                            <input
-                                                type="text"
-                                                name="stepName"
-                                                data-id={idx}
-                                                id={stepId}
-                                                value={steps[idx].stepName}
-                                                className="stepName"
-                                                onChange={this.handleChange}
-                                                required
-                                            />
-                                        </div>
-                                        <div className="col-lg-4">
-                                            <label htmlFor={instructionId}>Instruction</label>
-                                            <textarea
-                                                name="instruction"
-                                                data-id={idx}
-                                                id={instructionId}
-                                                value={steps[idx].instruction}
-                                                className="instruction"
-                                                style={{ width: "400px", height: "120px" }}
-                                                onChange={this.handleChange}
-                                                required
-                                            />
-                                               <button onClick={this.addStep}>+</button>
-                                        </div>
                                     </div>
+                                )
+                            })
+                        }
 
-
-                                </div>
-                            )
-                        })
-                    }
-                 
-                    <input type="submit" value="Submit" onClick={this.handleSubmit} />
-                </form>
-            </div>
+                        <input className="btn-primary form-button" type="submit" value="Submit" />
+                    </form>
+                </div>
+            </div >
         );
     }
 }

@@ -22,7 +22,7 @@ class EditSteps extends Component {
     addStep = (event) => {
         event.preventDefault();
         this.setState((prevState) => ({
-            steps: [...prevState.steps, { stepName: "", instruction: "" }]
+            steps: [...prevState.steps, { instruction: "" }]
         }))
     }
 
@@ -41,7 +41,6 @@ class EditSteps extends Component {
                 },
                 body: JSON.stringify({
                     stepId: steps[i].stepId,
-                    stepName: steps[i].stepName,
                     instruction: steps[i].instruction,
                     recipeId: steps[i].recipeId,
                 })
@@ -72,15 +71,6 @@ class EditSteps extends Component {
                                 <div key={idx}>
                       
                                     <label htmlFor={stepId}>{`Step # ${idx + 1}`}</label>
-                                    <input
-                                        type="text"
-                                        name="stepName"
-                                        data-id={idx}
-                                        id={stepId}
-                                        value={steps[idx].stepName}
-                                        className="stepName"
-                                        onChange={this.handleChange}
-                                    />
                                     <label htmlFor={instructionId}>Instruction</label>
                                     <input
                                         type="text"

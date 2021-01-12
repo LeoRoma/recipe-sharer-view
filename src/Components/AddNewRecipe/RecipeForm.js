@@ -87,57 +87,59 @@ class RecipeForm extends Component {
     render() {
         // console.log(this.state)
         return (
-            <div>
-                <form className="form" onSubmit={this.handleSubmit}>
-                    <label>
-                        Name:
+            <div className="new-recipe-container-form">
+                <div className="form">
+                    <form onSubmit={this.handleSubmit}>
+                        <label>
+                            Name:
                         <br />
-                        <input type="text" name="recipeName" onChange={this.handleChange} required />
-                    </label>
-                    <br />
-                    <label>
-                        Description:
-                        <br/>
-                        <textarea name="description" style={{width:"400px", height:"120px"}} onChange={this.handleChange} required />
-                    </label>
-                    <br />
-                    <label>
-                        Difficulty:
-                        <select name="difficulty" onChange={this.handleChange} required>
-                            <option value="none">None</option>
-                            <option value="easy">Easy</option>
-                            <option value="medium">Medium</option>
-                            <option value="hard">Hard</option>
-                        </select>
-                    </label>
-                    <br />
-                    <label>
-                        Preparation Time:
+                            <input type="text" name="recipeName" onChange={this.handleChange} required />
+                        </label>
                         <br />
-                        <input type="text" name="preparationTime" onChange={this.handleChange} required />
-                    </label>
-                    <br />
-                    <label>
-                        Cooking Time:
+                        <label>
+                            Description:
                         <br />
-                        <input type="text" name="cookingTime" onChange={this.handleChange} required />
-                    </label>
-                    <br />
-                    <label>
-                        Additional Time:
+                            <textarea name="description" style={{ width: "400px", height: "120px" }} onChange={this.handleChange} required />
+                        </label>
                         <br />
-                        <input type="text" name="additionalTime" onChange={this.handleChange} required />
-                    </label>
-                    <br />
-                    <label>
-                        Servings:
+                        <label>
+                            Difficulty:
                         <br />
-                        <input type="text" name="servings" onChange={this.handleChange} required />
-                    </label>
-                    <br />
-                    <input type="submit" value="Submit" />
-                </form>
-              
+                            <select name="difficulty" onChange={this.handleChange} required>
+                                <option value="none">None</option>
+                                <option value="easy">Easy</option>
+                                <option value="medium">Medium</option>
+                                <option value="hard">Hard</option>
+                            </select>
+                        </label>
+                        <br />
+                        <label>
+                            Preparation Time:
+                        <br />
+                            <input type="text" name="preparationTime" onChange={this.handleChange} required />
+                        </label>
+                        <br />
+                        <label>
+                            Cooking Time:
+                        <br />
+                            <input type="text" name="cookingTime" onChange={this.handleChange} required />
+                        </label>
+                        <br />
+                        <label>
+                            Additional Time:
+                        <br />
+                            <input type="text" name="additionalTime" onChange={this.handleChange} required />
+                        </label>
+                        <br />
+                        <label>
+                            Servings:
+                        <br />
+                            <input type="text" name="servings" onChange={this.handleChange} required />
+                        </label>
+                        <br />
+                        <input className="btn-primary form-button" type="submit" value="Submit" />
+                    </form>
+                </div>
             </div>
         );
     }

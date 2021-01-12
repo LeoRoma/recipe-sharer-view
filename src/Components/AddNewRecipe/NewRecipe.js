@@ -71,14 +71,14 @@ class NewRecipe extends Component{
             <div className="new-recipe-container">
                 <h1>New Recipe</h1>
                 <RecipeForm getRecipeFormState={this.getRecipeFormState} />
-                {/* {imageForm}
+                {imageForm}
                 {equipmentsForm}
                 {ingredientsForm}
-                {stepsForm} */}
-                <RecipeImageForm />
-                <EquipmentsForm />
-                <IngredientsForm />
-                <StepsForm />       
+                {stepsForm}
+                {/* <RecipeImageForm getImageFormState={this.getImageFormState} />
+                <EquipmentsForm getEquipmentsFormState={this.getEquipmentsFormState} />
+                <IngredientsForm getIngredientsFormState={this.getIngredientsFormState} />
+                <StepsForm getStepsFormState={this.getStepsFormState} />        */}
             </div>
 
         );
