@@ -9,13 +9,13 @@ class IngredientsForm extends Component {
     };
 
     handleChange = (event) => {
-        if (["ingredientName", "amount"].includes(event.target.className) ) {
+        if (["ingredientName", "amount"].includes(event.target.className)) {
             let ingredients = [...this.state.ingredients]
             ingredients[event.target.dataset.id][event.target.className] = event.target.value
             this.setState({ ingredients }, () => console.log(this.state.ingredients))
-          } else {
+        } else {
             this.setState({ [event.target.name]: event.target.value })
-          }
+        }
     }
 
     addIngredient = (event) => {
@@ -32,7 +32,7 @@ class IngredientsForm extends Component {
         var recipeId = sessionStorage.getItem("recipeId");
         event.preventDefault();
 
-        for(let i = 0; i < ingredientsLength; i++){
+        for (let i = 0; i < ingredientsLength; i++) {
 
             fetch("https://localhost:44330/Ingredients/post", {
                 method: "Post",
@@ -51,6 +51,7 @@ class IngredientsForm extends Component {
                 .then(response => {
                     console.log(response);
                     console.log("ingredient " + i, " added!")
+                    this.props.getIngredientsFormState();
                     // sessionStorage.setItem("recipeId", response.recipeId);
                 })
                 .catch(error => {
@@ -63,39 +64,54 @@ class IngredientsForm extends Component {
     render() {
         let { ingredients } = this.state;
         return (
-            <div>
+            <div className="new-recipe-container">
+                <h3>Ingredients</h3>
                 <form>
 
-                    <button onClick={this.addIngredient}>Add new ingredient</button>
+
                     {
                         ingredients.map((val, idx) => {
                             let ingredientId = `Ingredient-${idx}`, amountId = `amount-${idx}`
                             return (
                                 <div key={idx}>
-                                    <label htmlFor={ingredientId}>{`Ingredient #${idx + 1}`}</label>
-                                    <input
-                                        type="text"
-                                        name="ingredientName"
-                                        data-id={idx}
-                                        id={ingredientId}
-                                        value={ingredients[idx].ingredientName}
-                                        className="ingredientName"
-                                        onChange={this.handleChange}
-                                    />
-                                    <label htmlFor={amountId}>Amount</label>
-                                    <input
-                                        type="text"
-                                        name="amount"
-                                        data-id={idx}
-                                        id={amountId}
-                                        value={ingredients[idx].amount}
-                                        className="amount"
-                                        onChange={this.handleChange}
-                                    />
+                                    <div className="row">
+                                        <div className="col-lg-4">
+                                            <label htmlFor={ingredientId}>{`Ingredient #${idx + 1}`}</label>
+                                            <br />
+                                            <input
+                                                type="text"
+                                                name="ingredientName"
+                                                data-id={idx}
+                                                id={ingredientId}
+                                                value={ingredients[idx].ingredientName}
+                                                className="ingredientName"
+                                                onChange={this.handleChange}
+                                                required
+                                            />
+                                        </div>
+                                        <div className="col-lg-4">
+                                            <label htmlFor={amountId}>Amount</label>
+                                            <br />
+                                            <input
+                                                type="text"
+                                                name="amount"
+                                                data-id={idx}
+                                                id={amountId}
+                                                value={ingredients[idx].amount}
+                                                className="amount"
+                                                onChange={this.handleChange}
+                                                required
+                                            /> 
+                                            <button onClick={this.addIngredient}>+</button>
+                                        </div>
+                                        
+                                    </div>
+                                   
                                 </div>
                             )
                         })
                     }
+                
                     <input type="submit" value="Submit" onClick={this.handleSubmit} />
                 </form>
             </div>

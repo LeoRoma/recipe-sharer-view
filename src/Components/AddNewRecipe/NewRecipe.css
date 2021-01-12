@@ -1,0 +1,12 @@
+.new-recipe-container{
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+.image-container{
+    width: 200px;
+    height: 200px;
+    border-style: solid;
+    border-color: black;
+    border-width: 1px;
+}

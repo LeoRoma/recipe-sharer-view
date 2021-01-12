@@ -1,6 +1,6 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 
-class StepsForm extends Component{
+class StepsForm extends Component {
     constructor() {
         super();
         this.state = {
@@ -9,14 +9,14 @@ class StepsForm extends Component{
     };
 
     handleChange = (event) => {
-        if (["stepName", "instruction"].includes(event.target.className) ) {
+        if (["stepName", "instruction"].includes(event.target.className)) {
             let steps = [...this.state.steps]
             // steps['stepNumber'] = event.target.dataset.id;
             steps[event.target.dataset.id][event.target.className] = event.target.value
             this.setState({ steps }, () => console.log(this.state.steps))
-          } else {
+        } else {
             this.setState({ [event.target.name]: event.target.value })
-          }
+        }
     }
 
     addStep = (event) => {
@@ -33,7 +33,7 @@ class StepsForm extends Component{
         var recipeId = sessionStorage.getItem("recipeId");
         event.preventDefault();
         console.log("hello")
-        for(let i = 0; i < stepsLength; i++){
+        for (let i = 0; i < stepsLength; i++) {
             console.log(steps[i].stepNumber, steps[i].stepName, steps[i].instruction)
 
             fetch("https://localhost:44330/Steps/post", {
@@ -44,7 +44,7 @@ class StepsForm extends Component{
                     'Authorization': "Bearer " + token
                 },
                 body: JSON.stringify({
-                    stepNumber: i+1,
+                    stepNumber: i + 1,
                     stepName: steps[i].stepName,
                     instruction: steps[i].instruction,
                     recipeId: recipeId
@@ -54,6 +54,7 @@ class StepsForm extends Component{
                 .then(response => {
                     console.log(response);
                     console.log("ingredient " + i, " added!")
+                    this.props.getStepsFormState();
                     // sessionStorage.setItem("recipeId", response.recipeId);
                 })
                 .catch(error => {
@@ -66,39 +67,53 @@ class StepsForm extends Component{
     render() {
         let { steps } = this.state;
         return (
-            <div>
+            <div className="new-recipe-container">
+                <h3>Steps</h3>
                 <form>
 
-                    <button onClick={this.addStep}>Add new Step</button>
+
                     {
                         steps.map((val, idx) => {
                             let stepId = `Step-${idx}`, instructionId = `Instruction-${idx}`
                             return (
                                 <div key={idx}>
-                                    <label htmlFor={stepId}>{`Step #${idx + 1}`}</label>
-                                    <input
-                                        type="text"
-                                        name="stepName"
-                                        data-id={idx}
-                                        id={stepId}
-                                        value={steps[idx].stepName}
-                                        className="stepName"
-                                        onChange={this.handleChange}
-                                    />
-                                    <label htmlFor={instructionId}>Instruction</label>
-                                    <input
-                                        type="text"
-                                        name="instruction"
-                                        data-id={idx}
-                                        id={instructionId}
-                                        value={steps[idx].instruction}
-                                        className="instruction"
-                                        onChange={this.handleChange}
-                                    />
+                                    <div className="row">
+                                        <div className="col-lg-4">
+                                            <label htmlFor={stepId}>{`Step #${idx + 1}`}</label>
+                                            <br />
+                                            <input
+                                                type="text"
+                                                name="stepName"
+                                                data-id={idx}
+                                                id={stepId}
+                                                value={steps[idx].stepName}
+                                                className="stepName"
+                                                onChange={this.handleChange}
+                                                required
+                                            />
+                                        </div>
+                                        <div className="col-lg-4">
+                                            <label htmlFor={instructionId}>Instruction</label>
+                                            <textarea
+                                                name="instruction"
+                                                data-id={idx}
+                                                id={instructionId}
+                                                value={steps[idx].instruction}
+                                                className="instruction"
+                                                style={{ width: "400px", height: "120px" }}
+                                                onChange={this.handleChange}
+                                                required
+                                            />
+                                               <button onClick={this.addStep}>+</button>
+                                        </div>
+                                    </div>
+
+
                                 </div>
                             )
                         })
                     }
+                 
                     <input type="submit" value="Submit" onClick={this.handleSubmit} />
                 </form>
             </div>

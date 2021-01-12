@@ -1,27 +1,27 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 
-class EquipmentsForm extends Component{
+class EquipmentsForm extends Component {
     constructor() {
         super();
         this.state = {
-            equipments: [{ equipmentName: ""}]
+            equipments: [{ equipmentName: "" }]
         }
     };
 
     handleChange = (event) => {
-        if (["equipmentName"].includes(event.target.className) ) {
+        if (["equipmentName"].includes(event.target.className)) {
             let equipments = [...this.state.equipments]
             equipments[event.target.dataset.id][event.target.className] = event.target.value
             this.setState({ equipments }, () => console.log(this.state.equipments))
-          } else {
+        } else {
             this.setState({ [event.target.name]: event.target.value })
-          }
+        }
     }
 
     addEquipment = (event) => {
         event.preventDefault();
         this.setState((prevState) => ({
-            equipments: [...prevState.equipments, { equipmentName: ""}]
+            equipments: [...prevState.equipments, { equipmentName: "" }]
         }))
     }
 
@@ -32,7 +32,7 @@ class EquipmentsForm extends Component{
         var recipeId = sessionStorage.getItem("recipeId");
         event.preventDefault();
         console.log("hello")
-        for(let i = 0; i < equipmentsLength; i++){
+        for (let i = 0; i < equipmentsLength; i++) {
             console.log(equipments[i].equipmentName)
 
             fetch("https://localhost:44330/Equipments/post", {
@@ -51,6 +51,7 @@ class EquipmentsForm extends Component{
                 .then(response => {
                     console.log(response);
                     console.log("ingredient " + i, " added!")
+                    this.props.getEquipmentsFormState()
                     // sessionStorage.setItem("recipeId", response.recipeId);
                 })
                 .catch(error => {
@@ -62,16 +63,16 @@ class EquipmentsForm extends Component{
     render() {
         let { equipments } = this.state;
         return (
-            <div>
+            <div className="new-recipe-container">
+                <h3>Equipments</h3>
                 <form>
-
-                    <button onClick={this.addEquipment}>Add new Equipment</button>
                     {
                         equipments.map((val, idx) => {
                             let equipmentId = `Equipment-${idx}`
                             return (
                                 <div key={idx}>
                                     <label htmlFor={equipmentId}>{`Equipment #${idx + 1}`}</label>
+                                    <br />
                                     <input
                                         type="text"
                                         name="equipmentName"
@@ -80,11 +81,15 @@ class EquipmentsForm extends Component{
                                         value={equipments[idx].equipmentName}
                                         className="equipmentName"
                                         onChange={this.handleChange}
+                                        required
                                     />
+                                    <button onClick={this.addEquipment}>+</button>
                                 </div>
+
                             )
                         })
                     }
+                    
                     <input type="submit" value="Submit" onClick={this.handleSubmit} />
                 </form>
             </div>

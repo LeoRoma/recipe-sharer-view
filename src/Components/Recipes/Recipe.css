@@ -97,3 +97,12 @@
     margin-top: 5%;
     width: 70%;
 }
+
+
+.buttons{
+    position: relative;
+    margin: auto;
+    bottom: 35px;
+    margin-right: 10px;
+    display: flex;
+}

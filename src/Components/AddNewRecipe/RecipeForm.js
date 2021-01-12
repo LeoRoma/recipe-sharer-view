@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
+import './NewRecipe.css';
+
 
 class RecipeForm extends Component {
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
         this.state = {
             recipeName: '',
             description: '',
@@ -10,7 +12,7 @@ class RecipeForm extends Component {
             preparationTime: '',
             cookingTime: '',
             additionalTime: '',
-            servings: ''
+            servings: '',
         };
     }
 
@@ -72,12 +74,16 @@ class RecipeForm extends Component {
             .then(response => {
                 console.log(response);
                 sessionStorage.setItem("recipeId", response.recipeId);
+                this.props.getRecipeFormState();
             })
             .catch(error => {
                 console.log("There was an error ", error);
             })
     }
 
+    greetone = () => {
+        console.log("hello1")
+    }
     render() {
         // console.log(this.state)
         return (
@@ -85,17 +91,19 @@ class RecipeForm extends Component {
                 <form className="form" onSubmit={this.handleSubmit}>
                     <label>
                         Name:
-                        <input type="text" name="recipeName" onChange={this.handleChange} />
+                        <br />
+                        <input type="text" name="recipeName" onChange={this.handleChange} required />
                     </label>
                     <br />
                     <label>
                         Description:
-                        <input type="text" name="description" onChange={this.handleChange} />
+                        <br/>
+                        <textarea name="description" style={{width:"400px", height:"120px"}} onChange={this.handleChange} required />
                     </label>
                     <br />
                     <label>
                         Difficulty:
-                        <select name="difficulty" onChange={this.handleChange}>
+                        <select name="difficulty" onChange={this.handleChange} required>
                             <option value="none">None</option>
                             <option value="easy">Easy</option>
                             <option value="medium">Medium</option>
@@ -105,26 +113,31 @@ class RecipeForm extends Component {
                     <br />
                     <label>
                         Preparation Time:
-                        <input type="text" name="preparationTime" onChange={this.handleChange} />
+                        <br />
+                        <input type="text" name="preparationTime" onChange={this.handleChange} required />
                     </label>
                     <br />
                     <label>
                         Cooking Time:
-                        <input type="text" name="cookingTime" onChange={this.handleChange} />
+                        <br />
+                        <input type="text" name="cookingTime" onChange={this.handleChange} required />
                     </label>
                     <br />
                     <label>
                         Additional Time:
-                        <input type="text" name="additionalTime" onChange={this.handleChange} />
+                        <br />
+                        <input type="text" name="additionalTime" onChange={this.handleChange} required />
                     </label>
                     <br />
                     <label>
                         Servings:
-                        <input type="text" name="servings" onChange={this.handleChange} />
+                        <br />
+                        <input type="text" name="servings" onChange={this.handleChange} required />
                     </label>
                     <br />
                     <input type="submit" value="Submit" />
                 </form>
+              
             </div>
         );
     }
