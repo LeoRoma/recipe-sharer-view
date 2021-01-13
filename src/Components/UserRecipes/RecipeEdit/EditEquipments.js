@@ -65,31 +65,53 @@ class EditEquipments extends Component {
         const equipments = this.state.equipments;
         // console.log(equipments)
         return (
-            <div>
-                <form>
+            <div className="new-recipe-container-form">
+                <h3>Equipments</h3>
+                <div className="form">
+                    <div className="row form-row">
+                        <div className="col-lg-1 p-0 form-col">
+                            <h6>#</h6>
+                        </div>
+                        <div className="col-lg-11 p-0 form-col">
+                            <h5>Name</h5>
+                        </div>
+                    </div>
+                    <form onSubmit={this.handleSubmit}>
+                        {
+                            equipments.map((val, idx) => {
+                                let equipmentId = `Equipment-${idx}`
+                                return (
+                                    <div key={idx}>
+                                        <div className="row form-row">
+                                            <div className="col-lg-1 p-0 form-col">
+                                                <h6><label htmlFor={equipmentId}>{idx + 1}</label></h6>
+                                            </div>
+                                            <div className="col-lg-11 p-0 form-col">
+                                                <input
+                                                    type="text"
+                                                    name="equipmentName"
+                                                    data-id={idx}
+                                                    id={equipmentId}
+                                                    value={equipments[idx].equipmentName}
+                                                    className="equipmentName"
+                                                    onChange={this.handleChange}
+                                                    required
+                                                />
+                                                {/* <button className="btn-primary form-button-add" onClick={this.addEquipment}>+</button> */}
+                                            </div>
+                                        </div>
 
-                    <button onClick={this.addEquipment}>Add new Equipment</button>
-                    {
-                        equipments.map((val, idx) => {
-                            let equipmentId = `Equipment-${idx}`
-                            return (
-                                <div key={idx}>
-                                    <label htmlFor={equipmentId}>{`Equipment #${idx + 1}`}</label>
-                                    <input
-                                        type="text"
-                                        name="equipmentName"
-                                        data-id={idx}
-                                        id={equipmentId}
-                                        value={equipments[idx].equipmentName}
-                                        className="equipmentName"
-                                        onChange={this.handleChange}
-                                    />
-                                </div>
-                            )
-                        })
-                    }
-                    <input type="submit" value="Submit" onClick={this.handleSubmit} />
-                </form>
+
+                                    </div>
+
+                                )
+                            })
+                        }
+
+                        <input className="btn-primary form-button" type="submit" value="Submit" />
+                    </form>
+                </div>
+
             </div>
         );
     }

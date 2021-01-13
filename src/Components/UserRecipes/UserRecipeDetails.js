@@ -57,14 +57,12 @@ const UserRecipeDetails = ({
                 userRecipeIngredients={userRecipeIngredients}
             />
 
-            <h2>Method</h2>
-            <EditSteps
-                userRecipeSteps={userRecipeSteps}
-            />
-
-            <h2>Equipments</h2>
             <EditEquipments
                 userRecipeEquipments={userRecipeEquipments}
+            />
+
+            <EditSteps
+                userRecipeSteps={userRecipeSteps}
             />
         </div>
     );
