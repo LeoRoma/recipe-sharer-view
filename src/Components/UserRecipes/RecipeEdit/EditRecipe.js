@@ -61,6 +61,7 @@ class EditRecipe extends Component {
             .catch(error => {
                 console.log("There was an error ", error);
             })
+            this.props.setRecipeState();
     }
 
     render() {

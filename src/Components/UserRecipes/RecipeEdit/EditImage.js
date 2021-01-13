@@ -70,6 +70,7 @@ class EditImage extends Component {
             .catch(error => {
                 console.log("There was an error ", error);
             })
+            this.props.setImageState();
     }
 
     handleSubmit = (event) => {

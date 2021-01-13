@@ -58,6 +58,7 @@ class EditEquipments extends Component {
                     console.log("There was an error ", error);
                 })
         }
+        this.props.setEquipmentsState();
     }
 
     render() {

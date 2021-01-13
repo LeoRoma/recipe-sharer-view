@@ -56,6 +56,7 @@ class EditSteps extends Component {
                     console.log("There was an error ", error);
                 })
         }
+        this.props.setStepsState();
     }
 
     render() {
