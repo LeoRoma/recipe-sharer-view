@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import '../../AddNewRecipe/NewRecipe.css';
 
 class EditRecipe extends Component {
     constructor(props) {
@@ -18,32 +19,9 @@ class EditRecipe extends Component {
     }
 
     handleChange = (event) => {
-        let value = event.target.value;
-
-        switch (event.target.name) {
-            case 'recipeName':
-                this.setState({ recipeName: value })
-                break;
-            case 'description':
-                this.setState({ description: value })
-                break;
-            case 'difficulty':
-                this.setState({ difficulty: value })
-                break;
-            case 'preparationTime':
-                this.setState({ preparationTime: value })
-                break;
-            case 'cookingTime':
-                this.setState({ cookingTime: value })
-                break;
-            case 'additionalTime':
-                this.setState({ additionalTime: value })
-                break;
-            case 'servings':
-                this.setState({ servings: value })
-                break;
-            default:
-        }
+        this.setState({
+            [event.target.name] : event.target.value
+        })
     }
 
     handleSubmit = (event) => {
@@ -85,23 +63,26 @@ class EditRecipe extends Component {
 
     render() {
         const { recipeName, description, difficulty, preparationTime, cookingTime, additionalTime, servings } = this.state
-        console.log(this.state.difficulty)
+
         return (
-            <div>
+            <div className="new-recipe-container-form">
                 I am Edit Recipe
                 <form className="form">
                     <label>
                         Name:
+                        <br />
                         <input type="text" name="recipeName" value={recipeName} onChange={this.handleChange} />
                     </label>
                     <br />
                     <label>
                         Description:
-                        <input type="text" name="description" value={description} onChange={this.handleChange} />
+                        <br />
+                        <textarea name="description" value={description} style={{ width: "400px", height: "120px" }} onChange={this.handleChange} required />
                     </label>
                     <br />
                     <label>
                         Difficulty:
+                        <br />
                         <select name="difficulty" value={difficulty} onChange={this.handleChange}>
                             <option value="none">None</option>
                             <option value="easy">Easy</option>
@@ -112,25 +93,29 @@ class EditRecipe extends Component {
                     <br />
                     <label>
                         Preparation Time:
+                        <br />
                         <input type="text" name="preparationTime" value={preparationTime} onChange={this.handleChange} />
                     </label>
                     <br />
                     <label>
                         Cooking Time:
+                        <br />
                         <input type="text" name="cookingTime" value={cookingTime} onChange={this.handleChange} />
                     </label>
                     <br />
                     <label>
                         Additional Time:
+                        <br />
                         <input type="text" name="additionalTime" value={additionalTime} onChange={this.handleChange} />
                     </label>
                     <br />
                     <label>
                         Servings:
+                        <br />
                         <input type="text" name="servings" value={servings} onChange={this.handleChange} />
                     </label>
                     <br />
-                    <input type="submit" value="Submit" onClick={this.handleSubmit}/>
+                    <input className="btn-primary form-button" type="submit" value="Submit" onClick={this.handleSubmit}/>
                 </form>
             </div>
         );

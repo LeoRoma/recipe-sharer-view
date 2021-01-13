@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './MainPage.css'
+
 import { Switch, Route, BrowserRouter } from 'react-router-dom';
 
 // import EditRecipe from './UserRecipes/RecipeEdit/EditRecipe';
