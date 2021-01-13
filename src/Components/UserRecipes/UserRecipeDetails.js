@@ -53,7 +53,6 @@ const UserRecipeDetails = ({
                 imageSuffix={imageSuffix}
             />
 
-            <h2>Ingredients</h2>
             <EditIngredients
                 userRecipeIngredients={userRecipeIngredients}
             />

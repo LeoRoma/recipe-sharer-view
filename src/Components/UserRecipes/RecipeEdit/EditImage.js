@@ -88,7 +88,7 @@ class EditImage extends Component {
                 <div className="form">
                     <form onSubmit={this.handleSubmit}>
                         <div className="image-container">
-                            <img style={{ width: "200px", height: "200px" }} src={this.state.file} alt="recipe" />
+                            {this.props.imageSuffix ? <img style={{ width: "200px", height: "200px" }} src={this.state.file} alt="recipe" /> : null}
                         </div>
 
                         <br />
@@ -102,9 +102,11 @@ class EditImage extends Component {
                     </form>
 
                 </div>
+
             </div>
         );
     }
 }
 
 export default EditImage;
+
