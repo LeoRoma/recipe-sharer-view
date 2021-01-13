@@ -69,7 +69,7 @@ class EditRecipe extends Component {
 
         return (
             <div className="new-recipe-container-form">
-                I am Edit Recipe
+                <h1>Edit {recipeName}</h1>
                 <form className="form">
                     <label>
                         Name:

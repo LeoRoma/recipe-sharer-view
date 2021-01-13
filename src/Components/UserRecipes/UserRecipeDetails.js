@@ -48,18 +48,18 @@ class UserRecipeDetails extends Component {
         let recipeId = userRecipe.recipeId;
         return (
 
-            <div key={recipeId}>
+            <div key={recipeId} className="user-recipe-details-container">
                 {/* {imageSuffix? <img src={imageDomain} style={{ width: "200px", height: "200px" }} alt="food" /> : null} */}
                 {
                     editRecipeCompleted ?
-                        <h3 style={{ color: "green" }}>Recipe Updated!</h3> : <EditRecipe
+                        <h2>Recipe Updated!</h2> : <EditRecipe
                             userRecipeDetails={this.props.userRecipeDetails}
                             setRecipeState={this.setRecipeState}
                         />
                 }
                 {
                     editImageCompleted ?
-                        <h3 style={{ color: "green" }}>Image Updated!</h3> : <EditImage
+                        <h2>Image Updated!</h2> : <EditImage
                             imageDomain={imageDomain}
                             recipeId={recipeId}
                             imageSuffix={imageSuffix}
@@ -69,7 +69,7 @@ class UserRecipeDetails extends Component {
 
                 {
                     editEquipmentsCompleted ?
-                        <h3 style={{ color: "green" }}>Equipments Updated!</h3> : <EditEquipments
+                        <h2 style={{ color: "green" }}>Equipments Updated!</h2> : <EditEquipments
                             userRecipeEquipments={this.props.userRecipeEquipments}
                             setEquipmentsState={this.setEquipmentsState}
                         />
@@ -77,7 +77,7 @@ class UserRecipeDetails extends Component {
 
                 {
                     editIngredientsCompleted ?
-                        <h3 style={{ color: "green" }}>Ingredients Updated!</h3> : <EditIngredients
+                        <h2 style={{ color: "green" }}>Ingredients Updated!</h2> : <EditIngredients
                             userRecipeIngredients={this.props.userRecipeIngredients}
                             setIngredientsState={this.setIngredientsState}
                         />
@@ -85,7 +85,7 @@ class UserRecipeDetails extends Component {
 
                 {
                     editStepsCompleted ?
-                        <h3 style={{ color: "green" }}>Steps Updated!</h3> : <EditSteps
+                        <h2 style={{ color: "green" }}>Steps Updated!</h2> : <EditSteps
                             userRecipeSteps={this.props.userRecipeSteps}
                             setStepsState={this.setStepsState}
                         />
