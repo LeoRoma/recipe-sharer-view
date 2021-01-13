@@ -81,7 +81,7 @@ class Login extends Component {
                         <label>
                             Email Address:
                             <br />
-                            <input type="text" name="email" onChange={this.handleChangeEmail} />
+                            <input type="email" name="email" onChange={this.handleChangeEmail} />
                         </label>
                     </div>
 

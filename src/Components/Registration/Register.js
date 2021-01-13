@@ -79,7 +79,7 @@ class Register extends Component {
                         <label style={{color:"white"}}>
                             Email:
                             <br />
-                        <input type="text" name="email" onChange={this.handleChangeEmail} />
+                        <input type="email" name="email" onChange={this.handleChangeEmail} />
                         </label>
                     </div>
 
