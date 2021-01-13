@@ -74,6 +74,7 @@ class RecipeForm extends Component {
             .then(response => {
                 console.log(response);
                 sessionStorage.setItem("recipeId", response.recipeId);
+                sessionStorage.setItem("recipeName", response.recipeName);
                 this.props.getRecipeFormState();
             })
             .catch(error => {
@@ -137,7 +138,7 @@ class RecipeForm extends Component {
                             <input type="text" name="servings" onChange={this.handleChange} required />
                         </label>
                         <br />
-                        <input className="btn-primary form-button" type="submit" value="Submit" />
+                        <a href="#image"><input className="btn-primary form-button" type="submit" value="Submit" /></a>
                     </form>
                 </div>
             </div>

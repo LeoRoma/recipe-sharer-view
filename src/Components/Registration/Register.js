@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Redirect} from 'react-router-dom';
 // import {Form, Button} from 'react-bootstrap';
 
 class Register extends Component {
@@ -13,7 +14,8 @@ class Register extends Component {
                 username: '',
                 email: '',
                 password: ''
-            }
+            },
+            redirect: false
         };
 
         this.handleChangeUsername = this.handleChangeUsername.bind(this);
@@ -52,6 +54,10 @@ class Register extends Component {
             })
         })
             .then(response => response.json())
+            .then(response => {
+                console.log(response);
+                this.setRedirect();
+            })
             .catch(error => {
                 console.error("There was an error!", error)
             })
@@ -60,10 +66,22 @@ class Register extends Component {
         //   }, 500)
     }
 
+    setRedirect = () => {
+        this.setState({
+            redirect: true
+        });
+    }
+
+    renderRedirect = () => {
+        if (this.state.redirect) {
+            return <Redirect to="/login" />
+        }
+    };
 
     render() {
         return (
             <div className="register-container">
+                {this.renderRedirect()}
                 <h1>Welcome to Recipe Sharer!</h1>
                 <form className="register-form" onSubmit={this.handleSubmit}>
                     

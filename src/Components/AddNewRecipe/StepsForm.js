@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
 
 class StepsForm extends Component {
     constructor() {
         super();
         this.state = {
-            steps: [{ instruction: "" }]
+            steps: [{ instruction: "" }],
+            redirect: false
         }
     };
 
@@ -53,7 +55,7 @@ class StepsForm extends Component {
                 .then(response => {
                     console.log(response);
                     console.log("ingredient " + i, " added!")
-                    
+                    this.setRedirect();
                     // sessionStorage.setItem("recipeId", response.recipeId);
                 })
                 .catch(error => {
@@ -63,10 +65,24 @@ class StepsForm extends Component {
         this.props.getStepsFormState();
     }
 
+    setRedirect = () => {
+        this.setState({
+            redirect: true
+        });
+    }
+
+    renderRedirect = () => {
+        if (this.state.redirect) {
+            this.props.getRecipes();
+            return <Redirect to="/recipes" />
+        }
+    };
+
     render() {
         let { steps } = this.state;
         return (
             <div className="new-recipe-container-form">
+                {this.renderRedirect()}
                 <h3>Steps</h3>
                 <div className="form">
                     <form onSubmit={this.handleSubmit}>

@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { Switch, Route, BrowserRouter } from 'react-router-dom';
 
 // import EditRecipe from './UserRecipes/RecipeEdit/EditRecipe';
+// import Footer from './Footer';
 import Login from './Registration/Login';
 import NewRecipe from './AddNewRecipe/NewRecipe';
 import Register from './Registration/Register';
@@ -66,30 +67,34 @@ class MainPage extends Component {
                         </Route>
                         <Route exact path="/user">
                             <UserRecipes
+
                                 getUserRecipeId={this.props.getUserRecipeId}
                                 userRecipes={this.props.userRecipes}
                             />
                         </Route>
                         <Route exact path="/user/recipe/details">
-                            <UserRecipeDetails 
+                            <UserRecipeDetails
                                 userRecipeDetails={this.props.userRecipeDetails}
                                 userRecipeEquipments={this.props.userRecipeEquipments}
                                 userRecipeSteps={this.props.userRecipeSteps}
                                 userRecipeIngredients={this.props.userRecipeIngredients}
-                         
+
                                 userRecipeImage={this.props.userRecipeImage}
-             
-                                // userRecipeImageDomain={this.props.userRecipeImageDomain}
+
+                            // userRecipeImageDomain={this.props.userRecipeImageDomain}
                             />
                         </Route>
                         <Route exact path="/new-recipe">
-                            <NewRecipe />
+                            <NewRecipe
+                                getRecipes={this.props.getRecipes}
+                            />
                         </Route>
                         {/* <Route exact path="/edit-recipe">
                             <EditRecipe />
                         </Route> */}
                     </Switch>
                 </BrowserRouter>
+                {/* <Footer /> */}
             </div>
         )
     }

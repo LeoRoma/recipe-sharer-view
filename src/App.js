@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+
+// import Footer from '../src/Components/Footer';
 import MainPage from '../src/Components/MainPage';
 import NavigationBar from '../src/Components/NavigationBar';
 import './App.css';
@@ -39,7 +41,7 @@ class App extends Component {
   };
 
   // Recipes
-  getRecipes() {
+  getRecipes = () => {
     fetch("https://localhost:44330/Recipes")
       .then(response => response.json())
       .then(recipesJson => this.setState({ recipes: recipesJson }))
@@ -157,6 +159,7 @@ class App extends Component {
           getLogoutState={this.getLogoutState}
         />
         <MainPage
+          getRecipes={this.getRecipes}
           getRecipeId={this.getRecipeId}
           getUserRecipeId={this.getUserRecipeId}
           recipes={recipes}
@@ -171,6 +174,7 @@ class App extends Component {
           userRecipeImage={userRecipeImage}
           userRecipePostDate={userRecipePostDate}
         />
+       
       </div>
     )
   }

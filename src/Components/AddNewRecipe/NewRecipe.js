@@ -63,7 +63,7 @@ class NewRecipe extends Component{
         }
 
         if(this.state.ingredientsFormCompleted === true){
-            stepsForm = <StepsForm getStepsFormState={this.getStepsFormState}/>
+            stepsForm = <StepsForm getStepsFormState={this.getStepsFormState} getRecipes={this.props.getRecipes}/>
         }else{
             stepsForm = null
         }

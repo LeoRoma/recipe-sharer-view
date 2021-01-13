@@ -6,3 +6,26 @@
     margin: auto;
     /* background-color: palegoldenrod; */
 }
+
+  .footer{
+    width: 100%;
+    margin: auto;
+    height: 80px;
+    background-color: black;
+  }
+  
+  .footer-text{
+    margin: auto;
+    width: 60%;
+    margin-top: 50px;
+  }
+  
+  .align-left{
+    float:right;
+    color:white;
+  }
+  
+  .align-right{
+    float:left;
+    color:white;
+  }
