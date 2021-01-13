@@ -75,7 +75,7 @@ class EditImage extends Component {
     handleSubmit = (event) => {
         event.preventDefault();
         this.deleteImage();
-        setTimeout(function(){
+        setTimeout(function () {
             this.postImage()
         }.bind(this), 1000)
     }
@@ -83,16 +83,25 @@ class EditImage extends Component {
     render() {
         // console.log(this.state)
         return (
-            <div>
-                <form onSubmit={this.handleSubmit}>
-                    {this.props.imageSuffix? <img style={{ width: "100px", height: "100px" }} src={this.state.file} alt="recipe" /> : null}
-                    <p>
-                        <input type="file"
+            <div className="new-recipe-container-image">
+                <h3>Image</h3>
+                <div className="form">
+                    <form onSubmit={this.handleSubmit}>
+                        <div className="image-container">
+                            <img style={{ width: "200px", height: "200px" }} src={this.state.file} alt="recipe" />
+                        </div>
+
+                        <br />
+                        <input
+                            className="btn-secondary form-button-add"
+                            type="file"
                             id="image"
-                            accept="image/png, image/jpeg" onChange={this.handleImageChange} required />
-                    </p>
-                    <input type="submit" />
-                </form>
+                            accept="image/png, image/jpeg, image/jpg" onChange={this.handleImageChange} required />
+                        <br />
+                        <input className="btn-primary form-button" type="submit" />
+                    </form>
+
+                </div>
             </div>
         );
     }
