@@ -5,7 +5,6 @@ const Recipes = ({ recipes, getRecipeId }) => {
 
     var recipesSorted = recipes.sort(function (a, b) { return b['postDate'] - a['postDate'] });
     var reversedRecipes = recipesSorted.reverse();
-    console.log(recipesSorted)
 
     return (
         <div className="recipe-container" >

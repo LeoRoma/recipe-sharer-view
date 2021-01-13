@@ -48,7 +48,7 @@ class Register extends Component {
                 username: username,
                 email: email,
                 password: password,
-                role: "user"
+                userRole: "user"
             })
         })
             .then(response => response.json())

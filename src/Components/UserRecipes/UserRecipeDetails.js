@@ -16,7 +16,7 @@ const UserRecipeDetails = ({
     userRecipePostDate }) => {
 
     var userRecipe = userRecipeDetails;
-
+    // console.log(userRecipe)
     // console.log(userRecipe)
     // var equipments = this.props.userRecipeEquipments;
     // var steps = this.props.userRecipeSteps;
@@ -42,32 +42,32 @@ const UserRecipeDetails = ({
 
     return (
         <div key={recipeId}>
-                      {/* {imageSuffix? <img src={imageDomain} style={{ width: "200px", height: "200px" }} alt="food" /> : null} */}
-                         <EditRecipe
-                            userRecipeDetails={userRecipeDetails} 
-                        />
-        
-                        <EditImage 
-                            imageDomain={imageDomain}
-                            recipeId={recipeId}
-                            imageSuffix={imageSuffix}
-                        />
-        
-                        <h2>Ingredients</h2>
-                        <EditIngredients 
-                            userRecipeIngredients={userRecipeIngredients}
-                        />
-        
-                        <h2>Method</h2>
-                        <EditSteps 
-                            userRecipeSteps={userRecipeSteps}
-                        />
-        
-                        <h2>Equipments</h2>
-                        <EditEquipments 
-                            userRecipeEquipments={userRecipeEquipments}
-                        />
-                    </div>
+            {/* {imageSuffix? <img src={imageDomain} style={{ width: "200px", height: "200px" }} alt="food" /> : null} */}
+            <EditRecipe
+                userRecipeDetails={userRecipeDetails}
+            />
+
+            <EditImage
+                imageDomain={imageDomain}
+                recipeId={recipeId}
+                imageSuffix={imageSuffix}
+            />
+
+            <h2>Ingredients</h2>
+            <EditIngredients
+                userRecipeIngredients={userRecipeIngredients}
+            />
+
+            <h2>Method</h2>
+            <EditSteps
+                userRecipeSteps={userRecipeSteps}
+            />
+
+            <h2>Equipments</h2>
+            <EditEquipments
+                userRecipeEquipments={userRecipeEquipments}
+            />
+        </div>
     );
 }
 

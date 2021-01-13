@@ -63,7 +63,7 @@ class EditEquipments extends Component {
     render() {
         // console.log(this.props.userRecipeEquipments)
         const equipments = this.state.equipments;
-        console.log(equipments)
+        // console.log(equipments)
         return (
             <div>
                 <form>
