@@ -13,7 +13,8 @@ class EditRecipe extends Component {
             cookingTime: this.props.userRecipeDetails.cookingTime,
             additionalTime: this.props.userRecipeDetails.additionalTime,
             servings: this.props.userRecipeDetails.servings,
-            recipeId: this.props.userRecipeDetails.recipeId
+            recipeId: this.props.userRecipeDetails.recipeId,
+            postDate: this.props.userRecipeDetails.postDate
         }
         // this.handleChange = this.handleChange.bind(this);
     }
@@ -30,7 +31,7 @@ class EditRecipe extends Component {
         var userId = sessionStorage.getItem('userId');
         var token = sessionStorage.getItem('token');
 
-        const {recipeId, recipeName, description, difficulty, preparationTime, cookingTime, additionalTime, servings} = this.state;
+        const {recipeId, recipeName, description, difficulty, preparationTime, cookingTime, additionalTime, servings, postDate} = this.state;
 
         fetch(`https://localhost:44330/Recipes/${recipeId}/user/${userId}`, {
             method: "Put",
@@ -48,6 +49,7 @@ class EditRecipe extends Component {
                 cookingTime: cookingTime,
                 additionalTime: additionalTime,
                 servings: servings,
+                postDate: postDate,
                 userId: userId
             })
         })

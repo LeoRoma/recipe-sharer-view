@@ -76,9 +76,9 @@ class MainPage extends Component {
                                 userRecipeEquipments={this.props.userRecipeEquipments}
                                 userRecipeSteps={this.props.userRecipeSteps}
                                 userRecipeIngredients={this.props.userRecipeIngredients}
-                                userRecipeUser={this.props.userRecipeUser}
+                         
                                 userRecipeImage={this.props.userRecipeImage}
-                                userRecipePostDate={this.props.userRecipePostDate}
+             
                                 // userRecipeImageDomain={this.props.userRecipeImageDomain}
                             />
                         </Route>

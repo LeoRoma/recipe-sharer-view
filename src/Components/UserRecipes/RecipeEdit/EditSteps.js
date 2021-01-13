@@ -31,7 +31,7 @@ class EditSteps extends Component {
         var token = sessionStorage.getItem('token');
         var steps = this.state.steps;
         var stepsLength = steps.length;
-        for(let i = 0; i < stepsLength; i++){
+        for (let i = 0; i < stepsLength; i++) {
             fetch(`https://localhost:44330/Steps/${steps[i].stepId}/recipe/${steps[i].recipeId}`, {
                 method: "Put",
                 headers: {
@@ -41,6 +41,7 @@ class EditSteps extends Component {
                 },
                 body: JSON.stringify({
                     stepId: steps[i].stepId,
+                    stepNumber: i + 1,
                     instruction: steps[i].instruction,
                     recipeId: steps[i].recipeId,
                 })
@@ -54,40 +55,47 @@ class EditSteps extends Component {
                 .catch(error => {
                     console.log("There was an error ", error);
                 })
-        }    
+        }
     }
 
     render() {
         const steps = this.state.steps;
         return (
-            <div>
-                <form>
+            <div className="new-recipe-container-form">
+                <h3>Steps</h3>
+                <div className="form">
+                    <form onSubmit={this.handleSubmit}>
+                        {
+                            steps.map((val, idx) => {
+                                let stepId = `Step-${idx}`, instructionId = `Instruction-${idx}`
+                                return (
+                                    <div key={idx}>
 
-                    <button onClick={this.addStep}>Add new Step</button>
-                    {
-                        steps.map((val, idx) => {
-                            let stepId = `Step-${idx}`, instructionId = `Instruction-${idx}`
-                            return (
-                                <div key={idx}>
-                      
-                                    <label htmlFor={stepId}>{`Step # ${idx + 1}`}</label>
-                                    <label htmlFor={instructionId}>Instruction</label>
-                                    <input
-                                        type="text"
-                                        name="instruction"
-                                        data-id={idx}
-                                        id={instructionId}
-                                        value={steps[idx].instruction}
-                                        className="instruction"
-                                        onChange={this.handleChange}
-                                    />
-                                </div>
-                            )
-                        })
-                    }
-                    <input type="submit" value="Submit" onClick={this.handleSubmit} />
-                </form>
-            </div>
+                                        <label htmlFor={stepId}># {idx + 1}</label>
+                                        <br />
+                                        <label htmlFor={instructionId}>Instruction</label>
+                                        <br />
+                                        <textarea
+                                            name="instruction"
+                                            data-id={idx}
+                                            id={instructionId}
+                                            value={steps[idx].instruction}
+                                            className="instruction"
+                                            style={{ width: "400px", height: "120px" }}
+                                            onChange={this.handleChange}
+                                            required
+                                        />
+                                        {/* <button className="btn-primary form-button-add" onClick={this.addStep}>+</button> */}
+
+                                    </div>
+                                )
+                            })
+                        }
+
+                        <input className="btn-primary form-button" type="submit" value="Submit" />
+                    </form>
+                </div>
+            </div >
         );
     }
 }

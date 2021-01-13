@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 
 import EditEquipments from './RecipeEdit/EditEquipments';
 import EditImage from './RecipeEdit/EditImage';
@@ -6,66 +6,57 @@ import EditIngredients from './RecipeEdit/EditIngredients';
 import EditRecipe from './RecipeEdit/EditRecipe';
 import EditSteps from './RecipeEdit/EditSteps';
 
-const UserRecipeDetails = ({
-    userRecipeDetails,
-    userRecipeEquipments,
-    userRecipeSteps,
-    userRecipeIngredients,
-    userRecipeUser,
-    userRecipeImage,
-    userRecipePostDate }) => {
+class UserRecipeDetails extends Component {
+    constructor(){
+        super();
+        this.state = {
+            editRecipeCompleted: false,
+            editImageCompleted: false,
+            editEquipmentsCompleted: false,
+            editIngredientsCompleted: false,
+            editStepsCompleted: false
+        };
+    }
 
-    var userRecipe = userRecipeDetails;
-    // console.log(userRecipe)
-    // console.log(userRecipe)
-    // var equipments = this.props.userRecipeEquipments;
-    // var steps = this.props.userRecipeSteps;
-    // var ingredients = this.props.userRecipeIngredients
-    // var user = this.props.userRecipeUser;
-    var image = userRecipeImage;
-    // var postDate = this.props.userRecipePostDate;
+    render() {
+        var userRecipe = this.props.userRecipeDetails;
+        var image = this.props.userRecipeImage;
+        var imageId = image.id;
+        var imageSuffix = image.suffix;
+        var imageDomain = `https://localhost:44330/dynamic/images/${imageId}${imageSuffix}`;
+        var recipeId = userRecipe.recipeId;
+        return (
 
-    var imageId = image.id;
+            <div key={recipeId}>
+                {/* {imageSuffix? <img src={imageDomain} style={{ width: "200px", height: "200px" }} alt="food" /> : null} */}
+                <EditRecipe
+                    userRecipeDetails={this.props.userRecipeDetails} 
+                />
 
-    var imageSuffix = image.suffix;
-    var imageDomain = `https://localhost:44330/dynamic/images/${imageId}${imageSuffix}`;
+                <EditImage 
+                    imageDomain={imageDomain}
+                    recipeId={recipeId}
+                    imageSuffix={imageSuffix}
+                />
 
-    var recipeId = userRecipe.recipeId;
+                <h2>Ingredients</h2>
+                <EditIngredients 
+                    userRecipeIngredients={this.props.userRecipeIngredients}
+                />
 
-    // var stepsSorted = steps.sort(function (a, b) { return a['stepNumber'] - b['stepNumber'] });
+                <h2>Method</h2>
+                <EditSteps 
+                    userRecipeSteps={this.props.userRecipeSteps}
+                />
 
+                <h2>Equipments</h2>
+                <EditEquipments 
+                    userRecipeEquipments={this.props.userRecipeEquipments}
+                />
+            </div>
+        );
+    };
 
-    // var YYYY = postDate.slice(0, 4);
-    // var MM = postDate.slice(5, 7);
-    // var DD = postDate.slice(8, 10);
-    // var formattedDate = `${DD}/${MM}/${YYYY}`;
-
-    return (
-        <div key={recipeId}>
-            {/* {imageSuffix? <img src={imageDomain} style={{ width: "200px", height: "200px" }} alt="food" /> : null} */}
-            <EditRecipe
-                userRecipeDetails={userRecipeDetails}
-            />
-
-            <EditImage
-                imageDomain={imageDomain}
-                recipeId={recipeId}
-                imageSuffix={imageSuffix}
-            />
-
-            <EditIngredients
-                userRecipeIngredients={userRecipeIngredients}
-            />
-
-            <EditEquipments
-                userRecipeEquipments={userRecipeEquipments}
-            />
-
-            <EditSteps
-                userRecipeSteps={userRecipeSteps}
-            />
-        </div>
-    );
 }
 
 
