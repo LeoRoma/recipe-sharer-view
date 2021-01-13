@@ -28,7 +28,13 @@ class App extends Component {
       userRecipeSteps: [],
       userRecipeIngredients: [],
       userRecipeUser: {},
-      userRecipeImage: {}
+      userRecipeImage: {},
+
+      // pagination
+      currentPage: 1,
+      setCurrentPage: 1,
+      recipesPerPage: 2,
+      setRecipesPerPage: 2
     }
   };
 
@@ -97,10 +103,6 @@ class App extends Component {
           userRecipePostDate: recipeJson.postDate
         })
       })
-    // .catch(error => error);
-    //   setTimeout(function () {
-    //     window.location.reload(false);
-    // }, 500)
   }
 
   getUserRecipeId = (recipeId) => {
@@ -132,26 +134,13 @@ class App extends Component {
     });
   }
 
-  // window.onbeforeunload = function() {
-  //   localStorage.clear();
-  // }
   render() {
-    // var recipeDetails = this.state.recipe;
-    // var userRecipeDetails = this.state.userRecipe;
-    // var userRecipeEquipments = this.state.userRecipeEquipments;
-    // var userRecipeSteps = this.state.userRecipeSteps;
-    // var userRecipeIngredients = this.state.userRecipeIngredients;
-    // var userRecipeUser = this.state.userRecipeUser;
-    // var userRecipeImage = this.state.userRecipeImage;
-    // var userRecipePostDate = this.state.userRecipePostDate;
+    const {recipes, recipe, userRecipes, userRecipe, userRecipeEquipments, userRecipeSteps, userRecipeIngredients, userRecipeUser, userRecipeImage, userRecipePostDate} = this.state; 
 
-    const {recipes, recipe, userRecipes, userRecipe, userRecipeEquipments, userRecipeSteps, userRecipeIngredients, userRecipeUser, userRecipeImage, userRecipePostDate} = this.state
-    // console.log(userRecipeImage.id);
-    // var imageId = userRecipeImage.id;
-
-    // var imageSuffix = userRecipeImage.suffix;
-    // var userRecipeImageDomain = `https://localhost:44330/dynamic/images/${imageId}${imageSuffix}`;
-  
+    const indexOfLastRecipe = this.state.currentPage * this.state.recipesPerPage;
+    const indexOfFirstRecipe = indexOfLastRecipe - this.state.recipesPerPage;
+    const currentRecipes = recipes.slice(indexOfFirstRecipe, indexOfLastRecipe);
+ 
     return (
       <div className="app">
         <NavigationBar
@@ -162,7 +151,7 @@ class App extends Component {
           getRecipes={this.getRecipes}
           getRecipeId={this.getRecipeId}
           getUserRecipeId={this.getUserRecipeId}
-          recipes={recipes}
+          recipes={currentRecipes}
           userRecipes={userRecipes}
           recipeDetails={recipe}
           userRecipeDetails={userRecipe}
