@@ -18,6 +18,26 @@ class UserRecipeDetails extends Component {
         };
     }
 
+    setRecipeState = () => {
+        this.setState({editRecipeCompleted: true});
+    }
+
+    setImageState = () => {
+        this.setState({editImageCompleted: true});
+    }
+
+    setEquipmentsState = () => {
+        this.setState({editEquipmentsCompleted: true});
+    }
+
+    setIngredientsState = () => {
+        this.setState({editIngredientsCompleted: true});
+    }
+
+    setStepsState = () => {
+        this.setState({editStepsCompleted: true});
+    }
+    
     render() {
         var userRecipe = this.props.userRecipeDetails;
         var image = this.props.userRecipeImage;
@@ -31,28 +51,31 @@ class UserRecipeDetails extends Component {
                 {/* {imageSuffix? <img src={imageDomain} style={{ width: "200px", height: "200px" }} alt="food" /> : null} */}
                 <EditRecipe
                     userRecipeDetails={this.props.userRecipeDetails} 
+                    setRecipeState={this.setRecipeState}
                 />
 
                 <EditImage 
                     imageDomain={imageDomain}
                     recipeId={recipeId}
                     imageSuffix={imageSuffix}
+                    setImageState={this.setImageState}
                 />
 
-                <h2>Ingredients</h2>
-                <EditIngredients 
-                    userRecipeIngredients={this.props.userRecipeIngredients}
-                />
-
-                <h2>Method</h2>
-                <EditSteps 
-                    userRecipeSteps={this.props.userRecipeSteps}
-                />
-
-                <h2>Equipments</h2>
                 <EditEquipments 
                     userRecipeEquipments={this.props.userRecipeEquipments}
+                    setEquipmentsState={this.setEquipmentsState}
                 />
+     
+                <EditIngredients 
+                    userRecipeIngredients={this.props.userRecipeIngredients}
+                    setIngredientsState={this.setIngredientsState}
+                />
+
+                <EditSteps 
+                    userRecipeSteps={this.props.userRecipeSteps}
+                    setStepsState={this.setStepsState}
+                />
+              
             </div>
         );
     };
