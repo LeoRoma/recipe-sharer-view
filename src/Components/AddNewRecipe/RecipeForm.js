@@ -79,7 +79,7 @@ class RecipeForm extends Component {
                 console.log(response);
                 sessionStorage.setItem("recipeId", response.recipeId);
                 sessionStorage.setItem("recipeName", response.recipeName);
-                this.props.getRecipeFormState();
+                this.props.setRecipeFormState();
                 this.setState({isSubmitted: true});
             })
             .catch(error => {
@@ -87,11 +87,8 @@ class RecipeForm extends Component {
             })
     }
 
-    greetone = () => {
-        console.log("hello1")
-    }
     render() {
-        const isSubmitted = this.state;
+        const {isSubmitted} = this.state;
         // console.log(this.state)
         return (
             <div className="new-recipe-container-form">
@@ -144,7 +141,7 @@ class RecipeForm extends Component {
                             <input type="text" name="servings" onChange={this.handleChange} required />
                         </label>
                         <br />
-                        {isSubmitted? <input className="btn-primary form-button" type="submit" value="Submit" /> : <h6>Recipe Submitted!</h6>}
+                        {isSubmitted? <h6>Recipe Submitted!</h6> : <input className="btn-primary form-button" type="submit" value="Submit" />}
                     </form>
                 </div>
             </div>

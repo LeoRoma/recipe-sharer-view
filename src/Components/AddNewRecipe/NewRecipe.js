@@ -21,23 +21,23 @@ class NewRecipe extends Component{
         };
     }
 
-    getRecipeFormState = () => {
+    setRecipeFormState = () => {
         this.setState({recipeFormCompleted: true})
     }
 
-    getImageFormState = () => {
+    setImageFormState = () => {
         this.setState({imageFormCompleted: true})
     }
 
-    getEquipmentsFormState = () => {
+    setEquipmentsFormState = () => {
         this.setState({equipmentsFormCompleted: true})
     }
 
-    getIngredientsFormState = () => {
+    setIngredientsFormState = () => {
         this.setState({ingredientsFormCompleted: true})
     }
 
-    getStepsFormState = () => {
+    setStepsFormState = () => {
         this.setState({stepsFormCompleted: true})
     }
 
@@ -45,32 +45,32 @@ class NewRecipe extends Component{
         let imageForm, equipmentsForm, ingredientsForm, stepsForm;
 
         if(this.state.recipeFormCompleted === true){
-            imageForm = <RecipeImageForm getImageFormState={this.getImageFormState}/>
+            imageForm = <RecipeImageForm setImageFormState={this.setImageFormState}/>
         }else{
             imageForm = null
         }
 
         if(this.state.imageFormCompleted === true){
-            equipmentsForm = <EquipmentsForm getEquipmentsFormState={this.getEquipmentsFormState}/>
+            equipmentsForm = <EquipmentsForm setEquipmentsFormState={this.setEquipmentsFormState}/>
         }else{
             equipmentsForm = null
         }
 
         if(this.state.equipmentsFormCompleted === true){
-            ingredientsForm = <IngredientsForm getIngredientsFormState={this.getIngredientsFormState}/>
+            ingredientsForm = <IngredientsForm setIngredientsFormState={this.setIngredientsFormState}/>
         }else{
             ingredientsForm = null
         }
 
         if(this.state.ingredientsFormCompleted === true){
-            stepsForm = <StepsForm getStepsFormState={this.getStepsFormState} getRecipes={this.props.getRecipes}/>
+            stepsForm = <StepsForm setStepsFormState={this.setStepsFormState} getRecipes={this.props.getRecipes}/>
         }else{
             stepsForm = null
         }
         return(
             <div className="new-recipe-container">
                 <h1>New Recipe</h1>
-                <RecipeForm getRecipeFormState={this.getRecipeFormState} />
+                <RecipeForm setRecipeFormState={this.setRecipeFormState} />
                 {imageForm}
                 {equipmentsForm}
                 {ingredientsForm}

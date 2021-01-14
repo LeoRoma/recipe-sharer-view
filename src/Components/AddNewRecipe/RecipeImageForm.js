@@ -4,7 +4,8 @@ class RecipeImageForm extends Component {
 
   state = {
     image: null,
-    file: null
+    file: null,
+    isSubmitted: false
   };
 
   handleChange = (e) => {
@@ -41,7 +42,8 @@ class RecipeImageForm extends Component {
       .then(response => response.json())
       .then(response => {
         console.log(response);
-        this.props.getImageFormState();
+        this.props.setImageFormState();
+        this.setState({isSubmitted: true});
       })
       .catch(error => {
         console.log("There was an error ", error);
@@ -49,6 +51,8 @@ class RecipeImageForm extends Component {
   };
 
   render() {
+    const {isSubmitted} = this.state;
+    // console.log("Image ", isSubmitted);
     return (
       <section id="image">
         <div className="new-recipe-container-image">
@@ -66,7 +70,7 @@ class RecipeImageForm extends Component {
                 id="image"
                 accept="image/png, image/jpeg, image/jpg" onChange={this.handleImageChange} required />
               <br />
-              <input className="btn-primary form-button" type="submit" />
+              {isSubmitted? <h6>Image Submitted!</h6> : <input className="btn-primary form-button" type="submit" />}
             </form>
 
           </div>
