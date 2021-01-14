@@ -13,36 +13,40 @@ class RecipeForm extends Component {
             cookingTime: '',
             additionalTime: '',
             servings: '',
+            isSubmitted: false
         };
     }
 
     handleChange = (event) => {
-        let value = event.target.value;
+        // let value = event.target.value;
 
-        switch (event.target.name) {
-            case 'recipeName':
-                this.setState({ recipeName: value })
-                break;
-            case 'description':
-                this.setState({ description: value })
-                break;
-            case 'difficulty':
-                this.setState({ difficulty: value })
-                break;
-            case 'preparationTime':
-                this.setState({ preparationTime: value })
-                break;
-            case 'cookingTime':
-                this.setState({ cookingTime: value })
-                break;
-            case 'additionalTime':
-                this.setState({ additionalTime: value })
-                break;
-            case 'servings':
-                this.setState({ servings: value })
-                break;
-            default:
-        }
+        // switch (event.target.name) {
+        //     case 'recipeName':
+        //         this.setState({ recipeName: value })
+        //         break;
+        //     case 'description':
+        //         this.setState({ description: value })
+        //         break;
+        //     case 'difficulty':
+        //         this.setState({ difficulty: value })
+        //         break;
+        //     case 'preparationTime':
+        //         this.setState({ preparationTime: value })
+        //         break;
+        //     case 'cookingTime':
+        //         this.setState({ cookingTime: value })
+        //         break;
+        //     case 'additionalTime':
+        //         this.setState({ additionalTime: value })
+        //         break;
+        //     case 'servings':
+        //         this.setState({ servings: value })
+        //         break;
+        //     default:
+        // }
+        this.setState({
+            [event.target.name] : event.target.value
+        })
     }
 
     handleSubmit = (event) => {
@@ -76,6 +80,7 @@ class RecipeForm extends Component {
                 sessionStorage.setItem("recipeId", response.recipeId);
                 sessionStorage.setItem("recipeName", response.recipeName);
                 this.props.getRecipeFormState();
+                this.setState({isSubmitted: true});
             })
             .catch(error => {
                 console.log("There was an error ", error);
@@ -86,6 +91,7 @@ class RecipeForm extends Component {
         console.log("hello1")
     }
     render() {
+        const isSubmitted = this.state;
         // console.log(this.state)
         return (
             <div className="new-recipe-container-form">
@@ -138,7 +144,7 @@ class RecipeForm extends Component {
                             <input type="text" name="servings" onChange={this.handleChange} required />
                         </label>
                         <br />
-                        <input className="btn-primary form-button" type="submit" value="Submit" />
+                        {isSubmitted? <input className="btn-primary form-button" type="submit" value="Submit" /> : <h6>Recipe Submitted!</h6>}
                     </form>
                 </div>
             </div>

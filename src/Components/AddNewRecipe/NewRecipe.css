@@ -8,6 +8,14 @@
     margin-top: 5%;
 }
 
+.form h6{
+    color:green;
+    border-bottom: solid;
+    text-decoration: underline;
+    border-bottom: green;
+    margin-bottom: 5%;
+}
+
 .new-recipe-container-form{
     margin: auto;
     /* margin-top: 5%; */
@@ -66,3 +74,4 @@
     border-bottom: green;
     margin-bottom: 5%;
 }
+
