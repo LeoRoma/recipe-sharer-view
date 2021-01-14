@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 // import Footer from '../src/Components/Footer';
 import MainPage from '../src/Components/MainPage';
 import NavigationBar from '../src/Components/NavigationBar';
+import Pagination from '../src/Components/Pagination';
 import './App.css';
 // import UserRecipeDetails from './Components/UserRecipes/UserRecipeDetails';
 
@@ -32,9 +33,7 @@ class App extends Component {
 
       // pagination
       currentPage: 1,
-      setCurrentPage: 1,
-      recipesPerPage: 2,
-      setRecipesPerPage: 2
+      recipesPerPage: 3,
     }
   };
 
@@ -134,13 +133,20 @@ class App extends Component {
     });
   }
 
-  render() {
-    const {recipes, recipe, userRecipes, userRecipe, userRecipeEquipments, userRecipeSteps, userRecipeIngredients, userRecipeUser, userRecipeImage, userRecipePostDate} = this.state; 
+  //Change page
 
-    const indexOfLastRecipe = this.state.currentPage * this.state.recipesPerPage;
-    const indexOfFirstRecipe = indexOfLastRecipe - this.state.recipesPerPage;
+  paginate = (pageNumber) => {
+    console.log(pageNumber)
+    this.setState({currentPage: pageNumber})
+  }
+
+  render() {
+    const { recipes, recipe, userRecipes, userRecipe, userRecipeEquipments, userRecipeSteps, userRecipeIngredients, userRecipeUser, userRecipeImage, userRecipePostDate, recipesPerPage, currentPage } = this.state;
+
+    const indexOfLastRecipe = currentPage * recipesPerPage;
+    const indexOfFirstRecipe = indexOfLastRecipe - recipesPerPage;
     const currentRecipes = recipes.slice(indexOfFirstRecipe, indexOfLastRecipe);
- 
+
     return (
       <div className="app">
         <NavigationBar
@@ -163,7 +169,16 @@ class App extends Component {
           userRecipeImage={userRecipeImage}
           userRecipePostDate={userRecipePostDate}
         />
-       
+
+        <div className="main-page">
+        <Pagination
+          recipesPerPage={recipesPerPage}
+          totalRecipes={recipes.length}
+          paginate={this.paginate}
+        />
+        </div>
+    
+
       </div>
     )
   }

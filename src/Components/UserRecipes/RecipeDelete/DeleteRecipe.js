@@ -3,10 +3,10 @@ import React, {Component} from 'react';
 class DeleteRecipe extends Component {
 
 
-    handleSubmit = (event) => {
+    deleteRecipe = () => {
         var recipeId = this.props.recipeId;
         var token = sessionStorage.getItem('token');
-        event.preventDefault();
+        // event.preventDefault();
         fetch("https://localhost:44330/Recipes/delete/"  + recipeId,{
             method: "Delete",
             headers: {
@@ -26,10 +26,18 @@ class DeleteRecipe extends Component {
                 window.location.reload(false);
             }, 500)
     }
+
+    confirmDelete = () => {
+        console.log("Hello");
+        if(window.confirm("Are you sure you want to delete this recipe?")){
+            this.deleteRecipe();
+        }
+    }
+
     render(){
         return (
             <div>
-                <button onClick={this.handleSubmit}>Delete</button>
+                <button onClick={this.confirmDelete}>Delete</button>
             </div>
         );
     }

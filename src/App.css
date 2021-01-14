@@ -1,8 +1,10 @@
-.app {}
+.app {
+
+}
 
 .main-page {
     width: 60%;
-    height: 100vh;
+    /* height: 100vh; */
     margin: auto;
     /* background-color: palegoldenrod; */
 }
