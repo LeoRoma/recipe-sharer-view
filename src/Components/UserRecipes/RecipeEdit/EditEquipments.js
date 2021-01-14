@@ -71,7 +71,7 @@ class EditEquipments extends Component {
                 <div className="form">
                     <div className="row form-row">
                         <div className="col-lg-1 p-0 form-col">
-                            <h6>#</h6>
+                            <h5>#</h5>
                         </div>
                         <div className="col-lg-11 p-0 form-col">
                             <h5>Name</h5>
@@ -85,7 +85,7 @@ class EditEquipments extends Component {
                                     <div key={idx}>
                                         <div className="row form-row">
                                             <div className="col-lg-1 p-0 form-col">
-                                                <h6><label htmlFor={equipmentId}>{idx + 1}</label></h6>
+                                                <h5><label htmlFor={equipmentId}>{idx + 1}</label></h5>
                                             </div>
                                             <div className="col-lg-11 p-0 form-col">
                                                 <input

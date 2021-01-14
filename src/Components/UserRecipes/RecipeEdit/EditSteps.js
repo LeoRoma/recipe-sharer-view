@@ -72,7 +72,7 @@ class EditSteps extends Component {
                                 return (
                                     <div key={idx}>
 
-                                        <label htmlFor={stepId}># {idx + 1}</label>
+                                        <label style={{fontSize:"20px", fontWeight:"bold"}} htmlFor={stepId}># {idx + 1}</label>
                                         <br />
                                         <label htmlFor={instructionId}>Instruction</label>
                                         <br />
