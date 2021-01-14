@@ -57,8 +57,8 @@ class MainPage extends Component {
         const indexOfFirstRecipe = indexOfLastRecipe - recipesPerPage;
         const currentRecipes = this.props.recipes.slice(indexOfFirstRecipe, indexOfLastRecipe);
 
-        var recipeName = this.props.recipeDetails.recipeName;
-        var recipeDetailsPath = `/${recipeName}`;
+        const recipeName = this.props.recipeDetails.recipeName;
+        const recipeDetailsPath = `/${recipeName}`;
 
         return (
             <div className="main-page">
@@ -105,6 +105,7 @@ class MainPage extends Component {
                         </Route>
                         <Route exact path="/new-recipe">
                             <NewRecipe
+                                getUserRecipeId={this.props.getUserRecipeId}
                                 getRecipes={this.props.getRecipes}
                             />
                         </Route>

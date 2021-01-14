@@ -5,7 +5,7 @@ class EquipmentsForm extends Component {
         super();
         this.state = {
             equipments: [{ equipmentName: "" }],
-            isSubmitted: true
+            isSubmitted: false
         }
     };
 

@@ -37,7 +37,7 @@ class DeleteRecipe extends Component {
     render(){
         return (
             <div>
-                <button onClick={this.confirmDelete}>Delete</button>
+                <button className="btn-outline-danger" onClick={this.confirmDelete}>Delete</button>
             </div>
         );
     }

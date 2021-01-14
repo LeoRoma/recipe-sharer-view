@@ -35,16 +35,17 @@ class RecipeDetails extends Component {
         var servings = recipe.servings;
 
         var capitalizeRecipeName = recipeName.charAt(0).toUpperCase() + recipeName.slice(1)
-        // var postDate = recipe.postDate;
-        // var YYYY = postDate.slice(0, 4);
-        // var MM = postDate.slice(5, 7);
-        // var DD = postDate.slice(8, 10);
-        // var formattedDate = `${DD}/${MM}/${YYYY}`;
+        var postDate = recipe.postDate;
+        var YYYY = postDate.slice(0, 4);
+        var MM = postDate.slice(5, 7);
+        var DD = postDate.slice(8, 10);
+        var formattedDate = `${DD}/${MM}/${YYYY}`;
 
         return (
             <div key={recipeId} className="recipe-details-container">
                 <h1>{capitalizeRecipeName}</h1>
                 <p>Posted by: {username}</p>
+                <p>{formattedDate}</p>
                 <div className="row no-gutters recipe-details-header">
                     <div className="col-lg-6 p-0 recipe-details-col img-container">
                         <img src={imageDomain} alt="food" className="img-fill" />
