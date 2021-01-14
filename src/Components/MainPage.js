@@ -6,6 +6,7 @@ import { Switch, Route, BrowserRouter } from 'react-router-dom';
 // import Footer from './Footer';
 import Login from './Registration/Login';
 import NewRecipe from './AddNewRecipe/NewRecipe';
+import Pagination from './Pagination';
 import Register from './Registration/Register';
 import Recipes from './Recipes/Recipes';
 import RecipeDetails from './Recipes/RecipeDetails';
@@ -21,6 +22,10 @@ class MainPage extends Component {
             imageId: 0,
             imageSuffix: "",
             recipe: {},
+
+            // pagination
+            currentPage: 1,
+            recipesPerPage: 3,
         }
     };
 
@@ -41,9 +46,18 @@ class MainPage extends Component {
     //     .catch(error => error);
     // }
 
-    render() {
-        var recipeName = this.props.recipeDetails.recipeName;
+    paginate = (pageNumber) => {
+        console.log(pageNumber)
+        this.setState({ currentPage: pageNumber })
+    }
 
+    render() {
+        const {currentPage, recipesPerPage} = this.state;
+        const indexOfLastRecipe = currentPage * recipesPerPage;
+        const indexOfFirstRecipe = indexOfLastRecipe - recipesPerPage;
+        const currentRecipes = this.props.recipes.slice(indexOfFirstRecipe, indexOfLastRecipe);
+
+        var recipeName = this.props.recipeDetails.recipeName;
         var recipeDetailsPath = `/${recipeName}`;
 
         return (
@@ -56,8 +70,13 @@ class MainPage extends Component {
                         <Route exact path="/register" component={Register} />
                         <Route exact path="/recipes">
                             <Recipes
-                                recipes={this.props.recipes}
+                                recipes={currentRecipes}
                                 getRecipeId={this.props.getRecipeId}
+                            />
+                            <Pagination
+                                recipesPerPage={recipesPerPage}
+                                totalRecipes={this.props.recipes.length}
+                                paginate={this.paginate}
                             />
                         </Route>
                         <Route exact path={recipeDetailsPath}>

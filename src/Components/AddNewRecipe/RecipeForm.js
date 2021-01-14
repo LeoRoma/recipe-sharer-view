@@ -138,7 +138,7 @@ class RecipeForm extends Component {
                             <input type="text" name="servings" onChange={this.handleChange} required />
                         </label>
                         <br />
-                        <a href="#image"><input className="btn-primary form-button" type="submit" value="Submit" /></a>
+                        <input className="btn-primary form-button" type="submit" value="Submit" />
                     </form>
                 </div>
             </div>
