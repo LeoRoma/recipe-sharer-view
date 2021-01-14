@@ -6,6 +6,7 @@ class StepsForm extends Component {
         super();
         this.state = {
             steps: [{ instruction: "" }],
+            isSubmitted: false,
             redirect: false
         }
     };
@@ -63,6 +64,9 @@ class StepsForm extends Component {
                 })
         }
         this.props.getStepsFormState();
+        this.setState({
+            isSubmitted:true
+        });
     }
 
     setRedirect = () => {
@@ -79,7 +83,7 @@ class StepsForm extends Component {
     };
 
     render() {
-        let { steps } = this.state;
+        const { steps, isSubmitted } = this.state;
         return (
             <div className="new-recipe-container-form">
                 {this.renderRedirect()}
@@ -113,7 +117,7 @@ class StepsForm extends Component {
                             })
                         }
 
-                        <input className="btn-primary form-button" type="submit" value="Submit" />
+                        {isSubmitted ? <h6>Steps Submitted!</h6> : <input className="btn-primary form-button" type="submit" value="Submit" />}
                     </form>
                 </div>
             </div >

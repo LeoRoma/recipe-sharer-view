@@ -110,7 +110,7 @@ class EquipmentsForm extends Component {
                                 })
                             }
 
-                            {isSubmitted? <h6>Image Submitted!</h6> : <input className="btn-primary form-button" type="submit" value="Submit" />}
+                            {isSubmitted? <h6>Equipments Submitted!</h6> : <input className="btn-primary form-button" type="submit" value="Submit" />}
                         </form>
                     </div>
 
