@@ -4,7 +4,8 @@ class EquipmentsForm extends Component {
     constructor() {
         super();
         this.state = {
-            equipments: [{ equipmentName: "" }]
+            equipments: [{ equipmentName: "" }],
+            isSubmitted: true
         }
     };
 
@@ -58,11 +59,12 @@ class EquipmentsForm extends Component {
                     console.log("There was an error ", error);
                 })
         }
-        this.props.getEquipmentsFormState()
+        this.props.setEquipmentsFormState()
+        this.setState({isSubmitted: true});
     }
 
     render() {
-        let { equipments } = this.state;
+        let { equipments, isSubmitted } = this.state;
         return (
             <section id="equipments">
                 <div className="new-recipe-container-form">
@@ -108,7 +110,7 @@ class EquipmentsForm extends Component {
                                 })
                             }
 
-                            <input className="btn-primary form-button" type="submit" value="Submit" />
+                            {isSubmitted? <h6>Image Submitted!</h6> : <input className="btn-primary form-button" type="submit" value="Submit" />}
                         </form>
                     </div>
 
