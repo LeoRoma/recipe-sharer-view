@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-// import Footer from '../src/Components/Footer';
+import Footer from '../src/Components/Footer';
 import MainPage from '../src/Components/MainPage';
 import NavigationBar from '../src/Components/NavigationBar';
 // import Pagination from '../src/Components/Pagination';
@@ -162,7 +162,7 @@ class App extends Component {
           userRecipeImage={userRecipeImage}
           userRecipePostDate={userRecipePostDate}
         />
-
+         <Footer />
       </div>
     )
   }

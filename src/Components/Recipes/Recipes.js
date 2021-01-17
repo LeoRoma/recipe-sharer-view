@@ -4,13 +4,13 @@ import Recipe from './Recipe';
 const Recipes = ({ recipes, getRecipeId }) => {
 
     var recipesSorted = recipes.sort(function (a, b) { return a['postDate'] - b['postDate'] });
-    // var reversedRecipes = recipesSorted.reverse();
+    var reversedRecipes = recipesSorted.reverse();
 
     return (
         <div className="recipe-container" >
             <h1>Recipes</h1>
             {
-                recipesSorted.map((recipe) =>
+                reversedRecipes.map((recipe) =>
                     <
                         Recipe key={recipe.recipeId}
                         recipeId={recipe.recipeId}

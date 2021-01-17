@@ -29,7 +29,9 @@ const Recipe = ({
     var MM = postDate.slice(5, 7);
     var DD = postDate.slice(8, 10);
     var formattedDate = `${DD}/${MM}/${YYYY}`;
-    var capitalizeRecipeName = recipeName.charAt(0).toUpperCase() + recipeName.slice(1)
+    var capitalizeRecipeName = recipeName.charAt(0).toUpperCase() + recipeName.slice(1);
+
+    
 
     return (
 

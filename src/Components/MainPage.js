@@ -25,7 +25,7 @@ class MainPage extends Component {
 
             // pagination
             currentPage: 1,
-            recipesPerPage: 3,
+            recipesPerPage: 5,
         }
     };
 
@@ -114,7 +114,7 @@ class MainPage extends Component {
                         </Route> */}
                     </Switch>
                 </BrowserRouter>
-                {/* <Footer /> */}
+               
             </div>
         )
     }

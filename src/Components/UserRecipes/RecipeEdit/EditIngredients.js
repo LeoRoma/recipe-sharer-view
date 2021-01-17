@@ -48,7 +48,7 @@ class EditIngredients extends Component {
                 .then(response => response)
                 .then(response => {
                     console.log("I am response: ", response);
-                    console.log("ingredient " + i, " added!")
+                    console.log("ingredient " + i, " added!");
                     // sessionStorage.setItem("recipeId", response.recipeId);
                 })
                 .catch(error => {
@@ -57,6 +57,11 @@ class EditIngredients extends Component {
         }     
         this.props.setIngredientsState();
     }
+
+    // getIngredientId = (event, ingredientId) => {
+    //     event.preventDefault();
+    //     console.log(ingredientId);
+    // }
 
     render() {
         const ingredients = this.state.ingredients;
@@ -116,6 +121,7 @@ class EditIngredients extends Component {
                                                 required
                                             />
                                             {/* <button className="btn-primary form-button-add" onClick={this.addIngredient}>+</button> */}
+                                            {/* <button onClick={() => this.getIngredientId(ingredients[idx].ingredientId)}>Edit</button> */}
                                         </div>
 
                                     </div>
@@ -124,7 +130,6 @@ class EditIngredients extends Component {
                             )
                         })
                     }
-
                     <input className="btn-primary form-button" type="submit" value="Submit" />
                 </form>
             </div>
