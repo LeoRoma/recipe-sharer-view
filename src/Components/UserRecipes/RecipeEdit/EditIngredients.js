@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+// import EditIngredient from './EditIngredient';
 
 class EditIngredients extends Component {
     constructor(props) {
@@ -18,20 +19,21 @@ class EditIngredients extends Component {
         }
     }
 
-    addIngredient = (event) => {
-        event.preventDefault();
-        this.setState((prevState) => ({
-            ingredients: [...prevState.ingredients, { ingredientName: "", amount: "" }]
-        }))
-    }
+    // addIngredient = (event) => {
+    //     event.preventDefault();
+    //     this.setState((prevState) => ({
+    //         ingredients: [...prevState.ingredients, { ingredientName: "", amount: "" }]
+    //     }))
+    // }
 
-    handleSubmit = (event) => {
-        event.preventDefault();
+    handleSubmit = (ingredientId, ingredientName, amount, recipeId) => {
+        // event.preventDefault();
+        console.log(ingredientId, ingredientName, amount)
         var token = sessionStorage.getItem('token');
         var ingredients = this.state.ingredients;
-        var ingredientsLength = ingredients.length;
-        for(let i = 0; i < ingredientsLength; i++){
-            fetch(`https://localhost:44330/Ingredients/${ingredients[i].ingredientId}/recipe/${ingredients[i].recipeId}`, {
+        // var ingredientsLength = ingredients.length;
+        // for (let i = 0; i < ingredientsLength; i++) {
+            fetch(`https://localhost:44330/Ingredients/${ingredientId}/recipe/${recipeId}`, {
                 method: "Put",
                 headers: {
                     Accept: 'application/json',
@@ -39,36 +41,58 @@ class EditIngredients extends Component {
                     'Authorization': "Bearer " + token
                 },
                 body: JSON.stringify({
-                    ingredientId: ingredients[i].ingredientId,
-                    ingredientName: ingredients[i].ingredientName,
-                    amount: ingredients[i].amount,
-                    recipeId: ingredients[i].recipeId,
+                    ingredientId: ingredientId,
+                    ingredientName: ingredientName,
+                    amount: amount,
+                    recipeId: recipeId,
                 })
             })
                 .then(response => response)
                 .then(response => {
                     console.log("I am response: ", response);
-                    console.log("ingredient " + i, " added!");
+                    console.log("ingredient " + ingredientName, " added!");
                     // sessionStorage.setItem("recipeId", response.recipeId);
                 })
                 .catch(error => {
                     console.log("There was an error ", error);
                 })
-        }     
-        this.props.setIngredientsState();
+        
+        // this.props.setIngredientsState();
     }
 
     // getIngredientId = (event, ingredientId) => {
     //     event.preventDefault();
-    //     console.log(ingredientId);
+    //     console.log("hello", ingredientId);
     // }
+    handleDelete = (ingredientId) => {
+        console.log(ingredientId);
+        var token = sessionStorage.getItem('token');
+        fetch("https://localhost:44330/Ingredients/"  + ingredientId,{
+            method: "Delete",
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': "Bearer " + token
+            }
+        })
+            .then(response => response.json())
+            .then(response => {
+                console.log(response);
+            })
+            .catch(error => {
+                console.log("There was an error ", error);
+            })
+            setTimeout(function () {
+                window.location.reload(false);
+            }, 5000)
+    }
 
     render() {
         const ingredients = this.state.ingredients;
         return (
             <div className="new-recipe-container-image">
-            <h3>Ingredients</h3>
-            <div className="form">
+                <h3>Ingredients</h3>
+                <div className="form">
                     <div className="row form-row">
                         <div className="col-lg-1 p-0 form-col">
                             <h5>#</h5>
@@ -82,59 +106,65 @@ class EditIngredients extends Component {
                         </div>
 
                     </div>
-                    <form onSubmit={this.handleSubmit}>
-                    {
-                        ingredients.map((val, idx) => {
-                            let ingredientId = `Ingredient-${idx}`, amountId = `amount-${idx}`
-                            return (
-                                <div key={idx}>
-                                    <div className="row form-row">
-                                        <div className="col-lg-1 p-0 form-col">
-                                            <h5>{idx + 1}</h5>
+                    <form>
+                        {
+                            ingredients.map((ingredient, idx) => {
+                                let ingredientId = `Ingredient-${idx}`, amountId = `amount-${idx}`
+
+                                return (
+
+                                    <div key={idx}>
+                                        <div className="row form-row">
+                                            <div className="col-lg-1 p-0 form-col">
+                                                <h5>{idx + 1}</h5>
+                                            </div>
+                                            <div className="col-lg-3 p-0 form-col">
+                                                {/* <label htmlFor={ingredientId}>Name</label> */}
+
+
+                                                <input
+                                                    type="text"
+                                                    name="ingredientName"
+                                                    data-id={idx}
+                                                    id={ingredientId}
+                                                    value={ingredients[idx].ingredientName}
+                                                    className="ingredientName"
+                                                    onChange={this.handleChange}
+                                                    required
+                                                />
+                                            </div>
+                                            <div className="col-lg-8 p-0 form-col">
+                                                {/* <label htmlFor={amountId}>Amount</label> */}
+
+                                                <input
+                                                    type="text"
+                                                    name="amount"
+                                                    data-id={idx}
+                                                    id={amountId}
+                                                    value={ingredients[idx].amount}
+                                                    className="amount"
+                                                    onChange={this.handleChange}
+                                                    required
+                                                />
+
+                                                {/* <button className="btn-primary form-button-add" onClick={this.addIngredient}>+</button> */}
+                                                <button onClick={() => this.handleSubmit(ingredient.ingredientId, ingredient.ingredientName, ingredient.amount, ingredient.recipeId)}>Edit</button>
+                                                <button  className="btn-outline-danger" onClick={() => this.handleDelete(ingredient.ingredientId)}>Delete</button>
+                                                {/* <EditIngredient 
+                                                    ingredientName={ingredient.ingredientName}
+                                                /> */}
+                                            </div>
+
                                         </div>
-                                        <div className="col-lg-3 p-0 form-col">
-                                            {/* <label htmlFor={ingredientId}>Name</label> */}
-
-
-                                            <input
-                                                type="text"
-                                                name="ingredientName"
-                                                data-id={idx}
-                                                id={ingredientId}
-                                                value={ingredients[idx].ingredientName}
-                                                className="ingredientName"
-                                                onChange={this.handleChange}
-                                                required
-                                            />
-                                        </div>
-                                        <div className="col-lg-8 p-0 form-col">
-                                            {/* <label htmlFor={amountId}>Amount</label> */}
-
-                                            <input
-                                                type="text"
-                                                name="amount"
-                                                data-id={idx}
-                                                id={amountId}
-                                                value={ingredients[idx].amount}
-                                                className="amount"
-                                                onChange={this.handleChange}
-                                                required
-                                            />
-                                            {/* <button className="btn-primary form-button-add" onClick={this.addIngredient}>+</button> */}
-                                            {/* <button onClick={() => this.getIngredientId(ingredients[idx].ingredientId)}>Edit</button> */}
-                                        </div>
-
                                     </div>
+                                )
+                            })
+                        }
+                        <input className="btn-primary form-button" type="submit" value="Submit" />
+                    </form>
+                </div>
 
-                                </div>
-                            )
-                        })
-                    }
-                    <input className="btn-primary form-button" type="submit" value="Submit" />
-                </form>
             </div>
-
-        </div>
         )
     }
 

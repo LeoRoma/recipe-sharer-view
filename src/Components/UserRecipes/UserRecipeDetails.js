@@ -46,6 +46,8 @@ class UserRecipeDetails extends Component {
         let imageSuffix = image.suffix;
         let imageDomain = `https://localhost:44330/dynamic/images/${imageId}${imageSuffix}`;
         let recipeId = userRecipe.recipeId;
+        var steps = this.props.userRecipeSteps;
+        var stepsSorted = steps.sort(function (a, b) { return a['stepNumber'] - b['stepNumber'] });
         return (
 
             <div key={recipeId} className="user-recipe-details-container">
@@ -86,7 +88,7 @@ class UserRecipeDetails extends Component {
                 {
                     editStepsCompleted ?
                         <h2 style={{ color: "green" }}>Steps Updated!</h2> : <EditSteps
-                            userRecipeSteps={this.props.userRecipeSteps}
+                            userRecipeSteps={steps}
                             setStepsState={this.setStepsState}
                         />
                 }
