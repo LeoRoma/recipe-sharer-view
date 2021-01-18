@@ -140,8 +140,13 @@ class App extends Component {
   render() {
     const { recipes, recipe, userRecipes, userRecipe, userRecipeEquipments, userRecipeSteps, userRecipeIngredients, userRecipeUser, userRecipeImage, userRecipePostDate } = this.state;
 
+    const recipesSorted = recipes.sort(function (a, b) { return a.recipeId - b.recipeId});
+
+    const reversedRecipes = recipesSorted.reverse();
+
     return (
       <div className="app">
+      
         <NavigationBar
           loginState={this.state.loggedIn}
           getLogoutState={this.getLogoutState}
@@ -150,7 +155,7 @@ class App extends Component {
           getRecipes={this.getRecipes}
           getRecipeId={this.getRecipeId}
           getUserRecipeId={this.getUserRecipeId}
-          recipes={recipes}
+          recipes={reversedRecipes}
           userRecipes={userRecipes}
           recipeDetails={recipe}
           userRecipeDetails={userRecipe}

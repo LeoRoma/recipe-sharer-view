@@ -17,12 +17,6 @@ class MainPage extends Component {
     constructor() {
         super()
         this.state = {
-            recipeId: 0,
-            username: "",
-            imageId: 0,
-            imageSuffix: "",
-            recipe: {},
-
             // pagination
             currentPage: 1,
             recipesPerPage: 5,
