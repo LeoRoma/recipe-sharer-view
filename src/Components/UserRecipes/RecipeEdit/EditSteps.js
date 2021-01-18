@@ -8,6 +8,10 @@ class EditSteps extends Component {
         };
     }
 
+    componentDidMount(){
+        this.updateSteps();
+    }
+
     handleChange = (event) => {
         if (["stepName", "instruction"].includes(event.target.className)) {
             let steps = [...this.state.steps]
@@ -26,8 +30,8 @@ class EditSteps extends Component {
         }))
     }
 
-    handleSubmit = (event) => {
-        event.preventDefault();
+    updateSteps = () => {
+        // event.preventDefault();
         var token = sessionStorage.getItem('token');
         var steps = this.state.steps;
         var stepsLength = steps.length;
@@ -56,7 +60,75 @@ class EditSteps extends Component {
                     console.log("There was an error ", error);
                 })
         }
-        this.props.setStepsState();
+        // this.props.setStepsState();
+    }
+
+    handleUpdate = (stepId, stepNumber, instruction, recipeId) => {
+        // event.preventDefault();
+        var token = sessionStorage.getItem('token');
+
+            fetch(`https://localhost:44330/Steps/${stepId}/recipe/${recipeId}`, {
+                method: "Put",
+                headers: {
+                    Accept: 'application/json',
+                    'Content-Type': 'application/json',
+                    'Authorization': "Bearer " + token
+                },
+                body: JSON.stringify({
+                    stepId: stepId,
+                    stepNumber: stepNumber,
+                    instruction: instruction,
+                    recipeId: recipeId,
+                })
+            })
+                .then(response => response)
+                .then(response => {
+                    console.log("I am response: ", response);
+                    console.log("step " + stepNumber, " updated!")
+                    // sessionStorage.setItem("recipeId", response.recipeId);
+                })
+                .catch(error => {
+                    console.log("There was an error ", error);
+                })
+        
+        // this.props.setStepsState();
+    }
+
+    handleDelete = (stepId) => {
+        // console.log(ingredientId);
+        var token = sessionStorage.getItem('token');
+        fetch("https://localhost:44330/Steps/"  + stepId,{
+            method: "Delete",
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': "Bearer " + token
+            }
+        })
+            .then(response => response)
+            .then(response => {
+                console.log(response);
+            })
+            .catch(error => {
+                console.log("There was an error ", error);
+            })
+            setTimeout(function () {
+                window.location.reload(false);
+            }, 100)
+    }
+
+    
+    confirmDelete = (stepId) => {
+        console.log(stepId);
+        if(window.confirm("Are you sure you want to delete this step?")){
+            this.handleDelete(stepId);
+            // setTimeout(function () {
+            //     window.location.reload(false);
+            // }.bind(this), 5000)
+            // setTimeout(function () {
+            //     this.handleSubmit();
+            // }.bind(this), 5000)
+        }
     }
 
     render() {
@@ -67,12 +139,12 @@ class EditSteps extends Component {
                 <div className="form">
                     <form onSubmit={this.handleSubmit}>
                         {
-                            steps.map((val, idx) => {
+                            steps.map((step, idx) => {
                                 let stepId = `Step-${idx}`, instructionId = `Instruction-${idx}`
                                 return (
                                     <div key={idx}>
 
-                                        <label style={{fontSize:"20px", fontWeight:"bold"}} htmlFor={stepId}># {idx + 1}</label>
+                                        <label style={{ fontSize: "20px", fontWeight: "bold" }} htmlFor={stepId}># {idx + 1}</label>
                                         <br />
                                         <label htmlFor={instructionId}>Instruction</label>
                                         <br />
@@ -87,13 +159,15 @@ class EditSteps extends Component {
                                             required
                                         />
                                         {/* <button className="btn-primary form-button-add" onClick={this.addStep}>+</button> */}
-
+                                        <br />
+                                        <button className="btn-outline-secondary" onClick={() => this.handleUpdate(step.stepId, step.stepNumber, step.instruction, step.recipeId)}>Update</button>
+                                        <button className="btn-outline-danger" onClick={() => this.confirmDelete(step.stepId)}>Delete</button>
                                     </div>
                                 )
                             })
                         }
 
-                        <input className="btn-primary form-button" type="submit" value="Submit" />
+                        {/* <input className="btn-primary form-button" type="submit" value="Submit" /> */}
                     </form>
                 </div>
             </div >
