@@ -2,8 +2,19 @@
 
 }
 
+.navbar-dark{
+  background-color: black;
+}
+.navbar-brand{
+  margin-left: 14%;
+}
+
+.navbar-nav{
+  margin-right: 14%;
+}
+
 .main-page {
-    width: 60%;
+    width: 70%;
     /* height: 100vh; */
     margin: auto;
     /* background-color: palegoldenrod; */
@@ -14,7 +25,7 @@
     width: 100%;
     margin: auto;
     height: 80px;
-    background-color: black;
+    background-color: black !important;
     /* position:fixed; */
     bottom: 0;
     margin-top: 20px;
@@ -22,7 +33,7 @@
   
   .footer-text{
     margin: auto;
-    width: 60%;
+    width: 70%;
     margin-top: 50px;
 
   }

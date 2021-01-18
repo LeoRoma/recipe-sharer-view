@@ -8,7 +8,7 @@ const UserRecipes = ({ userRecipes, getUserRecipeId }) => {
     var nRecipes = userRecipes.length;
     var username = sessionStorage.getItem("username");
     return (
-        <div>
+        <div className="user-recipes-container">
             <h1>Hello {username}!</h1>
             <h1>You have posted {nRecipes} recipes </h1>
             <Link to="/new-recipe"><button className="btn-outline-primary">Add New Recipe</button></Link>

@@ -6,7 +6,7 @@ class NavigationBar extends Component{
     render(){
         return(
             <div>
-                <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+                <Navbar collapseOnSelect expand="lg" variant="dark">
                 <Navbar.Brand href="/recipes">Recipe Sharer</Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">
