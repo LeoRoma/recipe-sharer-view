@@ -15,7 +15,7 @@ class DeleteRecipe extends Component {
                 'Authorization': "Bearer " + token
             }
         })
-            .then(response => response.json())
+            .then(response => response)
             .then(response => {
                 console.log(response);
             })

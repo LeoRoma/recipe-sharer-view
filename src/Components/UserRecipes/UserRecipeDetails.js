@@ -88,12 +88,10 @@ class UserRecipeDetails extends Component {
                 {
                     editStepsCompleted ?
                         <h2 style={{ color: "green" }}>Steps Updated!</h2> : <EditSteps
-                            userRecipeSteps={steps}
+                            userRecipeSteps={stepsSorted}
                             setStepsState={this.setStepsState}
                         />
                 }
-
-
 
             </div>
         );

@@ -61,7 +61,7 @@ class EditRecipe extends Component {
             .catch(error => {
                 console.log("There was an error ", error);
             })
-            this.props.setRecipeState();
+            // this.props.setRecipeState();
     }
 
     render() {
@@ -118,7 +118,7 @@ class EditRecipe extends Component {
                         <input type="text" name="servings" value={servings} onChange={this.handleChange} />
                     </label>
                     <br />
-                    <input className="btn-primary form-button" type="submit" value="Submit" onClick={this.handleSubmit}/>
+                    <input className="btn-secondary form-button" type="submit" value="Update" onClick={this.handleSubmit}/>
                 </form>
             </div>
         );

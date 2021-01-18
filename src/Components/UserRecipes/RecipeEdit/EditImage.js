@@ -99,7 +99,7 @@ class EditImage extends Component {
                             id="image"
                             accept="image/png, image/jpeg, image/jpg" onChange={this.handleImageChange} required />
                         <br />
-                        <input className="btn-primary form-button" type="submit" />
+                        <input className="btn-secondary form-button" type="submit" value="Update" />
                     </form>
 
                 </div>

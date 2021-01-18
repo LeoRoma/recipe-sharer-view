@@ -18,24 +18,21 @@ class EditEquipments extends Component {
           }
     }
 
-    addEquipment = (event) => {
-        event.preventDefault();
-        this.setState((prevState) => ({
-            equipments: [...prevState.equipments, { equipmentName: ""}]
-        }))
-    }
+    // addEquipment = (event) => {
+    //     event.preventDefault();
+    //     this.setState((prevState) => ({
+    //         equipments: [...prevState.equipments, { equipmentName: ""}]
+    //     }))
+    // }
 
-    handleSubmit = (event) => {
-        event.preventDefault();
+    handleSubmit = (equipmentId, equipmentName, recipeId) => {
+        // event.preventDefault();
 
         var token = sessionStorage.getItem('token');
-        var equipments = this.state.equipments;
-        var equipmentsLength = equipments.length;
-
        
-        for(let i = 0; i < equipmentsLength; i++){
+        // for(let i = 0; i < equipmentsLength; i++){
 
-            fetch(`https://localhost:44330/Equipments/${equipments[i].equipmentId}/recipe/${equipments[i].recipeId}`, {
+            fetch(`https://localhost:44330/Equipments/${equipmentId}/recipe/${recipeId}`, {
                 method: "Put",
                 headers: {
                     Accept: 'application/json',
@@ -43,22 +40,53 @@ class EditEquipments extends Component {
                     'Authorization': "Bearer " + token
                 },
                 body: JSON.stringify({
-                    equipmentId: equipments[i].equipmentId,
-                    equipmentName: equipments[i].equipmentName,
-                    recipeId: equipments[i].recipeId
+                    equipmentId: equipmentId,
+                    equipmentName: equipmentName,
+                    recipeId: recipeId
                 })
             })
                 .then(response => response)
                 .then(response => {
                     console.log(response);
-                    console.log("ingredient " + i, " added!")
+                    console.log("equipment " + equipmentName, " added!")
                     // sessionStorage.setItem("recipeId", response.recipeId);
                 })
                 .catch(error => {
                     console.log("There was an error ", error);
                 })
+        
+        // this.props.setEquipmentsState();
+    }
+
+    handleDelete = (equipmentId) => {
+        // console.log(ingredientId);
+        var token = sessionStorage.getItem('token');
+        fetch("https://localhost:44330/Equipments/"  + equipmentId,{
+            method: "Delete",
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': "Bearer " + token
+            }
+        })
+            .then(response => response)
+            .then(response => {
+                console.log(response);
+            })
+            .catch(error => {
+                console.log("There was an error ", error);
+            })
+            setTimeout(function () {
+                window.location.reload(false);
+            }, 10000)
+    }
+
+    
+    confirmDelete = (equipmentId) => {
+        console.log(equipmentId);
+        if(window.confirm("Are you sure you want to delete this equipment?")){
+            this.handleDelete(equipmentId);
         }
-        this.props.setEquipmentsState();
     }
 
     render() {
@@ -77,9 +105,9 @@ class EditEquipments extends Component {
                             <h5>Name</h5>
                         </div>
                     </div>
-                    <form onSubmit={this.handleSubmit}>
+                    <form>
                         {
-                            equipments.map((val, idx) => {
+                            equipments.map((equipment, idx) => {
                                 let equipmentId = `Equipment-${idx}`
                                 return (
                                     <div key={idx}>
@@ -98,7 +126,8 @@ class EditEquipments extends Component {
                                                     onChange={this.handleChange}
                                                     required
                                                 />
-                                                {/* <button className="btn-primary form-button-add" onClick={this.addEquipment}>+</button> */}
+                                                <button className="btn-outline-secondary" onClick={() => this.handleSubmit(equipment.equipmentId, equipment.equipmentName, equipment.recipeId)}>Update</button>
+                                                <button  className="btn-outline-danger" onClick={() => this.confirmDelete(equipment.equipmentId)}>Delete</button>
                                             </div>
                                         </div>
 
@@ -109,7 +138,7 @@ class EditEquipments extends Component {
                             })
                         }
 
-                        <input className="btn-primary form-button" type="submit" value="Submit" />
+                        {/* <input className="btn-primary form-button" type="submit" value="Submit" /> */}
                     </form>
                 </div>
 

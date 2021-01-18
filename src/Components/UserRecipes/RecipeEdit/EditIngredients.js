@@ -30,7 +30,7 @@ class EditIngredients extends Component {
         // event.preventDefault();
         console.log(ingredientId, ingredientName, amount)
         var token = sessionStorage.getItem('token');
-        var ingredients = this.state.ingredients;
+        // var ingredients = this.state.ingredients;
         // var ingredientsLength = ingredients.length;
         // for (let i = 0; i < ingredientsLength; i++) {
             fetch(`https://localhost:44330/Ingredients/${ingredientId}/recipe/${recipeId}`, {
@@ -75,7 +75,7 @@ class EditIngredients extends Component {
                 'Authorization': "Bearer " + token
             }
         })
-            .then(response => response.json())
+            .then(response => response)
             .then(response => {
                 console.log(response);
             })
@@ -85,6 +85,14 @@ class EditIngredients extends Component {
             setTimeout(function () {
                 window.location.reload(false);
             }, 5000)
+    }
+
+    
+    confirmDelete = (ingredientId) => {
+        console.log("Hello");
+        if(window.confirm("Are you sure you want to delete this ingredient?")){
+            this.handleDelete(ingredientId);
+        }
     }
 
     render() {
@@ -148,8 +156,8 @@ class EditIngredients extends Component {
                                                 />
 
                                                 {/* <button className="btn-primary form-button-add" onClick={this.addIngredient}>+</button> */}
-                                                <button onClick={() => this.handleSubmit(ingredient.ingredientId, ingredient.ingredientName, ingredient.amount, ingredient.recipeId)}>Edit</button>
-                                                <button  className="btn-outline-danger" onClick={() => this.handleDelete(ingredient.ingredientId)}>Delete</button>
+                                                <button className="btn-outline-secondary" onClick={() => this.handleSubmit(ingredient.ingredientId, ingredient.ingredientName, ingredient.amount, ingredient.recipeId)}>Update</button>
+                                                <button  className="btn-outline-danger" onClick={() => this.confirmDelete(ingredient.ingredientId)}>Delete</button>
                                                 {/* <EditIngredient 
                                                     ingredientName={ingredient.ingredientName}
                                                 /> */}
@@ -160,7 +168,7 @@ class EditIngredients extends Component {
                                 )
                             })
                         }
-                        <input className="btn-primary form-button" type="submit" value="Submit" />
+                        {/* <input className="btn-primary form-button" type="submit" value="Submit" /> */}
                     </form>
                 </div>
 
