@@ -25,8 +25,8 @@ class EditRecipe extends Component {
         })
     }
 
-    handleSubmit = (event) => {
-        event.preventDefault();
+    handleSubmit = () => {
+        // event.preventDefault();
 
         var userId = sessionStorage.getItem('userId');
         var token = sessionStorage.getItem('token');

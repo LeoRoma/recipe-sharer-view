@@ -45,7 +45,7 @@ class Login extends Component {
                 sessionStorage.setItem("username", response.userDetails.username);
                 sessionStorage.setItem("token", response.token);
                 this.setRedirect();
-                console.log('Login Successfull!')
+                console.log(response)
             })
             .catch(error => {
                 console.error("There was an error!", error)

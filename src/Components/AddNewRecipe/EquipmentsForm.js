@@ -68,7 +68,7 @@ class EquipmentsForm extends Component {
         return (
             <section id="equipments">
                 <div className="new-recipe-container-form">
-                    <h3>Equipments</h3>
+                    <h3>Equipment</h3>
                     <div className="form">
                         <div className="row form-row">
                             <div className="col-lg-1 p-0 form-col">
