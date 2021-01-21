@@ -55,11 +55,16 @@ class Register extends Component {
         })
             .then(response => response.json())
             .then(response => {
+
+                //if badrequest{alert email span}
+                //else if request status ok => redirect
+                
                 console.log(response);
                 this.setRedirect();
             })
             .catch(error => {
                 console.error("There was an error!", error)
+                alert("Email already exists!")
             })
         // setTimeout(function () {
         //     window.location.reload(false);
