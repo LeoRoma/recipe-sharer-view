@@ -28,9 +28,9 @@ In the user space page, is possible to choose to delete or edit a recipe.
 - react-icons
 
 ## Architecture Design Screenshot
-In this diagram displays all the components that I have used to build this application and in the next section (Approach) there is an explanation of the diagram more in detail.
-
-![Image screenshot](./screenshots/apparchitecturedesing.jpg)
+In this diagram displays all the components that I have used to build this application and in the next section (Approach) there is a more in details explanation 
+of it.
+![Image screenshot](./screenshots/apparchitecturedesign.jpg)
 
 ## Approach
 
