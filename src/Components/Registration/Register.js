@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Redirect} from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 // import {Form, Button} from 'react-bootstrap';
 
 class Register extends Component {
@@ -9,7 +9,8 @@ class Register extends Component {
             username: '',
             email: '',
             password: '',
-            emailAlreadyExists:false,
+            confirmPassword: '',
+            emailAlreadyExists: false,
             errors: {
                 username: '',
                 email: '',
@@ -18,28 +19,26 @@ class Register extends Component {
             redirect: false
         };
 
-        this.handleChangeUsername = this.handleChangeUsername.bind(this);
-        this.handleChangeEmail = this.handleChangeEmail.bind(this);
-        this.handleChangePassword = this.handleChangePassword.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
+        // this.handleChangeUsername = this.handleChangeUsername.bind(this);
+        // this.handleChangeEmail = this.handleChangeEmail.bind(this);
+        // this.handleChangePassword = this.handleChangePassword.bind(this);
+        // this.handleConfirmPassword = this.handleConfirmPassword.bind(this);
+        // this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    handleChangeUsername(event) {
-        this.setState({ username: event.target.value });
+    handleChange= (event) => {
+        this.setState({ [event.target.name]: event.target.value });
     }
 
-    handleChangeEmail(event) {
-        this.setState({ email: event.target.value });
-    }
 
-    handleChangePassword(event) {
-        this.setState({ password: event.target.value })
-    }
-
-    handleSubmit(event) {
+    handleSubmit = (event) => {
         event.preventDefault();
 
-        let { username, email, password } = this.state
+        let { username, email, password, confirmPassword } = this.state
+        if(password !== confirmPassword){
+            alert("Passwords don't match");
+        }else{
+
         fetch("https://localhost:44330/Users", {
             method: 'POST',
             headers: {
@@ -55,16 +54,17 @@ class Register extends Component {
         })
             .then(response => response.json())
             .then(response => {
-                if(response.status === 200){
+                if (response.status === 400) {
+                    this.setState({ emailAlreadyExists: true });
+                } else {
+
                     this.setRedirect();
                     this.props.setRegisterState();
                     alert("success");
-                }else if(response.status === 400){
-                    this.setState({emailAlreadyExists:true});
-                }   
+                }
                 //if badrequest{alert email span}
                 //else if request status ok => redirect
-                
+
                 console.log(response);
                 // this.setRedirect();
             })
@@ -75,6 +75,7 @@ class Register extends Component {
         // setTimeout(function () {
         //     window.location.reload(false);
         //   }, 500)
+        }
     }
 
     setRedirect = () => {
@@ -94,34 +95,47 @@ class Register extends Component {
     }
 
     render() {
+        const { emailAlreadyExists} = this.state;
+
         return (
             <div className="register-container">
                 {this.renderRedirect()}
-                <h1>Welcome to Recipe Sharer!</h1>
+                <div className="login-header">
+                    <h1>Welcome to Recipe Sharer!</h1>
+
+                </div>
                 <form className="register-form" onSubmit={this.handleSubmit}>
-                    
+
                     <div>
-                        {this.state.emailAlreadyExists? <h3 style={{color:"red"}}>Email already in use!</h3> : null}
-                        <label style={{color:"white"}}>
+                        {emailAlreadyExists ? <p style={{ color: "red", textAlign: "center" }}>Email already in use!</p> : null}
+                        <label>
                             Username:
                             <br />
-                        <input type="text" name="username" onChange={this.handleChangeUsername}  />
+                            <input type="text" name="username" onChange={this.handleChange} required/>
                         </label>
                     </div>
 
                     <div>
-                        <label style={{color:"white"}}>
+                        <label>
                             Email:
                             <br />
-                        <input type="email" name="email" onChange={this.handleChangeEmail} />
+                            <input type="email" name="email" onChange={this.handleChange} required/>
                         </label>
                     </div>
 
                     <div>
-                        <label style={{color:"white"}}>
+                        <label>
                             Password:
                             <br />
-                        <input type="password" name="password" onChange={this.handleChangePassword} />
+                            <input type="password" name="password" onChange={this.handleChange} required/>
+                        </label>
+                    </div>
+                    <div>
+                        <label>
+                            Confirm Password:
+                            <br />
+                            <input type="password" name="reEnterPassword" onChange={this.handleChange} />
+
                         </label>
                     </div>
                     <input className="btn-primary signin-button" type="submit" value="Sign Up" />

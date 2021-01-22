@@ -8,6 +8,7 @@ class Login extends Component {
         this.state = {
             email: "",
             password: "",
+            invalidLogin: false,
             redirect: false
         };
 
@@ -41,18 +42,19 @@ class Login extends Component {
         })
             .then(response => response.json())
             .then(response => {
+                console.log(response)
                 sessionStorage.setItem("userId", response.userDetails.userId);
                 sessionStorage.setItem("username", response.userDetails.username);
                 sessionStorage.setItem("token", response.token);
-                this.setRedirect();
-                console.log(response)
+                this.setRedirect();             
             })
             .catch(error => {
                 console.error("There was an error!", error)
+                this.setState({invalidLogin: true})
             })
-        setTimeout(function () {
-            window.location.reload(false);
-        }, 500)
+        // setTimeout(function () {
+        //     window.location.reload(false);
+        // }, 500)
     }
 
     setRedirect = () => {
@@ -76,6 +78,7 @@ class Login extends Component {
                 <form className="login-form" onSubmit={this.handleSubmit}>
                     <div className="login-header">
                         <h1>Sign In to Recipe Sharer</h1>
+                        {this.state.invalidLogin?<p style={{color:"red"}}>Your username or password may be incorrect. Sign up for an account</p>: null}
                     </div>
                     <div>
                         <label>

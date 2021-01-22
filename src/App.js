@@ -156,7 +156,7 @@ class App extends Component {
       
         <NavigationBar
           loginState={this.state.loggedIn}
-          getLogoutState={this.setLogoutState}
+          setLogoutState={this.setLogoutState}
         />
         <MainPage
           getRecipes={this.getRecipes}

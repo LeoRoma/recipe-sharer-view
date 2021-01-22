@@ -58,8 +58,12 @@
     margin-top: 10%;
     margin-bottom: 15%;
     padding: 5%;
-    width: 50%;
+    width: 350px;
     text-align: center;
+    background-color: white;
+    border-width: 0.1em;
+    border-radius: 10px;
+    border-style: outset;
 }
 
 
