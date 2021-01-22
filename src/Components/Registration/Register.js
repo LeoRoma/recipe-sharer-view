@@ -9,7 +9,7 @@ class Register extends Component {
             username: '',
             email: '',
             password: '',
-
+            emailAlreadyExists:false,
             errors: {
                 username: '',
                 email: '',
@@ -55,12 +55,18 @@ class Register extends Component {
         })
             .then(response => response.json())
             .then(response => {
-
+                if(response.status === 200){
+                    this.setRedirect();
+                    this.props.setRegisterState();
+                    alert("success");
+                }else if(response.status === 400){
+                    this.setState({emailAlreadyExists:true});
+                }   
                 //if badrequest{alert email span}
                 //else if request status ok => redirect
                 
                 console.log(response);
-                this.setRedirect();
+                // this.setRedirect();
             })
             .catch(error => {
                 console.error("There was an error!", error)
@@ -83,6 +89,10 @@ class Register extends Component {
         }
     };
 
+    errorMessage = () => {
+        return "Email already in use!"
+    }
+
     render() {
         return (
             <div className="register-container">
@@ -91,6 +101,7 @@ class Register extends Component {
                 <form className="register-form" onSubmit={this.handleSubmit}>
                     
                     <div>
+                        {this.state.emailAlreadyExists? <h3 style={{color:"red"}}>Email already in use!</h3> : null}
                         <label style={{color:"white"}}>
                             Username:
                             <br />
@@ -113,7 +124,6 @@ class Register extends Component {
                         <input type="password" name="password" onChange={this.handleChangePassword} />
                         </label>
                     </div>
-
                     <input className="btn-primary signin-button" type="submit" value="Sign Up" />
                 </form>
             </div>

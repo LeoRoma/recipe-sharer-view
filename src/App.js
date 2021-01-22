@@ -15,6 +15,7 @@ class App extends Component {
       recipes: [],
       userRecipes: [],
       loggedIn: false,
+      isRegistered: false,
       userId: sessionStorage.getItem("userId"),
 
       recipeDetailsPageIsOpened: false,
@@ -37,9 +38,9 @@ class App extends Component {
   componentDidMount() {
     // this.getUserRecipes();
     this.getRecipes();
-    this.getLoginState();
+    this.setLoginState();
     this.getRecipeDetailsState();
-    this.getUserRecipeDetailsState();
+    this.setUserRecipeDetailsState();
   };
 
   // Recipes
@@ -108,21 +109,27 @@ class App extends Component {
     }, 10)
   }
 
-  getUserRecipeDetailsState = () => {
+  setUserRecipeDetailsState = () => {
     if (this.state.userRecipeId !== null) {
       this.setState({ userRecipePageIsOpened: true });
       this.getUserRecipeDetails();
     }
   }
 
-  getLoginState = () => {
+  // Register/login
+  setRegisterState = () => {
+    console.log("Register state")
+    this.setState({isRegistered: true});
+  }
+
+  setLoginState = () => {
     if (this.state.userId !== null) {
       this.setState({ loggedIn: true })
       this.getUserRecipes();
     }
   }
 
-  getLogoutState = () => {
+  setLogoutState = () => {
     sessionStorage.clear();
     this.setState({
       userRecipePageIsOpened: false,
@@ -149,7 +156,7 @@ class App extends Component {
       
         <NavigationBar
           loginState={this.state.loggedIn}
-          getLogoutState={this.getLogoutState}
+          getLogoutState={this.setLogoutState}
         />
         <MainPage
           getRecipes={this.getRecipes}
@@ -158,6 +165,7 @@ class App extends Component {
           recipes={reversedRecipes}
           userRecipes={userRecipes}
           recipeDetails={recipe}
+          setRegisterState={this.setRegisterState}
           userRecipeDetails={userRecipe}
           userRecipeEquipments={userRecipeEquipments}
           userRecipeSteps={userRecipeSteps}

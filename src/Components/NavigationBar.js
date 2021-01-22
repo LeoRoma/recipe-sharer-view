@@ -14,7 +14,7 @@ class NavigationBar extends Component{
                         </Nav>
                         <Nav>
                         {this.props.loginState? <Nav.Link href="/user">Your Recipes</Nav.Link> : null}
-                        {this.props.loginState? <Nav.Link href="/login" onClick={this.props.getLogoutState}>Logout</Nav.Link> : <Nav.Link href="/login">Login</Nav.Link>}
+                        {this.props.loginState? <Nav.Link href="/login" onClick={this.props.setLogoutState}>Logout</Nav.Link> : <Nav.Link href="/login">Login</Nav.Link>}
                         {this.props.loginState? null : <Nav.Link href="/register">Register</Nav.Link>}
                         </Nav>
                     </Navbar.Collapse>

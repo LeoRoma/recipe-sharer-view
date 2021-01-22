@@ -61,7 +61,11 @@ class MainPage extends Component {
                         <Route exact path="/login">
                             <Login userRecipePath={this.props.userRecipePath} />
                         </Route>
-                        <Route exact path="/register" component={Register} />
+                        <Route exact path="/register">
+                            <Register 
+                                setRegisterState={this.props.setRegisterState}
+                            />
+                        </Route>
                         <Route exact path="/recipes">
                             <Recipes
                                 recipes={currentRecipes}
