@@ -29,11 +29,9 @@ class Register extends Component {
 
     handleChange = (event) => {
         this.setState({ [event.target.name]: event.target.value });
-        if (this.state.password !== this.state.confirmPassword) {
-            this.setState({ passwordNotMatched: true });
-        } else {
-            this.setState({ passwordNotMatched: false });
-        }
+        // if (this.state.password !== this.state.confirmPassword) {
+        //     this.setState({ passwordNotMatched: !this.state.passwordNotMatched});
+        // }
     }
 
 
