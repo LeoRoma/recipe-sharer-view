@@ -141,7 +141,7 @@ class RecipeForm extends Component {
                             <input type="text" name="servings" onChange={this.handleChange} required />
                         </label>
                         <br />
-                        {isSubmitted? <h6>Recipe Submitted!</h6> : <input className="btn-primary form-button" type="submit" value="Submit" />}
+                        {isSubmitted? <h6>Recipe Submitted!</h6> : <input className="btn-primary form-button" type="submit" value="Next" />}
                     </form>
                 </div>
             </div>

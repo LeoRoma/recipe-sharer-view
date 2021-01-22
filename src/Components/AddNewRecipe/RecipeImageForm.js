@@ -70,7 +70,7 @@ class RecipeImageForm extends Component {
                 id="image"
                 accept="image/png, image/jpeg, image/jpg" onChange={this.handleImageChange} required />
               <br />
-              {isSubmitted? <h6>Image Submitted!</h6> : <input className="btn-primary form-button" type="submit" />}
+              {isSubmitted? <h6>Image Submitted!</h6> : <input className="btn-primary form-button" type="submit" value="Next" />}
             </form>
 
           </div>

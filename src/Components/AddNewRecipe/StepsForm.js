@@ -105,7 +105,7 @@ class StepsForm extends Component {
                             })
                         }
 
-                        {isSubmitted ? <h6>Steps Submitted!</h6> : <input className="btn-primary form-button" type="submit" value="Submit" />}
+                        {isSubmitted ? <h6>Steps Submitted!</h6> : <input className="btn-primary form-button" type="submit" value="Next" />}
                     </form>
                 </div>
             </div >
