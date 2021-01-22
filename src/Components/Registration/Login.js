@@ -79,6 +79,7 @@ class Login extends Component {
                     <div className="login-header">
                         <h1>Sign In to Recipe Sharer</h1>
                         {this.state.invalidLogin?<p style={{color:"red"}}>Your username or password may be incorrect. Sign up for an account</p>: null}
+                        {this.props.isRegistered? <h6>Your account has been successfully created, please log in to enter in your space.</h6> : null}
                     </div>
                     <div>
                         <label>

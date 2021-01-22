@@ -59,7 +59,10 @@ class MainPage extends Component {
                 <BrowserRouter>
                     <Switch>
                         <Route exact path="/login">
-                            <Login userRecipePath={this.props.userRecipePath} />
+                            <Login 
+                                userRecipePath={this.props.userRecipePath} 
+                                isRegistered={this.props.isRegistered}
+                            />
                         </Route>
                         <Route exact path="/register">
                             <Register 

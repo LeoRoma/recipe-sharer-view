@@ -29,6 +29,11 @@ class Register extends Component {
 
     handleChange = (event) => {
         this.setState({ [event.target.name]: event.target.value });
+        if (this.state.password !== this.state.confirmPassword) {
+            this.setState({ passwordNotMatched: true });
+        } else {
+            this.setState({ passwordNotMatched: false });
+        }
     }
 
 
@@ -36,9 +41,7 @@ class Register extends Component {
         event.preventDefault();
 
         let { username, email, password, confirmPassword } = this.state
-        if (password !== confirmPassword) {
-            this.setState({ passwordNotMatched: true });
-        } else {
+  
 
             fetch("https://localhost:44330/Users", {
                 method: 'POST',
@@ -76,7 +79,7 @@ class Register extends Component {
             // setTimeout(function () {
             //     window.location.reload(false);
             //   }, 500)
-        }
+        // }
     }
 
     setRedirect = () => {

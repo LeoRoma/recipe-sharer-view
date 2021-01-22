@@ -46,7 +46,7 @@ In Recipe.js I have created a link that gives the possibility to bring us to Rec
 The same thing I have done for UserRecipes.js. Once the current user has been logged in, in App.js I have fetched the url to get only the recipes of the current user, passed the list as a props in MainPage.js and finally to UserRecipes.js, where with a map I have destructured the list and pass each information to UserRecipe.js. In this last component I have created a card to display the recipes of the current user. In each card I have also added the possibility to Edit or Delete the recipe.
 
 #### Post
-In Register.js has an input form where a user can fill it and create a new account, once the new account is created redirects to Login.js, here we do an authentication, if is succesful retrieves a token that we will use to acceed to the different functionality of the application.
+In Register.js has an input form where a user can fill it and create a new account, once the new account is created redirects to Login.js, here we do an authentication, if is succesful retrieves a token that we will use to access different functionalities of the application.
 
 In NewRecipe.js component I have imported RecipeForm.js, RecipeImageForm.js, IngredientsForm.js, EquipmentsForm.js and StepForms.js. All these forms are displayed in the same order as I have listed before in the same page. Once you submit RecipeForm.js opens the next form, in this case RecipeImageForm.js and so go on until the last form which is StepsForm.js. In this very last form once is submitted redirects to RecipeDetails.js where displays the new recipe added with all the informations.
 

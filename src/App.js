@@ -118,7 +118,7 @@ class App extends Component {
 
   // Register/login
   setRegisterState = () => {
-    console.log("Register state")
+    console.log("Register state successfull")
     this.setState({isRegistered: true});
   }
 
@@ -145,7 +145,7 @@ class App extends Component {
   // }
 
   render() {
-    const { recipes, recipe, userRecipes, userRecipe, userRecipeEquipments, userRecipeSteps, userRecipeIngredients, userRecipeUser, userRecipeImage, userRecipePostDate } = this.state;
+    const { recipes, recipe, userRecipes, userRecipe, userRecipeEquipments, userRecipeSteps, userRecipeIngredients, userRecipeUser, userRecipeImage, userRecipePostDate, isRegistered } = this.state;
 
     const recipesSorted = recipes.sort(function (a, b) { return a.recipeId - b.recipeId});
 
@@ -162,6 +162,7 @@ class App extends Component {
           getRecipes={this.getRecipes}
           getRecipeId={this.getRecipeId}
           getUserRecipeId={this.getUserRecipeId}
+          isRegistered={isRegistered}
           recipes={reversedRecipes}
           userRecipes={userRecipes}
           recipeDetails={recipe}
