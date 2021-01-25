@@ -63,6 +63,12 @@ Displays 5 recipes per page and the details of a single recipe
 
 ### Register/Login
 
-Register and Login page
+Register and Login page. In register page will show how to create a new account, if a user will use a email that is already been used will returns an error, once the new account has been created will redirect to the Login page. Once the loggin has been successfull will redirect to the "user space", if the email or password are invalid will return an error message.
 
 ![Alt text](./gifs/registerlogin.gif)
+
+### Post a Recipe
+
+Post page with input user, once one section is completed and pressed "next" button will display a new section, completed to fill all the sections will redirect to the details of the recipe page
+
+![Alt text](./gifs/postrecipe.gif)
