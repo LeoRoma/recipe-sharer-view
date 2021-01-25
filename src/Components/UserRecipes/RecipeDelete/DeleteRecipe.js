@@ -3,8 +3,8 @@ import React, {Component} from 'react';
 class DeleteRecipe extends Component {
 
 
-    deleteRecipe = (event) => {
-        event.preventDefault();
+    deleteRecipe = () => {
+        // event.preventDefault();
         var recipeId = this.props.recipeId;
         var token = sessionStorage.getItem('token');
         // event.preventDefault();
@@ -28,11 +28,11 @@ class DeleteRecipe extends Component {
             }, 500)
     }
 
-    confirmDelete = (event) => {
-        event.preventDefault();
+    confirmDelete = () => {
+        // event.preventDefault();
         console.log("Hello");
         if(window.confirm("Are you sure you want to delete this recipe?")){
-            this.deleteRecipe(event);
+            this.deleteRecipe();
         }
     }
 
