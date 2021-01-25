@@ -72,3 +72,9 @@ Register and Login page. In register page will show how to create a new account,
 Post page with input user, once one section is completed and pressed "next" button will display a new section, completed to fill all the sections will redirect to the details of the recipe page
 
 ![Alt text](./gifs/postrecipe.gif)
+
+### Edit and Delete
+
+This gif will display the edit page, to avoid to repeat the same process to all the sections of the page, will show only first few element of how edit and delete will work.
+
+![Alt text](./gifs/putdelete.gif)
