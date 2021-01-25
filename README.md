@@ -53,4 +53,32 @@ In NewRecipe.js component I have imported RecipeForm.js, RecipeImageForm.js, Ing
 #### Update and Delete
 From UserRecipe.js if clicked Edit button brings you to UserRecipeDetails.js page where in this component I have imported EditRecipe.js, EditImage.js, EditEquipments.js, EditSteps.js. For each component has the functionality to display the information about the recipe, but also as the informations are displayed in a input form, gives the opportunity to the user to update and delete a determined item. Either if clicked Delete button, just delete the recipe.
 
+## Screenshots 
 
+### Recipes
+
+![Image screenshot](./screenshots/recipes.jpg)
+
+### Recipe 
+
+![Image screenshot](./screenshots/recipe.jpg)
+
+### Register
+
+![Image screenshot](./screenshots/register.jpg)
+
+### Login
+
+![Image screenshot](./screenshots/login.jpg)
+
+### User Space
+
+![Image screenshot](./screenshots/userspace.jpg)
+
+### New Recipe
+
+![Image screenshot](./screenshots/newrecipe.jpg)
+
+### Edit
+
+![Image screenshot](./screenshots/edit.jpg)
