@@ -59,7 +59,7 @@ From UserRecipe.js if clicked Edit button brings you to UserRecipeDetails.js pag
 
 Displays 5 recipes per page and the details of a single recipe
 
-![Alt text](./gifs/recipes.gif)
+![Alt text](./gifs/recipes1.gif)
 
 ### Register/Login
 
