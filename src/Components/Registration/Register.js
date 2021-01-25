@@ -132,14 +132,14 @@ class Register extends Component {
                             <input type="password" name="password" onChange={this.handleChange} required />
                         </label>
                     </div>
-                    <div>
+                    {/* <div>
                         <label>
                             Confirm Password:
                             <br />
                             <input type="password" name="reEnterPassword" onChange={this.handleChange} />
                             {passwordNotMatched? <p style={{ color: "red", textAlign: "center" }}>Passwords don't match</p> : null}
                         </label>
-                    </div>
+                    </div> */}
                     <input className="btn-primary signin-button" type="submit" value="Sign Up" />
                 </form>
             </div>

@@ -55,32 +55,14 @@ From UserRecipe.js if clicked Edit button brings you to UserRecipeDetails.js pag
 
 ## Gifs
 
-![Alt text](./gifs/recipes.gif)
-
 ### Recipes
 
-![Image screenshot](./screenshots/recipes.jpg)
+Displays 5 recipes per page and the details of a single recipe
 
-### Recipe 
+![Alt text](./gifs/recipes.gif)
 
-![Image screenshot](./screenshots/recipe.jpg)
+### Register/Login
 
-### Register
+Register and Login page
 
-![Image screenshot](./screenshots/register.jpg)
-
-### Login
-
-![Image screenshot](./screenshots/login.jpg)
-
-### User Space
-
-![Image screenshot](./screenshots/userspace.jpg)
-
-### New Recipe
-
-![Image screenshot](./screenshots/newrecipe.jpg)
-
-### Edit
-
-![Image screenshot](./screenshots/edit.jpg)
+![Alt text](./gifs/registerlogin.gif)

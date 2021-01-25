@@ -52,9 +52,9 @@ class Login extends Component {
                 console.error("There was an error!", error)
                 this.setState({invalidLogin: true})
             })
-        // setTimeout(function () {
-        //     window.location.reload(false);
-        // }, 500)
+        setTimeout(function () {
+            window.location.reload(false);
+        }, 500)
     }
 
     setRedirect = () => {
