@@ -4,8 +4,8 @@ class DeleteRecipe extends Component {
 
 
     deleteRecipe = () => {
-        var recipeId = this.props.recipeId;
-        var token = sessionStorage.getItem('token');
+        const recipeId = this.props.recipeId;
+        const token = sessionStorage.getItem('token');
         fetch("https://localhost:44330/Recipes/"  + recipeId,{
             method: "Delete",
             headers: {

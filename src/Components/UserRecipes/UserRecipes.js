@@ -5,8 +5,8 @@ import UserRecipe from './UserRecipe';
 
 const UserRecipes = ({ userRecipes, getUserRecipeId }) => {
 
-    var nRecipes = userRecipes.length;
-    var username = sessionStorage.getItem("username");
+    const nRecipes = userRecipes.length;
+    const username = sessionStorage.getItem("username");
 
     const recipesSorted = userRecipes.sort(function (a, b) { return a.recipeId - b.recipeId});
 

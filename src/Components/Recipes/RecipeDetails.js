@@ -13,32 +13,32 @@ class RecipeDetails extends Component {
     };
 
     render() {
-        var recipe = this.props.recipeDetails;
-        var recipeId = recipe.recipeId;
-        var equipments = recipe.equipments;
-        var ingredients = recipe.ingredients;
-        var steps = recipe.steps;
-        var stepsSorted = steps.sort(function (a, b) { return a['stepNumber'] - b['stepNumber'] });
-        var username = recipe.user.username;
-        var imageId = recipe.image.id;
-        var imageSuffix = recipe.image.suffix;
+        const recipe = this.props.recipeDetails;
+        const recipeId = recipe.recipeId;
+        const equipments = recipe.equipments;
+        const ingredients = recipe.ingredients;
+        const steps = recipe.steps;
+        const stepsSorted = steps.sort(function (a, b) { return a['stepNumber'] - b['stepNumber'] });
+        const username = recipe.user.username;
+        const imageId = recipe.image.id;
+        const imageSuffix = recipe.image.suffix;
 
-        var imageDomain = `https://localhost:44330/dynamic/images/${imageId}${imageSuffix}`;
+        const imageDomain = `https://localhost:44330/dynamic/images/${imageId}${imageSuffix}`;
 
-        var recipeName = recipe.recipeName;
-        var description = recipe.description;
-        var difficulty = recipe.difficulty;
-        var preparationTime = recipe.preparationTime;
-        var cookingTime = recipe.cookingTime;
-        var additionalTime = recipe.additionalTime;
-        var servings = recipe.servings;
+        const recipeName = recipe.recipeName;
+        const description = recipe.description;
+        const difficulty = recipe.difficulty;
+        const preparationTime = recipe.preparationTime;
+        const cookingTime = recipe.cookingTime;
+        const additionalTime = recipe.additionalTime;
+        const servings = recipe.servings;
 
-        var capitalizeRecipeName = recipeName.charAt(0).toUpperCase() + recipeName.slice(1)
-        var postDate = recipe.postDate;
-        var YYYY = postDate.slice(0, 4);
-        var MM = postDate.slice(5, 7);
-        var DD = postDate.slice(8, 10);
-        var formattedDate = `${DD}/${MM}/${YYYY}`;
+        const capitalizeRecipeName = recipeName.charAt(0).toUpperCase() + recipeName.slice(1)
+        const postDate = recipe.postDate;
+        const YYYY = postDate.slice(0, 4);
+        const MM = postDate.slice(5, 7);
+        const DD = postDate.slice(8, 10);
+        const formattedDate = `${DD}/${MM}/${YYYY}`;
 
         return (
             <div key={recipeId} className="recipe-details-container">

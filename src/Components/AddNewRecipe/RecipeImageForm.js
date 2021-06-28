@@ -23,8 +23,8 @@ class RecipeImageForm extends Component {
   };
 
   handleSubmit = (e) => {
-    var recipeId = sessionStorage.getItem('recipeId');
-    var token = sessionStorage.getItem('token');
+    const recipeId = sessionStorage.getItem('recipeId');
+    const token = sessionStorage.getItem('token');
     e.preventDefault();
     console.log(this.state);
     let form_data = new FormData();

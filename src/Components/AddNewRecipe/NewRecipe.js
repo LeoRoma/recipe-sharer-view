@@ -56,7 +56,6 @@ class NewRecipe extends Component {
         const recipeName = sessionStorage.getItem('recipeName');
         const recipeDetailsPath = `/${recipeName}`;
         if (this.state.redirect) {
-            // this.props.getRecipes();
             this.props.getUserRecipeId(recipeId);
             return <Redirect to={recipeDetailsPath} />
         }

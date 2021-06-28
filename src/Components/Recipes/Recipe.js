@@ -52,15 +52,6 @@ const Recipe = ({
                     </div>
 
             </div>
-          
-
-            {/* <p>Difficulty: {difficulty}</p>
-            <p>Preparation Time: {preparationTime}</p>
-            <p>Cooking Time: {cookingTime}</p>
-            <p>AdditionalTime: {additionalTime}</p>
-            <p>Servings: {servings}</p>
-            <p>Posted Date: {formattedDate}</p>
-            <p>Posted by: {username}</p> */}
         </div>
     );
 }

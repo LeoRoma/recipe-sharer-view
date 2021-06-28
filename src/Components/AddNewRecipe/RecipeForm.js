@@ -24,8 +24,8 @@ class RecipeForm extends Component {
     }
 
     handleSubmit = (event) => {
-        var token = sessionStorage.getItem('token');
-        var userId = sessionStorage.getItem('userId');
+        const token = sessionStorage.getItem('token');
+        const userId = sessionStorage.getItem('userId');
         event.preventDefault();
         let { recipeName, description, difficulty, preparationTime, cookingTime, additionalTime, servings } = this.state
         console.log(recipeName, description, difficulty, preparationTime, cookingTime, additionalTime, servings, token, userId)
@@ -63,7 +63,6 @@ class RecipeForm extends Component {
 
     render() {
         const {isSubmitted} = this.state;
-        // console.log(this.state)
         return (
             <div className="new-recipe-container-form">
                 <div className="form">

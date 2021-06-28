@@ -27,10 +27,10 @@ class IngredientsForm extends Component {
     }
 
     handleSubmit = (event) => {
-        var token = sessionStorage.getItem('token');
-        var ingredientsLength = this.state.ingredients.length;
-        var ingredients = this.state.ingredients;
-        var recipeId = sessionStorage.getItem("recipeId");
+        const token = sessionStorage.getItem('token');
+        const ingredientsLength = this.state.ingredients.length;
+        const ingredients = this.state.ingredients;
+        const recipeId = sessionStorage.getItem("recipeId");
         event.preventDefault();
 
         for (let i = 0; i < ingredientsLength; i++) {

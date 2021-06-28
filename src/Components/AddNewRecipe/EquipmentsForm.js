@@ -27,10 +27,10 @@ class EquipmentsForm extends Component {
     }
 
     handleSubmit = (event) => {
-        var token = sessionStorage.getItem('token');
-        var equipmentsLength = this.state.equipments.length;
-        var equipments = this.state.equipments;
-        var recipeId = sessionStorage.getItem("recipeId");
+        const token = sessionStorage.getItem('token');
+        const equipmentsLength = this.state.equipments.length;
+        const equipments = this.state.equipments;
+        const recipeId = sessionStorage.getItem("recipeId");
         event.preventDefault();
         console.log("hello")
         for (let i = 0; i < equipmentsLength; i++) {

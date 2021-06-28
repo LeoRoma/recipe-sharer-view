@@ -40,14 +40,14 @@ class UserRecipeDetails extends Component {
 
     render() {
         const { editRecipeCompleted, editImageCompleted, editEquipmentsCompleted, editIngredientsCompleted, editStepsCompleted } = this.state;
-        let userRecipe = this.props.userRecipeDetails;
-        let image = this.props.userRecipeImage;
-        let imageId = image.id;
-        let imageSuffix = image.suffix;
-        let imageDomain = `https://localhost:44330/dynamic/images/${imageId}${imageSuffix}`;
-        let recipeId = userRecipe.recipeId;
-        var steps = this.props.userRecipeSteps;
-        var stepsSorted = steps.sort(function (a, b) { return a['stepNumber'] - b['stepNumber'] });
+        const userRecipe = this.props.userRecipeDetails;
+        const image = this.props.userRecipeImage;
+        const imageId = image.id;
+        const imageSuffix = image.suffix;
+        const imageDomain = `https://localhost:44330/dynamic/images/${imageId}${imageSuffix}`;
+        const recipeId = userRecipe.recipeId;
+        const steps = this.props.userRecipeSteps;
+        const stepsSorted = steps.sort(function (a, b) { return a['stepNumber'] - b['stepNumber'] });
         return (
 
             <div key={recipeId} className="user-recipe-details-container">

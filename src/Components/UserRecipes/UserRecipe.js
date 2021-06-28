@@ -19,12 +19,12 @@ const UserRecipe = ({
     getUserRecipeId }) => {
 
 
-    var imageDomain = `https://localhost:44330/dynamic/images/${imageId}${imageSuffix}`;
-    var YYYY = postDate.slice(0, 4);
-    var MM = postDate.slice(5, 7);
-    var DD = postDate.slice(8, 10);
-    var formattedDate = `${DD}/${MM}/${YYYY}`;
-    var capitalizeRecipeName = recipeName.charAt(0).toUpperCase() + recipeName.slice(1)
+    const imageDomain = `https://localhost:44330/dynamic/images/${imageId}${imageSuffix}`;
+    const YYYY = postDate.slice(0, 4);
+    const MM = postDate.slice(5, 7);
+    const DD = postDate.slice(8, 10);
+    const formattedDate = `${DD}/${MM}/${YYYY}`;
+    const capitalizeRecipeName = recipeName.charAt(0).toUpperCase() + recipeName.slice(1)
 
     return (
         <div className="recipe-card">

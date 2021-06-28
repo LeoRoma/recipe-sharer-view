@@ -27,10 +27,10 @@ class StepsForm extends Component {
     }
 
     handleSubmit = (event) => {
-        var token = sessionStorage.getItem('token');
-        var stepsLength = this.state.steps.length;
-        var steps = this.state.steps;
-        var recipeId = sessionStorage.getItem("recipeId");
+        const token = sessionStorage.getItem('token');
+        const stepsLength = this.state.steps.length;
+        const steps = this.state.steps;
+        const recipeId = sessionStorage.getItem("recipeId");
         event.preventDefault();
         console.log("hello")
         for (let i = 0; i < stepsLength; i++) {
