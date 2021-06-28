@@ -11,8 +11,7 @@ class StepsForm extends Component {
 
     handleChange = (event) => {
         if (["stepName", "instruction"].includes(event.target.className)) {
-            let steps = [...this.state.steps]
-            // steps['stepNumber'] = event.target.dataset.id;
+            let steps = [...this.state.steps];
             steps[event.target.dataset.id][event.target.className] = event.target.value
             this.setState({ steps }, () => console.log(this.state.steps))
         } else {
@@ -55,7 +54,6 @@ class StepsForm extends Component {
                     console.log(response);
                     console.log("steps " + i, " added!")
                     
-                    // sessionStorage.setItem("recipeId", response.recipeId);
                 })
                 .catch(error => {
                     console.log("There was an error ", error);
@@ -65,7 +63,6 @@ class StepsForm extends Component {
         this.setState({
             isSubmitted:true
         });
-        // this.props.getRecipes();
     }
 
 

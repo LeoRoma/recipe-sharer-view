@@ -52,7 +52,6 @@ class IngredientsForm extends Component {
                 .then(response => {
                     console.log(response);
                     console.log("ingredient " + i, " added!")
-                    // sessionStorage.setItem("recipeId", response.recipeId);
                 })
                 .catch(error => {
                     console.log("There was an error ", error);
@@ -92,8 +91,6 @@ class IngredientsForm extends Component {
                                                 <h6>{idx + 1}</h6>
                                             </div>
                                             <div className="col-lg-3 p-0 form-col">
-                                                {/* <label htmlFor={ingredientId}>Name</label> */}
-
 
                                                 <input
                                                     type="text"
@@ -107,7 +104,6 @@ class IngredientsForm extends Component {
                                                 />
                                             </div>
                                             <div className="col-lg-8 p-0 form-col">
-                                                {/* <label htmlFor={amountId}>Amount</label> */}
 
                                                 <input
                                                     type="text"

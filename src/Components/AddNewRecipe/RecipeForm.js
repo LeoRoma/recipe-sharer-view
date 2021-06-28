@@ -18,32 +18,6 @@ class RecipeForm extends Component {
     }
 
     handleChange = (event) => {
-        // let value = event.target.value;
-
-        // switch (event.target.name) {
-        //     case 'recipeName':
-        //         this.setState({ recipeName: value })
-        //         break;
-        //     case 'description':
-        //         this.setState({ description: value })
-        //         break;
-        //     case 'difficulty':
-        //         this.setState({ difficulty: value })
-        //         break;
-        //     case 'preparationTime':
-        //         this.setState({ preparationTime: value })
-        //         break;
-        //     case 'cookingTime':
-        //         this.setState({ cookingTime: value })
-        //         break;
-        //     case 'additionalTime':
-        //         this.setState({ additionalTime: value })
-        //         break;
-        //     case 'servings':
-        //         this.setState({ servings: value })
-        //         break;
-        //     default:
-        // }
         this.setState({
             [event.target.name] : event.target.value
         })

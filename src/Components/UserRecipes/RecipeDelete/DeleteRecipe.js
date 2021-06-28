@@ -4,10 +4,8 @@ class DeleteRecipe extends Component {
 
 
     deleteRecipe = () => {
-        // event.preventDefault();
         var recipeId = this.props.recipeId;
         var token = sessionStorage.getItem('token');
-        // event.preventDefault();
         fetch("https://localhost:44330/Recipes/"  + recipeId,{
             method: "Delete",
             headers: {
@@ -29,7 +27,6 @@ class DeleteRecipe extends Component {
     }
 
     confirmDelete = () => {
-        // event.preventDefault();
         console.log("Hello");
         if(window.confirm("Are you sure you want to delete this recipe?")){
             this.deleteRecipe();

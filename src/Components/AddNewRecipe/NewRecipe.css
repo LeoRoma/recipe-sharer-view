@@ -19,22 +19,16 @@
 
 .new-recipe-container-form{
     margin: auto;
-    /* margin-top: 5%; */
     margin-bottom: 5%;
-    /* margin-left: 0; */
     border-bottom: solid;
     border-bottom-width: 0.1px;
-
 }
 
 .new-recipe-container-image{
     margin: auto;
-    /* margin-top: 5%; */
     margin-bottom: 5%;
-    /* margin-left: 0; */
     border-bottom: solid;
     border-bottom-width: 0.1px;
-    /* background-color:white; */
 }
 
 .form-row{
@@ -44,7 +38,6 @@
 
 .form-col{
     margin: auto;
-    /* margin-top: 0; */
     margin-left: 0%;
 }
 

@@ -70,8 +70,6 @@ class Login extends Component {
     };
 
     render() {
-        // console.log(sessionStorage.getItem('userId'))
-        // console.log(sessionStorage.getItem('token'))
         return (
             <div className="login-container">
                 {this.renderRedirect()}

@@ -97,10 +97,6 @@ class NewRecipe extends Component {
                 {equipmentsForm}
                 {ingredientsForm}
                 {stepsForm}
-                {/* <RecipeImageForm getImageFormState={this.getImageFormState} />
-                <EquipmentsForm getEquipmentsFormState={this.getEquipmentsFormState} />
-                <IngredientsForm getIngredientsFormState={this.getIngredientsFormState} />
-                <StepsForm getStepsFormState={this.getStepsFormState} />        */}
             </div>
 
         );

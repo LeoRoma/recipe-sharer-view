@@ -33,8 +33,6 @@ class RecipeImageForm extends Component {
     fetch("https://localhost:44330/Image/post/" + recipeId, {
       method: "Post",
       headers: {
-        // Accept: 'application/json',
-        // 'Content-Type': 'application/json',
         'Authorization': "Bearer " + token
       },
       body: form_data
@@ -52,7 +50,6 @@ class RecipeImageForm extends Component {
 
   render() {
     const {isSubmitted} = this.state;
-    // console.log("Image ", isSubmitted);
     return (
       <section id="image">
         <div className="new-recipe-container-image">

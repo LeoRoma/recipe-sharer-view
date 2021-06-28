@@ -38,12 +38,6 @@
     border-style:inset;
     border-width: 00.01em;
     width: 100%;
-   
-    /* height: 100%; */
-    /* margin: 0; */
-    /* Center and scale the image nicely */
-    /* background-position: center; */
-    /* background-repeat: no-repeat; */
     background-size: cover;
 }
 

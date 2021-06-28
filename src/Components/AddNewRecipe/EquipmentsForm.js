@@ -53,7 +53,6 @@ class EquipmentsForm extends Component {
                     console.log(response);
                     console.log("ingredient " + i, " added!")
 
-                    // sessionStorage.setItem("recipeId", response.recipeId);
                 })
                 .catch(error => {
                     console.log("There was an error ", error);

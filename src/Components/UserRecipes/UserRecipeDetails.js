@@ -51,7 +51,7 @@ class UserRecipeDetails extends Component {
         return (
 
             <div key={recipeId} className="user-recipe-details-container">
-                {/* {imageSuffix? <img src={imageDomain} style={{ width: "200px", height: "200px" }} alt="food" /> : null} */}
+
                 {
                     editRecipeCompleted ?
                         <h2>Recipe Updated!</h2> : <EditRecipe

@@ -19,65 +19,48 @@ class Register extends Component {
             },
             redirect: false
         };
-
-        // this.handleChangeUsername = this.handleChangeUsername.bind(this);
-        // this.handleChangeEmail = this.handleChangeEmail.bind(this);
-        // this.handleChangePassword = this.handleChangePassword.bind(this);
-        // this.handleConfirmPassword = this.handleConfirmPassword.bind(this);
-        // this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     handleChange = (event) => {
         this.setState({ [event.target.name]: event.target.value });
-        // if (this.state.password !== this.state.confirmPassword) {
-        //     this.setState({ passwordNotMatched: !this.state.passwordNotMatched});
-        // }
     }
 
 
     handleSubmit = (event) => {
         event.preventDefault();
 
-        let { username, email, password, confirmPassword } = this.state
-  
+        let { username, email, password } = this.state
 
-            fetch("https://localhost:44330/Users", {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json'
-                },
-                body: JSON.stringify({
-                    username: username,
-                    email: email,
-                    password: password,
-                    userRole: "user"
-                })
+
+        fetch("https://localhost:44330/Users", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify({
+                username: username,
+                email: email,
+                password: password,
+                userRole: "user"
             })
-                .then(response => response.json())
-                .then(response => {
-                    if (response.status === 400) {
-                        this.setState({ emailAlreadyExists: true });
-                    } else {
+        })
+            .then(response => response.json())
+            .then(response => {
+                if (response.status === 400) {
+                    this.setState({ emailAlreadyExists: true });
+                } else {
 
-                        this.setRedirect();
-                        this.props.setRegisterState();
-                        alert("success");
-                    }
-                    //if badrequest{alert email span}
-                    //else if request status ok => redirect
+                    this.setRedirect();
+                    this.props.setRegisterState();
+                    alert("success");
+                }
 
-                    console.log(response);
-                    // this.setRedirect();
-                })
-                .catch(error => {
-                    console.error("There was an error!", error)
-                    // alert("Email already exists!")
-                })
-            // setTimeout(function () {
-            //     window.location.reload(false);
-            //   }, 500)
-        // }
+                console.log(response);
+            })
+            .catch(error => {
+                console.error("There was an error!", error)
+            })
     }
 
     setRedirect = () => {
@@ -97,7 +80,7 @@ class Register extends Component {
     }
 
     render() {
-        const { emailAlreadyExists, passwordNotMatched } = this.state;
+        const { emailAlreadyExists } = this.state;
 
         return (
             <div className="register-container">
@@ -132,14 +115,7 @@ class Register extends Component {
                             <input type="password" name="password" onChange={this.handleChange} required />
                         </label>
                     </div>
-                    {/* <div>
-                        <label>
-                            Confirm Password:
-                            <br />
-                            <input type="password" name="reEnterPassword" onChange={this.handleChange} />
-                            {passwordNotMatched? <p style={{ color: "red", textAlign: "center" }}>Passwords don't match</p> : null}
-                        </label>
-                    </div> */}
+                    =
                     <input className="btn-primary signin-button" type="submit" value="Sign Up" />
                 </form>
             </div>

@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 
 import { Switch, Route, BrowserRouter } from 'react-router-dom';
 
-// import EditRecipe from './UserRecipes/RecipeEdit/EditRecipe';
-// import Footer from './Footer';
 import Login from './Registration/Login';
 import NewRecipe from './AddNewRecipe/NewRecipe';
 import Pagination from './Pagination';
@@ -17,28 +15,10 @@ class MainPage extends Component {
     constructor() {
         super()
         this.state = {
-            // pagination
             currentPage: 1,
             recipesPerPage: 5,
         }
     };
-
-    // getRecipeInfo = (recipeId, username, imageId, imageSuffix) =>{
-    //     this.setState({
-    //         recipeId: recipeId,
-    //         username: username,
-    //         imageId: imageId,
-    //         imageSuffix: imageSuffix
-    //     })
-    //     this.getRecipe(recipeId);
-    // }
-
-    // getRecipe(recipeId){
-    //     fetch(`https://localhost:44330/Recipes/${recipeId}`)
-    //     .then(response => response.json())
-    //     .then(recipeJson => this.setState({recipe: recipeJson}))
-    //     .catch(error => error);
-    // }
 
     paginate = (pageNumber) => {
         console.log(pageNumber)
@@ -101,7 +81,6 @@ class MainPage extends Component {
 
                                 userRecipeImage={this.props.userRecipeImage}
 
-                            // userRecipeImageDomain={this.props.userRecipeImageDomain}
                             />
                         </Route>
                         <Route exact path="/new-recipe">
@@ -110,9 +89,6 @@ class MainPage extends Component {
                                 getRecipes={this.props.getRecipes}
                             />
                         </Route>
-                        {/* <Route exact path="/edit-recipe">
-                            <EditRecipe />
-                        </Route> */}
                     </Switch>
                 </BrowserRouter>
                

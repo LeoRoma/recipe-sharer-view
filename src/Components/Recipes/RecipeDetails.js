@@ -16,7 +16,6 @@ class RecipeDetails extends Component {
         var recipe = this.props.recipeDetails;
         var recipeId = recipe.recipeId;
         var equipments = recipe.equipments;
-        // console.log(equipments.length)
         var ingredients = recipe.ingredients;
         var steps = recipe.steps;
         var stepsSorted = steps.sort(function (a, b) { return a['stepNumber'] - b['stepNumber'] });
@@ -49,10 +48,7 @@ class RecipeDetails extends Component {
                 <div className="row no-gutters recipe-details-header">
                     <div className="col-lg-6 p-0 recipe-details-col img-container">
                         <img src={imageDomain} alt="food" className="img-fill" />
-                        {/* <div className="recipe-details-img">
-                            
-                            <h1>Hi</h1>
-                        </div> */}
+
                     </div>
                     <div className="col-lg-6 recipe-details-col">
                         <div className="details">
@@ -81,7 +77,6 @@ class RecipeDetails extends Component {
                         <h2>Ingredients</h2>
                         {ingredients.map((ingredient) =>
                             <p key={ingredient.ingredientId}>{ingredient.amount} {ingredient.ingredientName} </p>
-                            // <p>ingredient.amount</p>
                         )}
                     </div>
                     <div className="col-lg-7">

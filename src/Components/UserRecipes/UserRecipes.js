@@ -31,7 +31,6 @@ const UserRecipes = ({ userRecipes, getUserRecipeId }) => {
                     imageId={userRecipe.image.id}
                     imageSuffix={userRecipe.image.suffix}
                     username={userRecipe.user.username}
-                    // userId={userRecipe.userId}
                     getUserRecipeId={getUserRecipeId}
                 />
             )}
