@@ -3,9 +3,7 @@ import React, { Component } from 'react';
 import Footer from '../src/Components/Footer';
 import MainPage from '../src/Components/MainPage';
 import NavigationBar from '../src/Components/NavigationBar';
-// import Pagination from '../src/Components/Pagination';
 import './App.css';
-// import UserRecipeDetails from './Components/UserRecipes/UserRecipeDetails';
 
 
 class App extends Component {
@@ -36,7 +34,6 @@ class App extends Component {
   };
 
   componentDidMount() {
-    // this.getUserRecipes();
     this.getRecipes();
     this.setLoginState();
     this.getRecipeDetailsState();
@@ -137,13 +134,6 @@ class App extends Component {
     });
   }
 
-  //Change page
-
-  // paginate = (pageNumber) => {
-  //   console.log(pageNumber)
-  //   this.setState({currentPage: pageNumber})
-  // }
-
   render() {
     const { recipes, recipe, userRecipes, userRecipe, userRecipeEquipments, userRecipeSteps, userRecipeIngredients, userRecipeUser, userRecipeImage, userRecipePostDate, isRegistered } = this.state;
 
@@ -172,7 +162,6 @@ class App extends Component {
           userRecipeSteps={userRecipeSteps}
           userRecipeIngredients={userRecipeIngredients}
           userRecipeUser={userRecipeUser}
-          // userRecipeImageDomain={userRecipeImageDomain}
           userRecipeImage={userRecipeImage}
           userRecipePostDate={userRecipePostDate}
         />

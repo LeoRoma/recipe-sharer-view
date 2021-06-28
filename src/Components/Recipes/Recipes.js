@@ -3,9 +3,6 @@ import Recipe from './Recipe';
 
 const Recipes = ({ recipes, getRecipeId }) => {
 
-    // var recipesSorted = recipes.sort(function (a, b) { return a['postDate'] - b['postDate'] });
-    // var reversedRecipes = recipesSorted.reverse();
-
     return (
         <div className="recipe-container" >
             <h1>Recipes</h1>
